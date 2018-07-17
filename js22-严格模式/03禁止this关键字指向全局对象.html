@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			"use strict";
+			console.log(this);//在全局中打印this,其指向的还是window
+			function Fn () {
+				//函数内部this默认指向不再是window,而是undefined
+				console.log(this);
+			}
+			Fn () ;
+			function person () {
+				this.name = "Jack";
+				this.age = 20;
+			}
+			var obj1 = new person();
+			console.log(obj1);
+			var obj2 = person();//使用构造函数时,如果忘了加new,this不再指向全局对象,而是报错
+			console.log(obj2);
+		</script>
+	</body>
+</html>

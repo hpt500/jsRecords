@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div{
+				width: 500px;
+				height: 400px;
+				border: 1px black solid;
+				position: relative;
+			}
+			#qiu{
+				width: 20px;
+				height: 20px;
+				display: inline-block;
+				background-color: red;
+				border-radius: 10px;
+				position: absolute;
+				left: 1px;
+				top: 1px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div">
+			<span id="qiu"></span>
+		</div>
+		<script type="text/javascript">
+			var div = document.getElementById("div");
+			var qiu = document.getElementById("qiu");
+			var a = 3;
+			var b = 3;
+			requestAnimationFrame(function () {
+				hit();
+				qiu.style.left = qiu.offsetLeft+a + "px";	
+				qiu.style.top = qiu.offsetTop+ b  + "px";
+				requestAnimationFrame(arguments.callee);
+			},100);
+//			div.offsetWidth-qiu.offsetWidth-1
+//			div.offsetHeight-qiu.offHeight-1
+			function hit(){
+				if(qiu.offsetLeft>=div.offsetWidth-qiu.offsetWidth-1 || qiu.offsetLeft<=0){a = -a;}
+				if(qiu.offsetTop>=div.offsetHeight-qiu.offsetHeight-1 || qiu.offsetTop<=0){b = -b;}
+			}
+		</script>
+	</body>
+</html>

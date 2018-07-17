@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var a =100;
+//			function bFn () {
+//				var b = 200;
+//				console.log(a);//全局变量,函数内部也能进行访问
+//			}
+//			bFn();
+//			console.log(b);//报错,局部变量外部无法进行访问
+			
+			function aFn () {
+				//函数运行时，当要访问对应变量时，会先在函数内容查找有无该变量，如果有，该变量就是函数局部变量，会在函数运行时优先声明出来
+				//如果函数内容没找到该变量的定义，就一级级往上找，最终找到全局变量
+				console.log(a);
+				var a = 300 ;
+				console.log(a);
+			}
+			aFn ();
+			
+			/*var a =100;
+			function aFn(){
+				console.log(a);
+				(function () {
+					
+				})();
+			}*/
+			
+			
+			100
+			undefined
+			20
+			0
+			30
+			0
+		
+			
+		</script>
+	</body>
+</html>

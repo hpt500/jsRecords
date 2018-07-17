@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../JQ01/jQuery/jquery-1.12.2.js">
+		</script>
+	</head>
+	<body>
+		<p>p标签</p>
+		<div>div标签</div>
+		<h2 id="h2">h2标签</h2>
+		<h1>h1标签</h1>
+		<script type="text/javascript">
+			console.log($("*"));
+			//filter()筛选出指定选择条件的元素集合,用逗号分隔多个
+			console.log($("*").filter("p"));
+			console.log($("*").filter("p,div,#h2"));
+		</script>
+	</body>
+</html>

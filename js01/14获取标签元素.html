@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>获取标签元素</title>
+	<style>
+		.class1{
+			color: blue;
+			text-align: center;
+			background: yellow;
+		}
+	</style>
+</head>
+<body>
+	<p>p标签1</p>
+	<p>p标签2</p>
+	<p>p标签3</p>
+	<p>p标签4</p>
+	<p>p标签5</p>
+	<div id="id1">div标签</div>
+	<script>
+		// 通过标签名获取页面中对应的所有标签元素,注:返回的结果是一个数组
+		var pArr = document.getElementsByTagName("p");
+		// 通过id获取指定标签
+		var div = document.getElementById('id1');
+		console.log(pArr);
+		console.log(div);
+
+		// 直接修改标签的对应样式
+		// pArr[0].style.color="red";
+		// pArr[0].style.backgroundColor="skyblue";
+		
+		// 修改标签的类属性,一般用于通过修改标签的类来修改标签的样式
+		// pArr[0].className="class1";
+		// pArr.length获取数组的长度
+		for (var i = 0; i < pArr.length; i++) {
+			pArr[i].className="class1";
+		}
+		
+	</script>
+</body>
+</html>

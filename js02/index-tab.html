@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style media="screen">
+        #main{
+            width: 300px;
+            height: 200px;
+            border: 1px #ccc solid;
+        }
+        #nav{
+            width: inherit;
+            height: 30px;
+        }
+        #nav a{
+            float: left;
+            width: 33.33%;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+        }
+        #con{
+            width: inherit;
+            height: 170px;
+            border: 1px red solid;
+            overflow:hidden;
+        }
+        #con div{
+            width: inherit;
+            height: inherit;
+            line-height: 170px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- html struct -->
+    <div id="main">
+        <div id="nav">
+        <a href="###" id="tab1">Tab 1</a>
+        <a href="###" id="tab2">Tab 2</a>
+        <a href="###" id="tab3">Tab 3</a>
+        </div>
+
+        <div id="con">
+        <div id="con1">Content 1</div>
+        <div id="con2">Content 2</div>
+        <div id="con3">Content 3</div>
+
+
+        </div>
+    </div>
+
+    <!-- js tab switch -->
+    <script type="text/javascript">
+        //优化－>利用数组优化
+        var arr=[1,5,10,2];
+        console.log(arr[3]);
+
+        //获取HTML对象模型
+        var oTab1=document.getElementById('tab1');
+        var oTab2=document.getElementById('tab2');
+        var oTab3=document.getElementById('tab3');
+        var oCon1=document.getElementById('con1');
+        var oCon2=document.getElementById('con2');
+        var oCon3=document.getElementById('con3');
+
+        oTab1.style.background='#ddd';
+        function clearTab(){
+            oCon1.style.display='none';
+            oCon2.style.display='none';
+            oCon3.style.display='none';
+
+            oTab1.style.background='white';
+            oTab2.style.background='white';
+            oTab3.style.background='white';
+        }
+        //bind mouse event
+        oTab1.onclick=function(){
+            //this：当前操作的对象；当前执行函数的持有者
+            //console.log(this);
+            //调用函数
+            clearTab();
+            oCon1.style.display='block';
+            this.style.background='#ddd';
+        }
+        oTab2.onclick=function(){
+            clearTab();
+            oCon2.style.display='block';
+            this.style.background='#ddd';
+        }
+        oTab3.onclick=function(){
+            clearTab();
+            oCon3.style.display='block';
+            this.style.background='#ddd';
+        }
+    </script>
+
+</body>
+</html>

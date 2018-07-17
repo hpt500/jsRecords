@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<div>
+	<span id="content">预计，4日08时至5日08时，北京中南部、天津、河北中南部、河南中东部、山东大部、安徽北部、江苏大部、山西西南部等地有大雾，其中，北京南部、天津、河北中南部、河南东部、山东中西部、江苏中北部等地有能见度低于200米的浓雾，部分地区有能见度低于50米的特强浓雾。</span>
+	<!-- javascript:void(0)让点击链接是不跳转也不刷新页面 -->
+	<a href="javascript:void(0)" id="btn"><<收缩</a>
+</div>
+<script type="text/javascript">
+	var oContent = document.getElementById("content");
+	var oBtn = document.getElementById("btn");
+	var content = oContent.innerText;
+	var bool = true;
+	oBtn.onclick = function(){
+		if(bool){
+			var x = content.substring(0,20);
+			oContent.innerText = x;
+			bool=false;
+			btn.innerText = ">>展开";
+		}else{
+			oContent.innerText = content;
+			bool = true;
+			btn.innerText = "<<收缩";
+		}
+	}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

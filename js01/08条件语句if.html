@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>条件语句if</title>
+</head>
+<body>
+	<script>
+		var a=4;
+		var b;
+		// if(a>5){
+		// 	console.log("a大于5");
+		// }else{
+		// 	console.log("a小于5");
+		// }
+		if(a>5){
+			console.log("a大于5");
+		}else if(a>0){
+			console.log("a大于0小于5");
+		}else{
+			console.log("a小于0");
+		}
+		if (a>5) {b = a;}//就算只有一个执行语句,最好也用花括号括起来
+		console.log(b);
+	</script>
+</body>
+</html>

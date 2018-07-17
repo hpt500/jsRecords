@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>循环语句while</title>
+</head>
+<body>
+	<script>
+		var i=0;
+		while(i<10){
+			i++;
+		}
+		console.log(i);
+
+		// 杆子50米,蜗牛白天爬5米,晚上掉2米,几天能爬到杆顶
+		var s = 0;//记录蜗牛爬的高度
+		var i = 1;//记录天数
+		while(1){
+			s += 5;
+			if (s>=50) {
+				break;//跳出循环
+			}
+			s -= 2;
+			i++;
+		}
+		console.log(i+"天能爬到杆顶,理论上可爬到"+s+"米");
+
+	</script>
+</body>
+</html>

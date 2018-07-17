@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//arguments对象的限制，arguments不再追踪参数的变化
+			function Fn (a) {
+				a = 2;
+				console.log(a,arguments[0]);
+			}
+			Fn(0);
+			function Fn1 (a) {
+				"use strict"
+				a = 2;
+				arguments[0] = 3;
+				//严格模式下，参数名和通过arguments索引方式访问的参数值，相互独立，不再指向同一个内存地址
+				console.log(a,arguments[0]);
+			}
+			Fn1(0);//2，0
+		</script>
+	</body>
+</html>

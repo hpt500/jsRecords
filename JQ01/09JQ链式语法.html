@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.min.js">
+		</script>
+	</head>
+	<body>
+		<div id="div"></div>
+		<script type="text/javascript">
+			$("#div")
+			.css({
+				width : 100,
+				height : 100,
+				background : "red"
+			})
+			//JQ绑定点击事件
+			.click(function () {
+				alert("点击事件");
+			})
+			//JQ绑定hover事件,传入两个函数,第一个函数设定鼠标进入的效果,第二个函数设定鼠标移出的效果
+			.hover(function () {
+				$(this).css("background","yellow");
+			},function () {
+				$(this).css("background","red");
+			})
+			console.log($("#div"));
+			console.log($("#div").css("background","yellow"));
+			console.log($("#div").css("background","yellow").click());
+			console.log($("#div").css("background","yellow").click().hover());
+		</script>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="btn">btn</button>
+		<script type="text/javascript">
+			var btn = document.getElementById("btn");
+			//绑定事件监听器兼容写法
+			function addEvent (obj,type,callback) {
+				if(window.addEventListener){
+					obj.addEventListener(type,callback,false);
+				}else{
+					//兼容IE8及IE8以下浏览器
+					obj.attachEvent("on"+type,callback);
+				}
+			}
+			addEvent(btn,"click",fn);
+			function  fn() {
+				alert("aaaaaa");
+			}
+			//移除事件监听器兼容写法
+			function removeEvent (obj,type,callback) {
+				if(window.addEventListener){
+					obj.removeEventListener(type,callback);
+				}else{
+					//兼容IE8及IE8以下浏览器
+					obj.detachEvent("on"+type,callback);
+					
+				}
+			}
+			removeEvent(btn,"click",fn)
+		</script>
+	</body>
+</html>

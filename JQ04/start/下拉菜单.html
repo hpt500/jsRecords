@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../jQuery/jquery-1.12.2.js">
+		</script>
+		<style type="text/css">
+			.title{
+				width: 200px;
+				background: orange;
+				text-align: center;
+			}
+			.content{
+				width: 200px;
+				background: skyblue;
+				text-align: center;
+				display: none;
+			}
+			ul{
+				width: 200px;
+				margin: 0;
+				padding: 0;
+				border: 5px solid skyblue;
+				list-style: none;
+			}
+			ul li{
+				width: 200px;
+				/*height: 100px;*/
+				border-bottom: 5px solid skyblue;
+			}
+			ul li:last-child{
+				border: none;
+			}
+			ul li div{
+				height: 100px;
+				border-top: 1px solid skyblue;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="title">标题一</div>
+		<div class="content">
+			内容1<br>
+			内容2<br>
+			内容3<br>
+			内容4
+		</div>
+		<div class="title">标题二</div>
+		<div class="content">
+			内容1<br>
+			内容2<br>
+			内容3<br>
+			内容4
+		</div>
+		<div class="title">标题三</div>
+		<div class="content">
+			内容1<br>
+			内容2<br>
+			内容3<br>
+			内容4
+		</div>
+		<br />
+		<br />
+		<br />
+		<ul>
+			<li>标题1
+				<div class="ctt">内容1</div>
+			</li>
+			<li>标题2
+				<div class="ctt">内容2</div>
+			</li>
+			<li>标题3
+				<div class="ctt">内容3</div>
+			</li>
+			<li>标题4
+				<div class="ctt">内容4</div>
+			</li>
+		</ul>
+		
+		<br />
+		<br />
+		<br />
+		<dl>
+			<dt>标题1</dt>
+			<dd>内容1</dd>
+			<dt>标题2</dt>
+			<dd>内容2</dd>
+			<dt>标题3</dt>
+			<dd>内容3</dd>
+			<dt>标题4</dt>
+			<dd>内容4</dd>
+		</dl>
+		
+		<script type="text/javascript">
+		$("ul li").click(function () {
+			$(this).children().slideToggle().end().siblings().children().slideUp();
+		})
+		$("ul li div").click(function (e) {
+			e.stopPropagation()
+		})
+		
+		
+		
+		$(".title").each(function (e) {
+			$(this).click(function () {
+				$(".content").eq(e).slideToggle().siblings(".content")
+			.slideUp();
+			})
+		})
+		/*$(".title").click(function () {
+			$(".content")
+			.eq($(this).index(".title"))
+			.slideToggle()
+			.siblings(".content")
+			.slideUp()
+		})*/
+		</script>
+	</body>
+</html>

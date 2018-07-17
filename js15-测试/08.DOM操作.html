@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<div id="wrap">
+		<p id="p"></p>
+	</div>
+<script type="text/javascript">
+	var div = document.createElement("div");
+	var img = new Image();
+	var div2 = div.cloneNode(true);
+	wrap.appendChild(div);//在对应父元素里面的末尾插入标签
+	wrap.insertBefore(div,p);//在对应父元素里面的子元素前面插入标签
+//	wrap.removeChild(div);
+	div.parentNode.parentNode.removeChild(div.parentNode);//删除一个元素的父节点
+//	div.parentNode.remove();//不被使用,remove()一般用于列表的移除
+	wrap.replaceChild(img,div);//替换元素,后者是被替换的标签
+	wrap.getAttribute("src");//获取属性
+	wrap.src;
+	wrap.setAttribute("srt","img/1.jpg");//设置属性
+	wrap.src = "img/1.jpg";
+	wrap.removeAttribute("src");//删除属性
+	
+//	div.parentNode.remove();
+//	div.innerText = "xxx";
+//	div.innerHTML = "<div></div>";
+	
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

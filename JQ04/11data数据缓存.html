@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.js">
+		</script>
+	</head>
+	<body>
+		<div id="div" data-width="100px" data-index="0">div标签</div>
+		<script type="text/javascript">
+			//data()在标签元素上绑定数据,通过该方法可以防止数据泄露
+			console.log($("div").attr("data-width"));
+			//data()获取标签中对应自定义属性的值
+			console.log($("div").data("width"));//获取data-width的值
+			//用户查找不到修改的data值,隐蔽性高
+			//创建和修改数据
+			$("div").data("width","200px");
+			$("div").data("height","200px");
+			console.log($("div").data("width"));
+			console.log($("div"));
+			console.log($("div").data());
+			//删除数据
+			$("div").removeData("width");
+			console.log($("div").data("width"));//100
+		</script>
+	</body>
+</html>

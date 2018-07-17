@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			"use strict";
+			var x = 2;
+			//严格模式下,eval语句本身就是一个作用域,不再能够生成全局变量,它所生成的变量只能用于eval内部
+			eval("var x = 3;console.log(x);");
+			console.log(x);//严格模式下 x = 2
+		</script>
+	</body>
+</html>

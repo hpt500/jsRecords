@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var str = "abcd";
+			//.split()将字符串转化成数组,括号内定义字符串的切割点
+			var arr = str.split("");
+			console.log(arr);
+			var arr2 = str.split("b");
+			console.log(arr2);
+			//字符串开头或结尾被切割，将成空元素
+			var arr3 = str.split("d");
+			console.log(arr3);
+			var arr4 = str.split();
+			console.log(arr4);
+		</script>
+	</body>
+</html>

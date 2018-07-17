@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			console.log(Math.random());
+			//取对应区间内的随机整数，包括最大值最小值
+			function rdnFn1 (min,max) {
+				return Math.floor(Math.random()*(max-min+1)+min);
+			}
+			//取对应区间内的随机整数，不包括最大值最小值
+			function rdnFn1 (min,max) {
+				return Math.floor(Math.random()*(max-min-1)+min+1);
+			}
+			console.log(rdnFn1 (1,5));
+			console.log(rdnFn2 (1,5));
+		</script>
+	</body>
+</html>

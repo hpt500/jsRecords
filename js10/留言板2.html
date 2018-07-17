@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		.msg{
+			width: 400px;
+			height: 50px;
+			background-color: orange;
+			border: 1px solid #aaa;
+			border-radius: 10px;
+			padding-bottom:15px;
+			overflow: hidden;
+		}
+		.title{
+			line-height: 30px;
+			border-bottom: 1px solid #aaa;
+			margin: 0 10px;
+		}
+		.content{
+			
+			margin: 0 10px;
+		}
+		.msg a{
+			float: right;
+			margin-right: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="name">姓名： <input type="text" name="username" id="username" value="" /></div>
+		<div class="content">留言：<textarea name="content" id="content" rows="" cols=""></textarea></div>
+		<button>提交</button>
+	</div>
+	<hr />
+	<div id="gbook">
+		<!--<div class="msg">
+			<div class="title">sdf</div>
+			<div class="content">sdfsdf</div>
+			<a href="javascript:void(0)">删除</a>
+		</div>-->
+	</div>
+	<script src="js/tween.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/tweenMove.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var user = document.getElementById("username");
+		var icontent = document.getElementById("content");
+		var btn = document.getElementsByTagName("button")[0];
+		var gbook = document.getElementById("gbook");
+		btn.onclick = function(){
+			var name0 = user.value;
+			var content = icontent.value;
+			createDiv(name0,content);
+			//清空文本框内容
+			user.value = "";
+			icontent.value = "";
+		}
+		function createDiv(text1,text2){
+			var div = document.createElement("div");
+			div.className = "msg";
+			var div1 = document.createElement("div");
+			var div2 = document.createElement("div");
+			var a = document.createElement("a");
+			div1.className = "title";
+			div1.innerText = text1;
+			div2.className = "content";
+			div2.innerText = text2;
+			a.href = "javascript:void(0)";
+			a.innerText= "删除";
+			div.appendChild(div1);
+			div.appendChild(div2);
+			div.appendChild(a);
+			console.log(div);
+			gbook.insertBefore(div,gbook.childNodes[0]);
+		}
+	</script>
+</body>
+</html>

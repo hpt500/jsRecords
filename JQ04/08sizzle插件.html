@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="easing&transit&sizzle/sizzle.min.js">
+		</script>
+	</head>
+	<body>
+		<div id="div"></div>
+		<div class="div"></div>
+		<script type="text/javascript">
+			console.log(Sizzle("div"));
+			var div = Sizzle("#div")[0];
+			div.style.width = "100px";
+			div.style.height = "100px";
+			div.style.background = "red";
+			var _ = Sizzle;
+			console.log(_("div"));
+		</script>
+	</body>
+</html>

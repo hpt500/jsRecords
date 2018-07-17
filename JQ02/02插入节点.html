@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.js"></script>
+	</head>
+	<body>
+		<div id="wrap">
+			<p>p标签</p>
+		</div>
+		<script type="text/javascript">
+			//A.append(B)将节点B插入到A节点里面的最后面
+			$("#wrap").append("<div>append</div>");
+			//A.append(B)将节点A插入到B节点里面的最后面
+			$("<div>appendTo</div>").appendTo("#wrap");
+			//A.append(B)将节点B插入到A节点里面的最前面
+			$("#wrap").prepend("<div>prepend</div>");
+			//A.append(B)将节点A插入到B节点里面的最前面
+			$("<div>prependTo</div>").prependTo("#wrap");
+			//A.after(B)将节点B插入到A节点后面
+			$("#wrap").after("<div>after</div>")
+			//A.insertAfter(B)将节点A插入到B节点的后面
+			$("<div>insertAfter</div>").insertAfter("#wrap");
+			//A.before(B)将节点B插入到A节点的前面
+			$("#wrap").before("<div>before</div>")
+			//A.insertBefore(B)将节点A插入到B节点的前面
+			$("<div>insertBefore</div>").insertBefore("#wrap");
+		</script>
+	</body>
+</html>

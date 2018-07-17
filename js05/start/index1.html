@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="text"></div>
+		<script>	
+			var Text = document.getElementById("text");
+			var vacation = setInterval(function  () {
+				var time1 = new Date();
+				var time2 = new Date(2017,0,21,0,0,0);
+				var h,m,s;
+				h=(time2.getDate()-time1.getDate())*24-time1.getHours()-1;
+				m=60-time1.getMinutes()-1;
+				s=60-time1.getSeconds();
+				h=con(h);
+				m=con(m);
+				s=con(s);
+				Text.innerHTML="距离春节放假还有："+h+"小时"+m+"分钟"+s+"秒";
+			},1000);
+			
+			function con(a){
+				if(a<10){
+					a="0"+a;
+				}
+				return a;
+			}
+
+		</script>
+	</body>
+</html>

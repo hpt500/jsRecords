@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" />
+		<select name="city" id="sel">
+			<option value="gz">广州</option>
+			<option value="sz">深圳</option>
+		</select>
+		<script type="text/javascript">
+			var oInput = document.getElementsByTagName('input')[0];
+			oInput.onchange = function () {
+				alert("文本框内容发送改变");	
+			}
+			var sel = document.getElementById('sel');
+			var index=sel.selectedIndex ;
+			console.log(sel.options[index].text);
+			sel.onchange = function  () {
+				alert("文本框内容发送改变");
+				//获取select选中的文本和值
+				index=sel.selectedIndex ;
+				console.log(sel.options[index].text);
+//				console.log(sel.options[index].value);
+			}
+			
+		</script>
+	</body>
+</html>

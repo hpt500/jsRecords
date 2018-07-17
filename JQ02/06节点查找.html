@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.js">
+		</script>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="outer">
+				<div class="inner">inner div</div>
+			</div>
+			<p>p标签</p>
+			<h2>h2标签</h2>
+		</div>
+		<div class="wrap">
+			<div class="outer" id="outer">
+				<div class="inner">inner div</div>
+			</div>
+			<p>p标签</p>
+			<h2>h2标签</h2>
+		</div>
+		<script type="text/javascript">
+			//parent()获得当前匹配元素集合中每个元素的父元素,由选择器筛选(可选)
+			var parent1 = $(".inner").parent().css("color","red");
+			var parent2 = $(".inner").parent("#outer").css("background","pink");
+			//children()获得匹配元素集合中每个元素的所有子元素
+			$(".wrap").children().css("font-size",30);
+			$(".wrap").children("h2").css("font-weight","normal");
+			//find()获得当前匹配元素集合中每个元素的后代,由选择器进行筛选.注:find()方法不同于parent和children方法,它需要传递参数
+			var find1 = $(".wrap").find();
+			var find2 = $(".wrap").find("p");
+			var find3 = $(".wrap").find(".inner");
+			console.log(find1);
+			console.log(find2);
+			console.log(find3);
+		</script>
+	</body>
+</html>

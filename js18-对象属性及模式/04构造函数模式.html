@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//构造函数模式
+			//缺点是每次创建时都会重新创建方法
+			//相对于工厂模式可以识别对象实例的类型
+			function person (name) {
+				this.name = name;
+				this.sayHello = function () {
+					alert("Hello,"+this.name+"!");
+				}
+			}
+			function animal (name) {
+				this.name = name; 
+			}
+			//实例化对象
+			var p = new person("jack");
+			var d = new person("Tom");
+			var a = new animal("dog");
+			console.log(p);
+			console.log(d);
+			console.log(a);
+		</script>
+	</body>
+</html>

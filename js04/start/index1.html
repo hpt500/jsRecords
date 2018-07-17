@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div{
+				width: 280px;
+				padding: 5px;
+				background-color: lightyellow;
+				border: 10px lightgrey solid;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div">
+			<span id="span">我我我我我我我我我,我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我</span>
+			<!--Javascript:void(0)让点击链接是不跳转也不刷新页面-->
+			<a href="javascript:void(0)" id="button">>>收缩</a>
+		</div>
+		<script type="text/javascript">
+			var sPan = document.getElementById("span");
+			var bUtton = document.getElementById("button");
+			
+			var op;
+			op=sPan.innerText;
+			console.log(op);
+			
+			bUtton.onclick = function  () {
+				if(bUtton.text==">>收缩"){
+					bUtton.innerHTML=">>展开";
+					sPan.innerText= sPan.innerText.substring(0,9);
+				}else{
+					bUtton.innerHTML=">>收缩";
+					sPan.innerText = op;
+				}
+			}
+		</script>
+	</body>
+</html>

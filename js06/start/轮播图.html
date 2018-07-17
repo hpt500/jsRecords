@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.wrap{
+				width: 400px;
+				border: 5px black solid;	
+				position: relative;
+				overflow: hidden;
+			}
+			#con{
+				width: 1200px;
+				position: relative;
+				overflow: hidden;
+				left: 0;
+				/*transition: 1s;*/
+			}
+			img{
+				width: 400px;
+				float: left;
+			}
+			#btn{
+				width: 50px;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				z-index: 100;
+			}
+			i{
+				float: left;
+				width: 10px;
+				height: 10px;
+				background-color: azure;
+				border-radius: 5px;
+			}
+			i:nth-child(2){
+				margin: 0 10px;
+			}
+			#button{
+				margin: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div id="con">
+				<img src="images/123.JPG" alt="" />
+				<img src="images/123.JPG" alt="" />
+				<img src="images/123.JPG" alt="" />
+			</div>
+			<div id="btn">
+				<i></i>
+				<i></i>
+				<i></i>
+			</div>
+		</div>
+		<div id="button">
+			<button>上一张</button>
+			<button>下一张</button>
+		</div>
+		
+		<script src="js/tween.js"></script>
+		<script src="js/tweenMove.js"></script>
+		<script type="text/javascript">
+			var con = document.getElementById("con");
+			var btnDiv = document.getElementById("btn");
+			var btn = btnDiv.getElementsByTagName("i");
+			var obutton = document.getElementById("button").getElementsByTagName("button");
+			var i = 0;
+			var t;
+			//圆点颜色变化
+			function color () {
+				for(var x = 0 ; x<btn.length ; x++){
+					btn[x].style.backgroundColor = "white";
+				}
+				btn[i].style.backgroundColor = "orange";
+			}
+			
+			//定时器
+			function time () {
+				t = setInterval(function  () {
+					tweenMove(con,"left",con.offsetLeft,-i*400,10,"Linear");
+					color ();
+					i++;
+					if (i>2) {
+						i = 0;	
+					}
+				},2000); 
+			};
+			time ();
+			//圆形按钮
+			for (var j = 0; j < btn.length; j++) {
+				btn[j].index = j;
+				btn[j].onclick = function () {
+					i = this.index;
+					clearInterval(t1);
+					clearInterval(t);
+					tweenMove(con,"left",con.offsetLeft,-i*400,10,"Linear");
+					color ();
+					time ();
+				}
+			}
+			//按钮
+			for (var k = 0; k < obutton.length; k++) {
+				obutton[k].index=k;
+				obutton[k].onclick = function (){
+					if(this.index==0){i--;}
+					if(this.index==1){i++;}
+					if(i<0){i=0;}
+					if(i>2){i=2;}
+					clearInterval(t);
+					clearInterval(t1);
+					tweenMove(con,"left",con.offsetLeft,-i*400,10,"Linear");
+					color ();
+					time ();
+				}
+			}
+		</script>
+	</body>
+</html>

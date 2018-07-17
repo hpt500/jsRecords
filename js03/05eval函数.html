@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//eval()函数可将字符串转换成代码执行,并返回一个或多个值
+			var str = "";
+			//str;
+			eval(str);
+			//注意:函数字符串要用括号包裹住函数体
+			var fn = "(function(){alert('asdfg')})";
+			var aFn = eval(fn);
+			var tfn = "<span>外婆<br>w9</span>"
+			console.log(aFn);
+			console.log(eval("1+2+3+4"));
+			console.log(tfn)
+		</script>
+	</body>
+</html>

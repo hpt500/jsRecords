@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="wrap">
+			<p>p标签</p>
+			<div>div标签</div>
+		</div>
+		<script type="text/javascript">
+			var wrap = document.getElementById("wrap");
+			var p = wrap.children[0];
+			console.log(p);
+			var pParent = p.parentNode;
+			console.log(pParent);
+			
+			//获取下一个兄弟节点
+			var pNext = p.nextSibling;
+			console.log(pNext);
+			//获取上一个兄弟节点
+			var pPrev = p.previousSibling;
+			console.log(pPrev);
+			//兼容写法,获取下一个兄弟节点
+			function fnNext (obj) {
+				return obj.nextElementSibling ? obj.nextElementSibling : obj.nextSibling;
+			}
+		</script>
+	</body>
+</html>

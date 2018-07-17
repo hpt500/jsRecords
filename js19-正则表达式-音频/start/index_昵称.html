@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		请输入昵称:<br />
+		<input type="text" id="tell"/>
+		<span id="tip"></span>
+		<script type="text/javascript">
+			var tip = document.getElementById("tip");
+			var oInput = document.getElementById("tell");
+			oInput.onchange = function  () {
+				var ts = oInput.value.replace(/[\u4e00-\u9fa5]/g,"00");
+				//昵称（长度不能超过24位，中文占2位，字符和字母占一位）”
+				var reg =  /^.{6,24}$/;
+				var bool = reg.test(ts);
+				if(bool){
+					tip.innerText = "昵称书写正确";
+				}else{
+					tip.innerText = "昵称书写错误";
+				}
+			}
+		</script>
+	</body>
+</html>
+

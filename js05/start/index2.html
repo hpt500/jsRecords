@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				position: relative;
+			}
+			.zhen{
+				position:absolute;
+				left: 0;
+				/*transition: 1s;*/
+			}
+			#hours{
+				/*transform: rotate(6deg);*/
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<img src="images/clock.jpg" alt="" />
+			<img src="images/h.png" id="hours" class="zhen"/>
+			<img src="images/m.png" id="minutes" class="zhen"/>
+			<img src="images/s.png" id="seconds" class="zhen"/>
+		</div>
+		<script type="text/javascript">
+			/*时钟一共12k 360deg 时针12h 1h=30deg 即1k
+			 分针走一圈12k 60分钟 360deg 5分钟等于30deg 一圈后时针走30deg即1k
+			 秒针走一圈12k 60s 360deg 5秒等于30deg 一圈后分针走6deg即五分之一k
+			 */
+			/* 60分钟=1小时 12k 1k=5g */
+			var oH = document.getElementById("hours");
+			var oM = document.getElementById("minutes");
+			var oS = document.getElementById("seconds");
+			
+			var ctime = setInterval(function () {
+				var time = new Date();
+				var h,m,s,hm;
+				h = time.getHours();
+				m = time.getMinutes();
+				s = time.getSeconds();
+				hm = m/2;
+				oH.style.transform = "rotate("+(30*h+hm)+"deg)";
+				oM.style.transform = "rotate("+6*m+"deg)";
+				oS.style.transform = "rotate("+6*s+"deg)";		
+			},500);
+			
+		</script>
+	</body>
+</html>

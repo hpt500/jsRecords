@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//在对象内部通过全局函数去调用局部函数的时候,函数中的this指向将变成window
+			var i = 10;
+			function Fn (fn) {
+				fn();				
+			}
+			var obj = {
+				i : 20,
+				Afn : function () {
+					console.log(this.i);
+				},
+				Bfn : function () {
+					this.Afn();
+					Fn(this.Afn);
+				}
+			}
+			obj.Afn();//20
+			obj.Bfn();//20,10
+		</script>
+	</body>
+</html>

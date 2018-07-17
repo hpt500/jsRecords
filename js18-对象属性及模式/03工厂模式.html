@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{CHARSET}">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//工厂模式
+			//工厂模式,解决了创建多个相似对象的问题,但是工厂模式却无从识别对象的类型
+			function person (name) {
+				var obj = new Object();
+				obj.name = name;
+				obj.sayHello = function () {
+					alert("Hello," + this.name + "!");
+				}
+				return obj;
+			}
+			function animal (name) {
+				var obj = new Object();
+				obj.name = name ;
+				return obj;
+			}
+			var p = person("jack");
+			var d = person("tom")
+			var a = animal("dog");
+			console.log(p);
+			console.log(d);
+			console.log(a);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>零宽度正则</title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		//正向零宽断言
+		
+		//零宽度正预测先行断言(?=exp)
+		//表示自身位置之后可以匹配到exp的表达式，而不匹配exp。
+		//比如\d+(?=999)表示以999结尾的数字串（但是匹配结果不包含999）
+		var str = "1545544499923"
+		var reg = /\d+?(?=9)/g
+		console.log(str.match(reg))
+		
+		//零宽度正回顾后发断言(?<=exp)（JavaScript不支持）
+		//表示自身位置之前可以匹配到exp的表达式，而不匹配exp。
+		//比如(?<=999)\d+表示以999开头的数字串（但是匹配结果不包含999）
+		var reg2 = /(?<=999)\d+/g
+		console.log(str.match(reg2))
+		
+		//负向零宽断言
+		
+		//零宽度负预测先行断言(?!exp)
+		//表示自身位置之后不能是exp的表达式。
+		//比如\d+(?!999)表示匹配不是以999结尾的数字串
+		var reg3 = /15(?!999)/g
+		console.log(str.match(reg3))
+		
+		var str2="abZW863";
+		var reg32=/ab(?![A-Z])/;
+		console.log(str2.match(reg32));
+		
+		//零宽度负回顾后发断言(?<!exp)（JavaScript不支持）
+		//表示自身位置之前不能是exp的表达式。
+		//比如(?<!999)\d+表示匹配不是以999开头的数字串
+		var reg4 = /(?<!999)23/g
+		console.log(str.match(reg4))//若匹配不到则返回为空
+		
+	</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			function person (name) {
+				this.name = name;
+				this.sex = "female";
+			}
+			person.prototype = {
+				sayHello : function  () {
+					alert("Hello," + this.name + "!");
+				},
+				head : 1,
+				body : 1,
+				hand : 2,
+				foot : 2,
+			}
+			function YellowMan (name) {
+				person.call(this,name);
+			}
+			//原型继承
+			YellowMan.prototype = person.prototype;
+			YellowMan.prototype.skin= "yellow";
+			var yp = new YellowMan("jack");
+			console.log(yp);
+			var sp = new person("jassss")
+			console.log(sp)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	//BOM？
+	//
+	alert();
+	confirm();
+	prompt();
+	console.log(window);
+	//history历史对象
+	window.history.back();
+	window.history.forward();
+	window.history.go(3);
+	window.history.length;
+	//localhost 操作页面链接
+	location.href;//获取地址栏完整路径
+	location.href="http://www.baidu.com?abcd#1234";
+	location.hash;//获取或设置页面描点#XX
+	location.search;//获取或设置检索内容
+	
+	//sreen获取设备宽高
+	window.sreen.width;
+	window.sreen.height;
+	
+	//navigator检测浏览器品牌
+	if(window.navigator.userAgent.indexOf("MSIE 8")>-1){
+		alert("是IE8");
+	}else{
+		alert("不是IE8");
+	}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

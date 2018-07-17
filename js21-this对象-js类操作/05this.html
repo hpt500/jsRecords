@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var i = 10;
+			function Afn () {
+				console.log(this.i);
+			}
+			Afn();//10
+			var obj = {
+				i : 20
+			}
+			//apply()用于调用一个函数,并改变函数里面的this指向
+			Afn.apply();//10,不传参,Afn里面的this还是默认的window
+			Afn.apply(obj);//20
+			Afn();//10, 并未改变本身
+			
+		</script>
+	</body>
+</html>

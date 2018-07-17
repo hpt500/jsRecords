@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body>div{
+				width: 350px;
+				height: 350px;
+				border: 2px black solid;
+				float: left;
+			}
+			#min{
+				background-image: url(img/min.jpg);
+				position: relative;
+			}
+			#max{
+				background-image: url(img/max.jpg);
+				background-repeat: no-repeat;
+				display: none;
+			}
+			#box{
+				width: 100px;
+				height: 100px;
+				background-color: orange;
+				opacity: 0.5;
+				position: absolute;
+				left: 0;
+				top: 0;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="min">
+			<div id="box"></div>
+		</div>
+		<div id="max">
+		</div>
+		<script type="text/javascript">
+			var min = document.getElementById("min");
+			var max = document.getElementById("max");
+			var box = document.getElementById("box");
+			var maxl,maxt;
+			min.onmouseover = function (event) {
+				box.style.display = "block";
+				max.style.display = "block";
+				var s = min.clientWidth/box.clientWidth*min.clientWidth;
+				console.log(box.clientWidth);
+				max.style.backgroundSize = s + "px";
+				min.onmousemove = function (event) {			
+					var e = window.event || event;
+					var x = e.clientX - box.offsetWidth/2;
+					var y = e.clientY - box.offsetHeight/2;
+					box.style.left = x + "px";
+					box.style.top = y + "px";
+					if(x>min.clientWidth-box.clientWidth){
+						box.style.left = min.clientWidth-box.clientWidth + "px";
+					}else if(x<0){
+						box.style.left = "0";
+					}
+					if(y>min.clientHeight-box.clientHeight){
+						box.style.top = min.clientHeight-box.clientHeight + "px";
+					}else if(y<0){
+						box.style.top = "0";
+					}
+					maxl = -max.clientWidth/box.clientWidth * box.offsetLeft;
+					maxt = -max.clientHeight/box.clientHeight * box.offsetTop;
+					max.style.backgroundPosition = maxl + "px " + maxt + "px";
+				}
+			}
+			min.onmouseout = function  () {
+				box.style.display = "none";
+				max.style.display = "none";
+			}
+			
+		</script>
+	</body>
+</html>

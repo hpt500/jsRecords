@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--HTml5音频标签-->
+		<!--controls定义显示播放控制条
+			autoplay定义自动播放
+			loop定义循环播放
+		-->
+		<audio src="media/sing.mp3" id="audio" controls></audio>
+		<!--Html5视频标签-->
+		<video width="400" height="" id="video" controls>
+			<source src="media/test1.mp4" type="video/mp4"></source>
+			<source src="media/test1.ogg" type="video/ogg"></source>
+		</video>
+		<button id="play">play</button>
+		<button id="pause">pause</button>
+		<button id="controls">controls</button>
+		<button id="muted">静音</button>
+		<button id="next">next</button>
+		<button id="add">快进</button>
+		<script type="text/javascript">
+			var video = document.getElementById("video");
+			var play = document.getElementById("play");
+			var pause = document.getElementById("pause");
+			var controls = document.getElementById("controls");
+			var muted = document.getElementById("muted");
+			var next = document.getElementById("next");
+			var add = document.getElementById("add");
+			play.onclick = function () {
+				video.play();//播放视频
+			}
+			pause.onclick = function () {
+				video.pause();//暂停视屏播放
+			}
+			controls.onclick= function () {
+				//设置是否显示播放控制条
+				video.controls = !video.controls;
+			}
+			muted.onclick = function  () {
+				//设置是否静音
+				video.muted = !video.muted;
+			}	
+			next.onclick = function () {
+				//设置或返回视音频元素的当前来源
+				video.src = "media/test2.mp4";
+				//重新加载视音频元素
+				video.load();
+				//自动播放
+				video.autoplay = true;
+			}
+			add.onclick = function () {
+				//设置或返回当前视音频的播放进度(单位为秒s)
+				console.log(video.currentTime);
+				video.currentTime += 2;
+				console.log(video.currentTime);
+			}
+			video.onplay = function () {
+				alert("视频开始播放");
+			}
+			video.onpause = function () {
+				alert("视频暂停播放");
+			}
+			video.onended = function () {
+				alert("视频结束播放");
+			}
+		</script>
+	</body>
+</html>

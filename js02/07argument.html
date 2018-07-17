@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+//			function sum () {
+//				//arguments用于获取函数调用时传递进来的实参,返回的是一个数组
+//				console.log(arguments);
+//				return arguments[0]+arguments[1]+arguments[2];
+//			}
+//			var a = sum(1,2,3);
+//			console.log(a);
+			
+			function sum () {
+				var sum = 0;
+				for (var i = 0; i < arguments.length; i++) {
+					sum += arguments[i];
+				}
+				return sum;
+			}
+			console.log(sum(1,2,3));
+			
+		</script>
+	</body>
+</html>

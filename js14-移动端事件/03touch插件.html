@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+				left: 0;
+				top: 0;	
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div"></div>
+		<script src="js/touch.js"></script>
+		<script type="text/javascript">
+			var div = document.getElementById("div");
+			touch.on(window,"tap swiperight swipedown",function () {
+				//配置touch属性
+				touch.config.tap = false;
+				console.log(touch.config);
+			})
+			touch.on(window,"doubletap",function () {
+				alert("doubletap");
+			})
+			touch.on(window,"hold",function () {
+				alert("hold");
+			})
+			touch.on(window,"swipeleft",function () {
+				alert("swipeleft");
+			})
+			/*touch.on(div,"dragstart",function () {
+				console.log(event);
+			})*/
+		</script>
+	</body>
+</html>

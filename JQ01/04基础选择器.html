@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.min.js">
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="div"></div>
+			<div class="div"></div>
+		</div>
+		<script type="text/javascript">
+			//标签选择器
+			$("div").css({
+				width : 100 , 
+				height : 100 ,
+				background : "yellow"
+			});
+			//id选择器
+			$("#wrap").css({
+				width : "300px" , 
+				height : 300 ,
+				background : "red"
+			});
+			//class类选择器
+			$(".div").css({
+				width : 100 ,
+				height : 100 ,
+				background : "blue"
+			});
+			//后代选择器
+			$("#wrap div").css({
+				width : 150 ,
+				height : 150 ,
+				background : "pink"
+			});
+			//选中全部元素
+			$("*").css("background","green");
+			
+		</script>
+	</body>
+</html>

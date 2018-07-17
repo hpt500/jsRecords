@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.js">
+		</script>
+		<style type="text/css">
+			#div{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div"></div>
+		<h1>万科和开</h1>
+		<script type="text/javascript">
+			//在jq原型拓展新的方法	
+			$.fn.extend({
+				yellow : function (){
+					$(this).css({
+						backgroundColor : "yellow"
+					})
+				}
+			})
+			//例子
+			$.fn.extend({
+				blue: function () {
+					$(this).css({
+						backgroundColor: "blue"
+					})
+				}
+			})
+		</script>
+		<script type="text/javascript">
+			$("#div").yellow();
+			$("h1").blue();
+		</script>
+		<script type="text/javascript" src="js/jquery.glass.js">
+		</script>
+	</body>
+</html>

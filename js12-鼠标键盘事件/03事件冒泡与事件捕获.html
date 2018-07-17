@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap{
+				width: 500px;
+				height: 500px;
+				background-color: yellow;
+			}
+			#middle{
+				width: 300px;
+				height: 300px;
+				background-color: orange;
+			}
+			#inner{
+				width: 150px;
+				height: 150px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="middle">
+				<div id="inner"></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var wrap = document.getElementById("wrap");
+			var middle = document.getElementById("middle");
+			var inner = document.getElementById("inner");
+			//事件冒泡:事件触发时时由内向外逐一触发的
+			//事件捕获:事件触发时时由外向内逐一触发的
+			//用onXXX方式绑定的时间,除onmouseenter,onmouseleave之外,基本上都是进行事件冒泡
+			wrap.onmouseenter = function () {
+				alert("wrap");
+			}
+			middle.onmouseenter = function () {
+				alert("middle");
+			}
+			inner.onmouseenter = function () {
+				alert("inner");
+			}
+		</script>
+	</body>
+</html>

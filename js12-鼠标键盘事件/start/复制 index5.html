@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background:url("img/bg.png");
+			}
+			#snake div{
+				width: 15px;
+				height: 15px;
+				position: absolute;
+				top: 0;
+				background-image: url(img/h.png);
+			}
+			#snake div:nth-child(1){
+				background-image: url(img/head.png);
+				background-position: 0 30px;
+				left: 30px;
+			}
+			#snake div:nth-child(2){
+				left: 15px;
+				/*background-image: url(img/bt.png);
+				background-position: 0 45px;*/
+				/*0 45 30 15*/    
+			}
+			#snake div:last-child{
+				background-image: url(img/tail.png);
+				background-position: 0 30px;
+				left: 0;
+			}
+			#apple{
+				width: 15px;
+				height: 15px;
+				position: absolute;
+				left: 0;
+				top: 0;
+				background: url(img/f1.png);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="snake">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div id="apple"></div>
+		<script>
+			var snake = document.getElementById("snake");
+			var apple = document.getElementById("apple");
+			var sBody = snake.getElementsByTagName("div");
+			var lSpeed = 15;//定义蛇的水平移动速度
+			var tSpeed = 0;//定义蛇的垂直移动速度
+			var winW = document.documentElement.clientWidth;
+			var winH = document.documentElement.clientHeight;
+			var LMax = Math.floor(winW/15);//获取页面水平方向上最大格数
+			var TMax = Math.floor(winH/15);//获取页面垂直方向上最大格数
+			var tl,tt;//获取每次点击时蛇头的位置值
+			var code;//keyCode键码
+			var time1,time2,time3,time4//记录蛇身体每次的位置值 
+			//方向键按下时记录蛇头的位置值
+			var stt1,stt2,stt3,stt4;
+			var stl1,stl2,stl3,stl4;
+			//方向键按下时记录蛇头后一段的位置值
+			var sst1,sst2,sst3,sst4;
+			var ssl1,ssl2,ssl3,ssl4;
+			var code;	
+			window.onkeydown =function (event) {
+				var e = window.event || event;
+				code = e.keyCode || e.which;		
+				switch(code){
+					case 37: 
+					stl1 = sBody[0].offsetLeft;
+					stt1 = sBody[0].offsetTop;
+					ssl1 = sBody[1].offsetLeft;
+					sst1 = sBody[1].offsetTop;
+					if(lSpeed!=15){
+						lSpeed = -15; tSpeed = 0; 
+						sBody[0].style.backgroundPosition = "0 0";
+					}
+					break;
+					case 38: 
+					stl2 = sBody[0].offsetLeft;
+					stt2 = sBody[0].offsetTop;
+					ssl2 = sBody[1].offsetLeft;
+					sst2 = sBody[1].offsetTop;
+					if(tSpeed!=15){
+						lSpeed = 0; tSpeed = -15; 
+						sBody[0].style.backgroundPosition = "0 45px";
+					}
+					break;
+					case 39: 
+					stl3 = sBody[0].offsetLeft;
+					stt3 = sBody[0].offsetTop;
+					ssl3 = sBody[1].offsetLeft;
+					sst3 = sBody[1].offsetTop;
+					if(lSpeed!=-15){
+						lSpeed = 15; tSpeed = 0; 
+						sBody[0].style.backgroundPosition = "0 30px";
+					}
+					break;
+					case 40: 
+					stl4 = sBody[0].offsetLeft;
+					stt4 = sBody[0].offsetTop;
+					ssl4 = sBody[1].offsetLeft;
+					sst4 = sBody[1].offsetTop;
+					if(tSpeed!=-15){
+						lSpeed = 0; tSpeed = 15; 
+						sBody[0].style.backgroundPosition = "0 15.5px";
+					}
+					break;
+				}
+			}
+			
+			var timer = setInterval(function () {
+				moveFn();
+			},100);
+			function moveFn () {
+				for(var i = sBody.length-1; i >0; i --){
+					sBody[i].style.left = sBody[i-1].offsetLeft + "px";
+					sBody[i].style.top = sBody[i-1].offsetTop + "px";
+				}
+				
+				floor ();
+				//先改变蛇身体的位置,再改变蛇头的位置
+				sBody[0].style.left = sBody[0].offsetLeft + lSpeed + "px";
+				sBody[0].style.top = sBody[0].offsetTop + tSpeed +"px";
+				eatFn ();
+				endFn ();
+			}
+			
+			/*按下方向键时产生蛇头位置的值stt stl固定值
+			 * left top为变化值
+			 	若蛇身段 left = stl  top = stt，则改变背景图片
+			 	若蛇段
+			 	从左边向右行动向下0 向上转弯45 转弯处蛇身前后
+			 	((left=stl top>stt)---(left<stl top=stt))
+			 	((left=stl top<stt)---(left<stl top=stt)) 
+			 	从右边向左行动向下30 向上15转弯 
+			 	((left=stl top>stt)---(left>stl top=stt)) 
+			 	((left=stl top<stt)---(left>stl top=stt)) 
+			 	从下边向上行动向左0 向右转弯30 转弯处蛇身前后
+			 	((left<stl top=stt)---(left=stl top>stt))
+			 	((left>stl top=stt)---(left=stl top>stt)) 
+			 	从上边向下行动向左45 向右15转弯 
+			 	((left<stl top=stt)---(left=stl top<stt)) 
+			 	((left>stl top=stt)---(left=stl top<stt)) 
+
+			 */
+			
+			//设置蛇转弯时的图片更改
+			function floor () {
+				for(var i = 1; i < sBody.length-1; i ++){
+					//按下下键时蛇身的变化
+					if(ssl4!=stl4||ssl2!=stl2){
+						if(code==40){
+							if(sBody[i].offsetTop>stt4){
+								sBody[i].style.backgroundImage = "url(img/v.png)";
+							}
+							if(sBody[i].offsetLeft==stl4&&sBody[i].offsetTop==stt4){
+								sBody[i].style.backgroundImage = "url(img/bt.png)";
+							}
+							if(sBody[sBody.length-1].offsetLeft==stl4&&sBody[sBody.length-1].offsetTop==stt4){
+								sBody[sBody.length-1].style.backgroundPosition = "0 15.5px";
+							}
+							//加多个条件
+							
+							if(ssl4<stl4){
+								sBody[i].style.backgroundPosition = "0 0";
+							}else{
+								sBody[i].style.backgroundPosition = "0 30px";
+							}
+						}
+						if(code==38){
+							if(sBody[i].offsetTop<stt2){
+								sBody[i].style.backgroundImage = "url(img/v.png)";
+							}
+							if(sBody[i].offsetLeft==stl2&&sBody[i].offsetTop==stt2){
+								sBody[i].style.backgroundImage = "url(img/bt.png)";
+							}
+							if(sBody[sBody.length-1].offsetLeft==stl2&&sBody[sBody.length-1].offsetTop==stt2){
+								sBody[sBody.length-1].style.backgroundPosition = "0 45px";
+							}
+							if(ssl2<stl2){
+								sBody[i].style.backgroundPosition = "0 45px";
+							}else{
+								sBody[i].style.backgroundPosition = "0 15px";
+							}
+						}
+					}
+					if(sst1!=stt1||sst3!=stt3){
+						if(code==37){
+							if(sBody[i].offsetLeft<stl1){
+								sBody[i].style.backgroundImage = "url(img/h.png)";
+							}
+							if(sBody[i].offsetLeft==stl1&&sBody[i].offsetTop==stt1){
+								sBody[i].style.backgroundImage = "url(img/bt.png)";
+							}
+							if(sBody[sBody.length-1].offsetLeft==stl1&&sBody[sBody.length-1].offsetTop==stt1){
+								sBody[sBody.length-1].style.backgroundPosition = "0 0px";
+							}
+							if(sst1<stt1){
+								sBody[i].style.backgroundPosition = "0 45px";
+							}else{
+								sBody[i].style.backgroundPosition = "0 0";
+							}
+						}
+						if(code==39){
+							if(sBody[i].offsetLeft>stl3){
+								sBody[i].style.backgroundImage = "url(img/h.png)";
+							}
+							if(sBody[i].offsetLeft==stl3&&sBody[i].offsetTop==stt3){
+								sBody[i].style.backgroundImage = "url(img/bt.png)";
+							}
+							if(sBody[sBody.length-1].offsetLeft==stl3&&sBody[sBody.length-1].offsetTop==stt3){
+								sBody[sBody.length-1].style.backgroundPosition = "0 30px";
+							}
+							if(sst3<stt3){
+								sBody[i].style.backgroundPosition = "0 15px";
+							}else{
+								sBody[i].style.backgroundPosition = "0 30px";
+							}
+						}
+					}
+					
+					
+				}
+			}
+			
+			setApple ();
+			//设置苹果的位置
+			function setApple () {
+				apple.style.left = 15*rdnFn(0,LMax) + "px";
+				apple.style.top = 15*rdnFn(0,TMax) + "px";
+			}
+			function eatFn () {
+				var sHead = snake.children[0];
+				if(sHead.offsetLeft==apple.offsetLeft&&sHead.offsetTop==apple.offsetTop){
+					growFn ();
+					setApple ();
+				}
+			}
+			//判断游戏是否结束
+			function endFn () {
+				var sHead = sBody[0];
+				for (var i = 1; i < sBody.length; i++) {
+					if(sHead.offsetLeft==sBody[i].offsetLeft&&sHead.offsetTop==sBody[i].offsetTop){
+						alert("游戏结束！");
+						clearInterval(timer);
+					}
+				}
+			}
+			
+			//蛇身体生长
+			function growFn () {
+				//复制蛇身体最后一块,插入身体里面
+				var div = sBody[sBody.length-1].cloneNode(true);
+				snake.appendChild(div);
+			}
+			function rdnFn (min, max) {
+				return Math.floor(Math.random()*(max-min)+min);
+			}
+		</script>
+		
+	</body>
+</html>

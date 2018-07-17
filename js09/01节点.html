@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>div</div>
+		<!--注释-->
+		<p>p</p>
+		<script type="text/javascript">
+			var oBody = document.body;
+			//获取所有子节点
+			var oNode = oBody.childNodes;
+			console.log(oNode);
+			//获取所有子标签节点(子元素)
+			var childEle = oBody.children;
+			console.log(childEle);
+			//获取指定子标签元素
+			var childP = oBody.getElementsByTagName('p');
+			console.log(childP);
+			
+		</script>
+	</body>
+</html>

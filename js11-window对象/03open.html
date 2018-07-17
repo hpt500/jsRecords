@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<a href="#" id="a1">百度一下</a>
+		<script type="text/javascript">
+			var a1 = document.getElementById("a1");
+			a1.onclick = function  () {
+				//在命名为baidu的标签中打开链接
+//				window.open("http://www.baidu.com","baidu");
+				//_parent在本窗口打开URL地址，_black新建窗口
+//				window.open("http://www.baidu.com","_parent");
+				window.open("http://www.baidu.com","baidu","width=300,height=200,location=no,menubar=yes,top=100,left=100");
+			}
+		</script>
+	</body>
+</html>

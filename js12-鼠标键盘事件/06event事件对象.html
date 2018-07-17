@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//event事件对象，记录着当事件触发时，鼠标/键盘等的状态
+			window.onkeydown = function (e) {
+				//非FF浏览器，event对象从window对象中获取，FF浏览器从事件传参中获取，所以需要做兼容
+				var e	= window.event || e;
+				//keyCode获取键盘案按键码，低版本FF浏览器通过which获取
+				var code = e.keyCode || e.which;
+			}
+		</script>
+	</body>
+</html>

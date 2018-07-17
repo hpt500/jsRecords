@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		#wrap{
+			width: 343px;
+			height: 480px;
+			background: url(img/bg.jpg);
+			margin: 0 auto;
+			position: relative;
+			-webkit-user-select: none;
+			overflow: hidden;
+		}
+		.btn{
+			width: 85px;
+			height: 29px;
+			position: absolute;
+		}
+		#start-btn{
+			background: url(img/start.jpg);
+			left: 70px;
+			top: 300px;
+		}
+		#score-btn{
+			background: url(img/score.jpg);
+			left: 190px;
+			top: 300px;
+		}
+		#bird{
+			width: 48px;
+			height: 48px;
+			background: url(img/b1.gif);
+			position: absolute;
+			top: 150px;
+			left: 50px;
+			display: none;
+			animation: down 0.5s linear both;
+			z-index: 10;
+		}
+		@keyframes down{
+			from{transform: rotate(-45deg);}
+			to{transform: rotate(45deg);}
+		}
+		#pipe-wrap{
+			height: 423px;
+		}
+		.pipe{
+			width: 62px;
+			height: 423px;
+			position: absolute;
+			overflow: hidden;
+		}
+		.pipe:nth-child(1){
+			left: 343px;
+		}
+		.pipe:nth-child(2){
+			left: 545.5px;
+		}
+		.up-pipe{
+			width: 62px;
+			height: 150px;
+			background: url(img/up_mod.png);
+			position: relative;
+			margin-bottom: 120px;
+		}
+		.up-pipe img{
+			position: absolute;
+			bottom: 0;
+		}
+		.down-pipe{
+			width: 62px;
+			height: 233px;
+			background: url(img/down_mod.png);
+			position: relative;
+		}
+		.down-pipe img{
+			position: absolute;
+		}
+		#score{
+			width: 84px;
+			height: 39px;
+			text-align: center;
+			font-size: 0;
+			position: absolute;
+			left: 40%;
+			top: 5%;
+		}
+	</style>
+</head>
+<body>
+<div id="wrap">
+	<div id="start-btn" class="btn"></div>
+	<div id="score-btn" class="btn"></div>
+	<div id="score"><img src="img/0.jpg"/></div>
+	<div id="bird"></div>
+	<div id="pipe-wrap">
+		<div class="pipe">
+			<div class="up-pipe">
+				<img src="img/up_pipe.png"/>
+			</div>
+			<div class="down-pipe">
+				<img src="img/down_pipe.png"/>
+			</div>
+		</div>
+		<div class="pipe">
+			<div class="up-pipe">
+				<img src="img/up_pipe.png"/>
+			</div>
+			<div class="down-pipe">
+				<img src="img/down_pipe.png"/>
+			</div>
+		</div>
+	</div>
+</div>
+<audio src="music/bullet.mp3" id="bullet"></audio>
+<audio src="music/game_music.mp3" id="game_music" loop></audio>
+<audio src="music/game_over.mp3" id="game_over"></audio>
+<script type="text/javascript" src="js/tween.js">
+</script>
+<script type="text/javascript" src="js/tweenMove.js">
+</script>
+<script type="text/javascript">
+	var start = document.getElementById("start-btn");
+	var scorebtn = document.getElementById("score-btn");
+	var oScore = document.getElementById("score");
+	var pipe = document.querySelectorAll(".pipe");
+	var bird = document.getElementById("bird");
+	var downSpeed = 0.5;//小鸟掉落速度
+	var upSpeed = 50;//鼠标点击时小鸟上升的速度
+	var pipeSpeed = 3;//管道移动速度
+	var downTimer;//小鸟掉落的定时器
+	var pipeTimer;//管道移动的定时器
+	var GameStart = false;//游戏启动开关 
+	var score = 0;//计分
+	var scoreImg = ["img/0.jpg","img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg","img/5.jpg","img/6.jpg","img/7.jpg","img/8.jpg","img/9.jpg"];
+	var bullet = document.getElementById("bullet");
+	var game_music = document.getElementById("game_music");
+	var game_over = document.getElementById("game_over");
+	document.onclick = function () {
+		if(GameStart){
+			bullet.play();
+		}
+	}
+	start.onclick = function () {
+		GameStart = true;//打开游戏开关
+		game_music.play();
+		bird.style.display = "block";
+		start.style.display = "none";
+		scorebtn.style.display = "none";
+		pipe[0].Switch = true;
+		pipe[1].Switch = true;
+		dirdDown ();
+		pipeMove ();
+	}
+	//定义小鸟掉落函数
+	function dirdDown () {
+		downTimer = setInterval(function  () {
+			bird.style.animation = "down 0.5s linear both";
+			downSpeed +=0.1;
+			bird.style.top = bird.offsetTop + downSpeed + "px";
+		},16.6);
+	}
+	//点击鼠标，小鸟飞起函数
+	document.onclick = function (){
+		if(GameStart){
+			clearInterval(downTimer);
+			downSpeed = 0.5;
+			bird.style.animation = "0";
+			bird.style.top = bird.offsetTop - upSpeed + "px";
+			dirdDown ();
+		}
+	}
+	//管道移动函数
+	function pipeMove () {
+		pipeTimer = setInterval(function  () {
+			for (var i = 0; i < pipe.length; i++) {
+				pipe[i].style.left = pipe[i].offsetLeft - pipeSpeed + "px";
+				//判断管道是否出页面
+				if (pipe[i].offsetLeft<=-pipe[i].offsetWidth) {
+					pipe[i].style.left = "343px";
+					pipe[i].Switch = true;
+					setPipe (pipe[i].children[0]);
+					
+				}
+			}
+			setScore ();
+			judge ();
+		},16.6);
+	}
+	//设置管道高度
+	function setPipe (obj) {
+		obj.style.height = rdnFn (70,233) + "px"
+	}
+	setPipe (pipe[1].children[0]);
+	//碰壁检测函数
+	function judge () {
+		var birdLeft = bird.offsetLeft+6;
+		var birdRight = birdLeft + bird.offsetWidth-6-8;
+		var birdTop = bird.offsetTop+13;
+		var birdBottom = bird.offsetHeight + birdTop-13-12;
+		for (var i = 0; i < pipe.length; i++) {
+			var pipeChild = pipe[i].children;
+			for (var j = 0; j < pipeChild.length; j++) {
+				var pipeLeft = pipe[i].offsetLeft;
+				var pipeRight = pipeLeft + pipeChild[j].offsetWidth;
+				var pipeTop = pipeChild[j].offsetTop;
+				var pipeBottom = pipeTop + pipeChild[j].offsetHeight;
+				if(birdLeft<pipeRight&&birdRight>pipeLeft&&birdTop<pipeBottom&&birdBottom>pipeTop) {
+					GameOver();
+				}
+			}
+		}
+		//碰上边的检测
+		
+		//碰下边的检测
+	}
+	function GameOver () {
+		GameStart = false;
+		game_music.pause(); //停止背景音乐
+		game_over.play();//游戏结束音效
+		clearInterval(pipeTimer);
+		clearInterval(downTimer);
+		tweenMove(bird,"top",bird.offsetTop,423-bird.offsetHeight+8,30,"Bounce","easeOut");
+	}
+	//计分函数
+	function setScore () {
+		for (var i = 0; i < pipe.length; i++) {
+			if(pipe[i].offsetLeft + pipe[i].offsetWidth < bird.offsetLeft&&pipe[i].Switch){
+				pipe[i].Switch = false;
+				score++;
+			}
+		}
+		oScore.innerHTML = "";
+		var scoreStr = score.toString();
+		for (var j = 0; j < scoreStr.length; j++) {
+			var img = new Image();
+			img.src = scoreImg[Number(scoreStr[j])];
+			oScore.appendChild(img);
+		}	
+	}
+	//随机函数
+	function rdnFn (min,max) {
+		return Math.floor(Math.random()*(max-min+1)+min);
+	}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

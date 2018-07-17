@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div{
+				font-size: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div"></div>
+		<script type="text/javascript">
+			var div = document.getElementById("div");
+			window.addEventListener("deviceorientation",function () {
+				var alpha = event.alpha;
+				var beta = event.beta;
+				var gamma = event.gamma;
+				div.innerText = "z轴:"+Math.round(alpha) + "    x轴:" + Math.round(beta) + "   y轴:" + Math.round(gamma);
+				
+			})
+		</script>
+	</body>
+</html>

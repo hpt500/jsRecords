@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var str = "abcde abcde abc";
+			console.log(str);
+			//.replace(a,b)将字符串中首次出现的a字符串替换成b字符串,并不会改变本身
+			var str1 = str.replace("abc","@@@");
+			var str2 = str1.replace("abc","@@@");
+			console.log(str);
+			console.log(str1);
+			console.log(str2);
+			
+			
+		</script>
+	</body>
+</html>

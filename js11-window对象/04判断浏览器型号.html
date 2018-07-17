@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//返回一个浏览器品牌形象
+			console.log(window.navigator);
+			//返回一个记录浏览器相关信息的字符串
+			console.log(window.navigator.userAgent);
+			//判断浏览器是否为IE8
+			if(window.navigator.userAgent.indexOf("MSIE8")==-1){
+				alert("该浏览器不是IE8");
+			}else{
+				alert("该浏览器是IE8");
+			}
+			//判断当前浏览器浏览是移动端还是PC端
+			if(window.navigator.userAgent.indexOf("Mobile")!=-1){
+				alert("当前在移动端浏览");
+			}else{
+				alert("当前在PC端浏览");
+			}
+		</script>
+	</body>
+</html>

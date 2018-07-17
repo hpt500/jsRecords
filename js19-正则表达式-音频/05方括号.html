@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var str = "abc123ABC";
+			console.log(str);
+			//匹配的是单个字符
+			//[abc] : 查找方括号之间的任何字符
+			console.log(str.replace(/[ab]/g,"@"));
+			console.log(str.replace(/[12]/g,"@"));
+			console.log(str.replace(/[Aa]/g,"@"));
+			//[^abc] : 查找任何不在方括号之间的字符
+			console.log(str.replace(/[^ab]/g,"@"));
+			console.log(str.replace(/[^12]/g,"@"));
+			console.log(str.replace(/[^Aa]/g,"@"));
+			
+			//[0-9] : 查找任何从0至9的数字
+			//[a-z] : 查找任何从小写a到小写z的字符
+			//[A-z] :查找任何从大写A到小写z的字符
+			//注 : [a-Z]这种写法无效会报错
+			//匹配任意数字字符和英文字母字符
+			console.log(str.replace(/[0-9A-z]/g,"@"));
+			
+			var str2 = "acb123acacb123acac123acacacb";
+			console.log(str2);
+			console.log(str2.replace(/(ac)+b/g,"@"));
+		</script>
+	</body>
+</html>

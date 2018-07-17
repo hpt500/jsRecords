@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#shock,#food,.os{
+				width: 10px;
+				height: 10px;
+				background: red;
+				position: absolute;
+			}
+			#food{
+				background: skyblue;
+				left: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="shock"></div>
+		<div id="food"></div>
+		<script type="text/javascript">
+			var windowWidth = document.documentElement.clientWidth;	
+			var windowHeight = document.documentElement.clientHeight;	
+			var shock = document.getElementById("shock");
+			var food = document.getElementById("food");
+			var speed = 0;
+			var a;
+			var t1;
+			var l = 10;
+			var h = shock.offsetLeft;
+			var v = shock.offsetTop;
+			var foodleft = food.offsetLeft;
+			var foodtop = food.offsetTop;
+			console.log(shock.children);
+			function lefttime () {
+				t1 = setInterval(function  () {
+					h += a;
+					shock.style.left = h+"px";
+					if(shock.offsetLeft<0){
+						shock.style.left = "0";
+					}else if(shock.offsetLeft>windowWidth-shock.offsetWidth){
+						shock.style.left = (windowWidth-shock.offsetWidth)+"px";
+					}
+					fd ();
+					if(shock.children!=null){
+						alert();
+						/*var shockchild = shock.children;
+						shockchild[0].style.left = (h-10)+"px";*/
+					}
+					
+				},100);
+			}
+			function toptime () {
+				t1 = setInterval(function  () {
+					v += a;
+					shock.style.top = v+"px";
+					if(shock.offsetTop<0){
+						shock.style.top = "0";
+					}else if(shock.offsetTop>windowHeight-shock.offsetWidth){
+						shock.style.top = (windowHeight-shock.offsetWidth)+"px";
+					}
+					fd ();
+				},100);
+			}
+			function init () {
+				
+			}
+			function fd () {
+				if(h==foodleft&&v==foodtop){
+					var div = document.createElement("div");
+					div.setAttribute("class","os");
+					shock.appendChild(div);		
+				}
+			}
+			
+			window.onkeydown = function (event) {
+				var ky = window.event.keyCode;
+				if(ky==37){
+					clearInterval(t1);
+					a = -10;
+					lefttime ();
+				}	
+				if(ky==38){
+					clearInterval(t1);
+					a = -10;
+					toptime ();
+				}
+				if(ky==39){
+					clearInterval(t1);
+					a = 10;
+					lefttime ();
+				}
+				if(ky==40){
+					clearInterval(t1);
+					a = 10;
+					toptime ();
+				}
+			}
+		</script>
+	</body>
+</html>

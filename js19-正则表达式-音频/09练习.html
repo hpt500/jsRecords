@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="" name="month" id="month" value="" />
+		<span id="tip"></span>
+		<script type="text/javascript">
+			var oInput = document.getElementById("month");
+			var tip = document.getElementById("tip");
+			oInput.onchange = function () {
+				var month = oInput.value;
+				var reg = /^0?[1-9]$|^1[0-2]$/;
+				//一个月31天
+//				var reg = /^0?[1-9]$|^[12]\d$|^3[0-1]$/;
+				var bool = reg.test(month);
+				if(bool){
+					tip.innerText = "月份书写正确";
+				}else{
+					tip.innerText = "月份书写错误";
+				}
+			}
+		</script>
+	</body>
+</html>

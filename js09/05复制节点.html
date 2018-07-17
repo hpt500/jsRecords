@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="wrap">
+			<div>
+				<p>div标签里的p标签</p>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var wrap = document.getElementById("wrap");
+			var div = wrap.children[0];
+			var div2 = wrap.innerHTML;//获取标签里面的内容(字符串)
+			//复制节点,参数为true时进行深复制,复制标签以及标签里面的内容,参数为false时进行浅复制,只复制标签本身,不复制里面的内容
+			var newDiv = div.cloneNode(true);
+			var newDiv2 = div.cloneNode(false);
+			console.log(newDiv);
+			console.log(newDiv2);
+			wrap.appendChild(newDiv);
+			wrap.appendChild(newDiv2);
+			wrap.innerHTML+=div2;
+			console.log(div2);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.js">
+		</script>
+		<style type="text/css">
+			#div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 0;
+				z-index: -1;
+			}
+		</style>
+	</head>
+	<body>
+		<button id="on">on</button>
+		<button id="one">one</button>
+		<button id="bind">bind</button>
+		<button id="off">off</button>
+		<button id="unbind">unbind</button>
+		<div id="div"></div>
+		<script>
+			//在事件类型后面通过.name的方式给事件绑定事件名
+			$("#on").on("click.click1",function () {
+				alert("on");
+			});
+			$("#on").on("click",moveL);
+			$("#on").on("mousedown",moveT);
+			function moveL () {
+				$("#div").animate({
+					left : "+=100"
+				})
+			}
+			function moveT () {
+				$("#div").animate({
+					top : "+=100"
+				})
+			}
+			$("#off").on("click",function () {
+//				$("#on").off();//移除对应元素上通过on绑定的所有事件
+//				$("#on").off("click");//移除对应元素上通过on绑定的指定事件
+//				$("#on").off("click",moveL);//移除对应元素上通过on绑定的指定事件的指定事件处理程序
+				$("#on").off(".click1");//移除事件名为.click1的事件
+			})
+			$("#bind").bind("click",function  () {
+				alert("bind");
+			})
+			$("#unbind").bind("click",function  () {
+				$("#bind").unbind();//移除对应元素上通过bind绑定的所有事件，与off()类似
+			})
+			//one()绑定一次性触发事件，事件只会触发一次
+			$("#one").one("click",function () {
+				alert("one");
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//this总是指向调用它的对象,和在哪里声明没有关系
+			var i = 1;
+			function Afn () {
+				console.log(this);
+				console.log(this.i);
+			}
+			Afn();//相当于window.Afn();
+			
+			var obj = {
+				i : 2
+			};
+			obj.fn = Afn;
+			console.log(obj);
+			obj.fn();
+		</script>
+	</body>
+</html>

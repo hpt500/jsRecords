@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div{
+				width: 100px;
+				height: 200px;
+				padding: 20px;
+				border: 10px solid black;
+				margin: 50px;
+				/*大部分滚动条宽度为17px*/
+				overflow: scroll;
+				position: absolute;
+				left: 100px;
+				top: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div">divasdaasafafdfsdagfgasdafasdad sdf<br />sdf<br />sdf<br />sdf<br />sdf<br />sdf<br />sdf<br />sdf<br />sdf<br />sdf<br />sdf<br />sdf<br /></div>
+		<script type="text/javascript">
+			var div = document.getElementById("div");
+			//获取元素距离其定位父级元素的左边内边框的位置值
+			console.log(div.offsetLeft);
+			//clientLeft返回元素左边框的宽度值
+			console.log(div.clientLeft);
+			//scrollLeft返回元素当前水平滚动条的距离,即元素内容左边被滚动隐藏部分的宽度 可用于某些触发事件
+			console.log(div.scrollLeft);
+		</script>
+	</body>
+</html>

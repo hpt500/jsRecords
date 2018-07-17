@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//定义函数，常规定义，函数在脚本运行时会被提前声明，可以在脚本的任意地方进行调用
+			aFn();
+			function aFn () {
+				alert("aFn");	
+			}
+//			aFn();//通过函数加括号进行调用
+			console.log(aFn);//单纯写函数名,只是返回函数体
+			
+//			bFn();
+			//通过变量赋值的方式定义函数，不能提前调用，否则报错
+			var　bFn = function () {
+				alert("bFn");
+			}
+			bFn();
+			
+		</script>
+	</body>
+</html>

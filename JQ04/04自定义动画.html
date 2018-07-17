@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.js">
+		</script>
+		<style type="text/css">
+			#div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 0;
+				top: 0;
+				z-index: -1;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div"></div>
+		<button id="click">click</button>
+		<script type="text/javascript">
+		/*$("#click").click(function () {
+		 	//animate()对被选元素应用"自定义"的动画
+		 	//语法animate(params,[speed],[easing],[fn])
+		 	//1.params : 一组包含作为动画属性和终值的样式属性和及其值的集合
+		 	//2.speed : "fast"/"slow"/"normal"/毫秒数
+			//3.easing : "swing"/"linear" ,默认swing
+			//4.callback : 动画执行结束的回调函数
+			$("#div").animate({
+				width : 200,
+				left : 300
+			},1000,"linear",function () {
+				alert("动画结束!");
+			})
+		})*/
+		$("#click").click(function () {
+			//JQ源文件默认无transform方面的动画效果
+			$("#div").animate({
+				//相对值运算，能够在当前数值基础上进行相加减对应的值
+				width : "+=10",
+				left : "+=10"
+			},1000,"linear",function () {
+//				alert("动画结束!");
+			})
+		})
+		</script>
+	</body>
+</html>

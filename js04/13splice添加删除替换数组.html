@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">		
+			var arr = [1,2,3,4,5,6];
+			//.splice(a,n)从索引a开始,删除n位元素,并返回被删除的元素
+			console.log(arr.splice(1,2));
+			console.log(arr);
+			//将索引1位置的元素替换成其他元素,
+			arr.splice(1,1,"a");
+			console.log(arr);
+			//在索引1位置添加新元素
+			arr.splice(1,0,"b");
+			console.log(arr);
+			
+		</script>
+	</body>
+</html>

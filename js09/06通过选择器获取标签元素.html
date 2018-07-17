@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="class">div1</div>
+		<div class="class div">div2</div>
+		<div title="div3">div3</div>
+		<p class="class">p</p>
+		<script type="text/javascript">
+			//.querySelector()获取选择器匹配得到的第一个元素
+			var div1 = document.querySelector(".class");
+			//.querySelectorAll()获取选择器匹配得到的所有元素,返回一个元素数组
+			//IE8部分支持这两个方法,当参数为css3选择器时,Ie8不支持
+			var div2 = document.querySelectorAll(".class");
+			console.log(div1);
+			console.log(div2);
+			//可以采用CSS3属性进行选择
+			var div3 = document.querySelectorAll(".class:nth-child(2)");
+			console.log(div3);
+		</script>
+	</body>
+</html>

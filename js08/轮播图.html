@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.wrap{
+				width: 360px;
+				border: 5px black solid;	
+				position: relative;
+				overflow: hidden;
+			}
+			#con{
+				width: 2000px;
+				position: relative;
+				overflow: hidden;
+				left: 0;
+				z-index: -1;
+			}
+			img{
+				width: 400px;
+				float: left;
+			}
+			#btn{
+				width: 100px;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				z-index: 100;
+			}
+			i{
+				float: left;
+				width: 10px;
+				height: 10px;
+				background-color: azure;
+				border-radius: 5px;
+				margin: 10px;
+			}
+			/*i:nth-child(2){
+				margin: 0 10px;
+			}*/
+			#button{
+				margin: 10px;
+			}
+			.active{
+				background-color: orange;
+			}
+			#prev,#next{
+				width: 50px;
+				height: 230px;
+				line-height: 225px;
+				text-align: center;
+				font-size: 50px;
+				font-weight: bold;
+				color: white;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				margin: 0 auto;		
+			}
+			#next{
+				right: 0;
+			}
+			#prev:hover,#next:hover{
+				background-color: rgba(0,0,0,0.5);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div id="con">
+				<img src="images/123.JPG" alt="" />
+				<img src="images/123.JPG" alt="" />
+				<img src="images/123.JPG" alt="" />
+				<img src="images/123.JPG" alt="" />
+				<img src="images/123.JPG" alt="" />
+			</div>
+			<div id="btn">
+				<i class="active"></i>
+				<i></i>
+				<i></i>
+			</div>
+			<div id="prev"><</div>
+			<div id="next">></div>
+		</div>
+		<div id="button">
+			<button>上一张</button>
+			<button>下一张</button>
+		</div>
+		
+		<script type="text/javascript">
+			var con = document.getElementById("con");
+			var img = con.getElementsByTagName("img");	
+			var btnDiv = document.getElementById("btn");
+			var btn = btnDiv.getElementsByTagName("i");
+			var index = 1;//当前显示图片的序号
+			var step = 10; //切换动画的总帧数
+			var t1,t2;//定时器
+			//设置显示图片为默认的第一张图片
+			con.style.left = -img[0].offsetWidth + "px";
+			
+			var prev = document.getElementById("prev");
+			var next = document.getElementById("next");
+			var obutton = document.getElementById("button").getElementsByTagName("button");
+			var i = 0;
+			var t;
+			//圆点颜色变化
+			/*function color () {
+				for(var x = 0 ; x<btn.length ; x++){
+					btn[x].style.backgroundColor = "white";
+				}
+				btn[i].style.backgroundColor = "orange";
+			}*/
+			
+			//定时器
+			function time () {
+				t1 = setTimeout(function  () {			
+					index++;
+					moveFn ();
+				},2000); 
+			};
+			time ();
+			//定义图片切换动画函数
+			function moveFn () {
+				//获取当前left值
+				var start = con.offsetLeft;
+				//获取切换结束的left值
+				var end = index * img[0].offsetWidth;
+				//获取获取每一帧的切换速度
+				var speed = (start+end)/step;
+				var nowStep = 0;
+				t2 = setInterval(function  () {
+					if (nowStep>=step) {
+						//判断当前图片是否为最后一张图片，是的话切回默认的第一张图片
+						if(index==img.length-1){
+							index = 1;
+							con.style.left = - img[0].offsetWidth +"px";
+						}
+						//改变图片按钮的样式
+						for (var i = 0; i < btn.length; i++) {
+							btn[i].className = "";
+						}
+						btn[index-1].className = "active";
+						clearInterval(t2);
+						//调用定时切换函数
+						time();
+					}else{
+						con.style.left = con.offsetLeft - speed + "px";
+						nowStep++;
+					}
+				},30)
+			}
+			
+			//圆形按钮
+			for (var j = 0; j < btn.length; j++) {
+				btn[j].index = j;
+				btn[j].onclick = function () {
+					runFn();
+					//改变当前图片序号
+					index = this.index+1;
+				}
+			}
+			//下一张图片点击事件
+			next.onclick =function  () {
+				//判断当前显示图片是否是最后一张图片
+				if(index>=img.length-1){
+					index = 1;
+					con.style.left = -img[0].offsetWidth + "px";
+				}else{
+					index++;
+				}
+				runFn ();
+			}
+			prev.onclick =function  () {
+				if(index<=1){
+					index = btn.length;
+//					con.style.left = -img[0].offsetWidth * (btn.length+1) + "px";
+					con.style.left = -img[0].offsetWidth * (img.length-1) + "px";
+				}else{
+					index--;
+				}
+				runFn ();
+			}
+			
+			function runFn () {
+				clearInterval(t1);
+				clearInterval(t2);
+				//调用执行图片切换函数
+				moveFn();
+			}
+			
+			/*//按钮
+			for (var k = 0; k < obutton.length; k++) {
+				obutton[k].index=k;
+				obutton[k].onclick = function (){
+					if(this.index==0){i--;}
+					if(this.index==1){i++;}
+					if(i<0){i=0;}
+					if(i>2){i=2;}
+					clearInterval(t);
+					clearInterval(t1);
+					tweenMove(con,"left",con.offsetLeft,-i*400,10,"Linear");
+					color ();
+					time ();
+				}
+			}*/
+		</script>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//闭包函数:一个函数能够访问另外一个函数里面定义的变量,此称之为闭包.
+			//闭包的特点是:一个函数嵌套在另外一个函数里面,里面的函数能访问外部函数的变量
+			function aFn () {
+				var a = 0;
+				a++;
+				console.log(a);
+			}
+			//函数的生命周期,一般函数调用结束后,其里面的变量等内容就会被销毁,以释放内容
+			aFn();//1
+			aFn();//1
+			aFn();//1
+			function bFn(){
+				var b = 0;
+				function cFn () {
+					b++;
+					console.log(b);
+				}
+				return cFn;
+			}
+			//通过闭包保存局部变量
+			var c = bFn();
+			console.log(c);
+			c();//1
+			c();//2
+			c();//3
+		</script>
+	</body>
+</html>

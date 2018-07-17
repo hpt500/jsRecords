@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选择语句</title>
+</head>
+<body>
+	<script>
+		var a = 1;
+		var b;
+		// switch选择语句,匹配对应的值,执行对应的语句,注意每个选项后面都不要遗漏break关键词
+		switch(a){
+			case 1:b="星期一";break;
+			case 2:b="星期二";break;
+			case 3:b="星期三";break;
+			case 4:b="星期四";break;
+			case 5:b="星期五";break;
+			case 6:b="星期六";break;
+			case 7:b="星期日";break;
+			// default当匹配的值不为上述的所有值时,执行该语句
+			default:b = "星期九";
+		}
+		console.log(b);
+	</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../JQ01/jQuery/jquery-1.12.2.js">
+		</script>
+	</head>
+	<body>
+		<div class="class1">div1</div>
+		<div class="class2">div2</div>
+		<div class="class3">div3</div>
+		<script type="text/javascript">
+			//add()将元素添加到匹配的元素集合中,并返回一新的元素集合,成为新的元素集合
+			var div1 = $(".class1");
+			var div = div1.add($(".class2"));
+			//div1并未被修改,$(".class2")并未被添加到div1中
+			console.log(div1);
+			console.log(div);
+			//.andSelf() .addBack()将先前所选的元素加入到当前元素中
+			//从JQ1.8开始, andSelf()方法已经被标注过时,在JQ1.8和更高版本中应使用.addBack();
+			console.log(div1.next().andSelf());
+			console.log(div1.next().addBack());
+			//为改变元素本身
+			console.log(div1);
+			
+			//end()将匹配的元素列表变为前一次的状态而不改变前一次的变化
+			console.log(div1.next().end());
+			$(".class2").css("color","red").next().css("color","blue").end().prev().css("color","green");
+		</script>
+	</body>
+</html>

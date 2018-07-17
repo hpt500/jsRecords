@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		#content{
+			width: 400px;
+			height: 300px;
+			border: 5px solid red;
+		}
+	</style>
+</head>
+<body>
+<input type="text" id="text1" value="" />
+<input type="text" id="text2" value="" />
+<button id="btn">替换</button>
+<div id="content">预计，4日08时至5日08时，北京中南部、天津、河北中南部、河南中东部、山东大部、安徽北部、江苏大部、山西西南部等地有大雾，其中，北京南部、天津、河北中南部、河南东部、山东中西部、江苏中北部等地有能见度低于200米的浓雾，部分地区有能见度低于50米的特强浓雾。预计，4日08时至5日08时，北京中南部、天津、河北中南部、河南中东部、山东大部、安徽北部、江苏大部、山西西南部等地有大雾，其中，北京南部、天津、河北中南部、河南东部、山东中西部、江苏中北部等地有能见度低于200米的浓雾，部分地区有能见度低于50米的特强浓雾。</div>
+<script type="text/javascript">
+	var oInput1 = document.getElementById("text1");
+var oInput2 = document.getElementById("text2");
+var oContent = document.getElementById("content");
+var btn = document.getElementById("btn");
+//方法1
+/*btn.onclick = function(){
+	var text1 = oInput1.value;
+	var text2 = oInput2.value;
+	var content = oContent.innerText;
+	//1.以文本框1的值为切割点，将内容字符串转化成数组
+//	content = content.split(text1);
+//	console.log(content);
+	//2.以文本框2的值为连接字符，将内容数组转化成字符串
+//	content = content.join(text2);
+//	console.log(content);
+	//3.将内容插入div中
+//	oContent.innerText = content;
+	//以上三步的合写：
+	oContent.innerText = content.split(text1).join(text2);
+}*/
+//方法2
+/*btn.onclick = function(){
+	var text1 = oInput1.value;
+	var text2 = oInput2.value;
+	var content = oContent.innerText;
+//	oContent.innerText = content.replace(text1,text2);
+	for(var i=0;i<content.length;i++){
+		content = content.replace(text1,text2);
+//		console.log(1);
+		//判断对应内容是否都被替换的了，是就跳出循环
+		if(content.indexOf(text1)==-1){
+			break;
+		}
+	}
+	oContent.innerText = content;
+}*/
+//方法3
+btn.onclick = function(){
+	var text1 = oInput1.value;
+	var text2 = oInput2.value;
+	var content = oContent.innerText;
+	var str = "";
+	//当文本框1中没输入内容时，直接返回，不执行下面的语句
+	if(text1==""){return}
+	for(var i=0;i<content.length;i++){
+		if(content.indexOf(text1,i)==-1){
+			break;
+		}else{
+			var index = content.indexOf(text1,i);
+			str += content.substring(i,index)+ text2;
+//			console.log(str);
+			i = content.indexOf(text1,i) + text1.length - 1;
+		}
+	}
+	//将最后一段字符串添加上去
+	str += content.substring(i);
+	oContent.innerHTML = str;
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

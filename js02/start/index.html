@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#warp{
+				width: 500px;
+				height: 400px;
+				border: 1px black solid;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			ul{
+				list-style: none;
+				height: 30px;
+				width: 100%;
+			}
+			li{
+				width: 32%;
+				height: 30px;
+				float: left;
+				text-align: center;
+				line-height: 30px;
+				background-color: skyblue;
+				-webkit-user-select: none;
+			}
+			li:nth-of-type(2){
+				margin: 0 2%;
+			}
+			
+			#con{
+				width: 300%;
+				overflow: hidden;
+				transition: 3s;
+			}
+			#con div{
+				float: left;
+				width: 500px;
+				height: 370px;
+			}
+			.content:nth-child(1){
+				background-color: lightblue;
+			}
+			.content:nth-child(2){
+				background-color: pink;
+			}
+			.content:nth-child(3){
+				background-color: lightgreen;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="warp">
+			<ul id="ul">
+				<li style="background-color: lightblue;">按钮1</li>
+				<li>按钮2</li>
+				<li>按钮3</li>
+			</ul>
+			<div id="con">
+				<div class="content">内容1</div>
+				<div class="content">内容2</div>
+				<div class="content">内容3</div>
+			</div>
+		</div>
+		<script>
+			var wrap = document.getElementById("wrap");
+			var li = document.getElementsByTagName("li");
+			var con = document.getElementById("con");
+			var content=con.getElementsByTagName("div");
+			//第一种		
+//			con.style.transform="translateX(-"+500*i+"px)";
+//			li[0].onclick = function () {
+//				con.style.transform="translateX(0px)";
+//			}
+//			li[1].onclick = function () {
+//				con.style.transform="translateX(-500px)";
+//			}
+//			li[2].onclick = function () {
+//				con.style.transform="translateX(-1000px)";
+//			}
+			//第二种
+//			for (var i = 0; i < li.length; i++) {
+//				li[i].idx = i;
+//				li[i].onclick = function () {
+//					con.style.transform="translateX(-"+500*this.idx+"px)";
+//				}
+//			}
+			//第三种
+			for (var i = 0; i < li.length; i++) {
+				function change (a) {
+					return function () {
+						for (var i = 0; i < li.length; i++) {
+							li[i].style.backgroundColor="skyblue";
+						}
+						if (a==0) {
+							li[a].style.backgroundColor="lightblue";
+						} else if(a==1){
+							li[a].style.backgroundColor="pink";
+						}else{
+							li[a].style.backgroundColor="lightgreen";
+						}
+						con.style.transform="translateX(-"+500*a+"px)";
+					}
+				}
+				li[i].onclick = change(i);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr = [1,2,3,4];		
+			//.reverse()将数组元素的排序顺序改成逆向排序 操作数组本身
+			console.log(arr.reverse());
+			console.log(arr);
+			
+			var arr = [5,3,2,1,0,4];
+			//a-b返回值大于0 交换位置,从小到大排序
+			arr.sort(function (a,b) {
+				return a-b;
+			});
+			//b-a返回值大于0交换位置,从大到小排序
+			arr.sort(function (a,b) {
+				return b-a;
+			});
+			//将数组元素进行随机排序
+			arr.sort(function (a,b) {
+				return Math.random() - 0.5;
+			})
+			console.log(arr);
+			
+			//.sort()不传参,根据数组元素首字符的ASCII码排序进行,有数字先排序数字
+			//排序数字按首位数进行
+			var arr = [10,20,3,5,6,4];
+			arr.sort();
+			console.log(arr);
+			//排序字母按首位字母排序
+			var arr = ["d","c","e","a","b","bf"];
+			arr.sort();
+			console.log(arr);
+			
+			
+		</script>
+	</body>
+</html>

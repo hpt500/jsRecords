@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.js">
+		</script>
+		<script type="text/javascript" src="easing&transit&sizzle/jquery.easing.min.js">
+		</script>
+		<style type="text/css">
+			#div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 0;
+				top: 0;
+				z-index: -1;
+				/*display: none;*/
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div"></div>
+		<button id="click">click</button>
+		<button id="stop">stop</button>
+		<button id="finish">finish</button>
+		<script type="text/javascript">
+			$("#click").click(function () {
+//				$("#div").slideDown({
+//					duration : 1000,
+//					easing : "easeOutBounce",
+//					complete : function () {
+//						alert("动画结束")
+//					}
+//				})
+				/*$("#div").slideDown(1000,"easeOutBounce",function  () {
+					alert("动画结束")
+				})*/
+//				$("#div").animate({
+//					width:300
+//				},1000,"easeOutBounce",function  () {
+//					alert("动画结束")
+//				});
+//				$("#div").animate({
+//					left : 400
+//				},{
+//					duration : 1000,
+//					easing : "easeOutBounce",
+//					complete : function () {
+//						alert("动画结束");
+//					}
+//				});
+			})
+		</script>
+	</body>
+</html>

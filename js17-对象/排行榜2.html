@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	var rank = document.getElementById("rank");
+	function setRank(nowValue){
+		var rankArr = getRank();
+		console.log(rankArr);
+		for(var i=0;i<rankArr.length;i++){
+			if(nowValue>rankArr[i]){
+				rankArr.splice(i,0,nowValue);
+				rankArr.pop();
+				break;
+			}
+		}
+		console.log(rankArr);
+		for(var j=0;j<rankArr.length;j++){
+			localStorage.setItem("rank"+(j+1),rankArr[j]);
+		}
+	}
+	function getRank(){
+		var rankArr = [];
+		rankArr[0] = localStorage.getItem("rank"+1)===null?0:localStorage.getItem("rank"+1);
+		rankArr[1] = localStorage.getItem("rank"+2)===null?0:localStorage.getItem("rank"+2);
+		rankArr[2] = localStorage.getItem("rank"+3)===null?0:localStorage.getItem("rank"+3);
+		return rankArr;
+	}
+	
+</script>
+</body>
+</html>

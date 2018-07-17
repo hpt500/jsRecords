@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		请输入ip:<br />
+		<input type="text" id="tell"/>
+		<span id="tip"></span>
+		<script type="text/javascript">
+			var tip = document.getElementById("tip");
+			var oInput = document.getElementById("tell");
+			oInput.onchange = function  () {
+				var ts = oInput.value;
+				//ip(1.不能为0，2.第一位不能0，3.1或者2, 4.1,00-99  5.2，04,0-9  6.25,0-5)
+				//254.255.255.255
+				//四部分 每部分分数种情况 再与其他部分接触
+				var reg =  /^(([1-9]|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])\.){3}([1-9]|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])$/;
+				var bool = reg.test(ts);
+				if(bool){
+					tip.innerText = "ip书写正确";
+				}else{
+					tip.innerText = "ip书写错误";
+				}
+			}
+		</script>
+	</body>
+</html>
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap{
+				margin: 20px 10px;
+				background-color: red;
+				border: 5px solid black;
+				width: 400px;
+				height: 400px;
+				padding: 30px;
+				position: absolute;
+				left: 100px;
+				top: 50px;
+			}
+			#box{
+				width: 100px;
+				height: 100px;
+				background-color: skyblue;
+				position: absolute;
+				left: 100px;
+				top: 100px;			
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="box"></div>
+		</div>
+		<script type="text/javascript">
+			var wrap = document.getElementById("wrap");
+			var box = document.getElementById("box");
+			console.log(wrap.scrollHeight);
+			console.log(box.offsetTop);
+//			console.log(box.parentNode);
+			console.log(box.offsetParent);
+			
+			//.offsetParent  .parentNode
+			
+			//获取子元素的绝对位置
+			function getTop(e){
+				var i=e.offsetTop; 
+				//获取当前元素的定位父级
+				var oParent = e.offsetParent;
+				while(oParent){
+					i += getTop(oParent) + oParent.clientTop;
+					//若无下一层父元素则返回undefined
+					oParent = oParent.offsetParent; 
+				}
+				//父元素不为空执行
+				/*if(e.offsetParent!=null){
+					//子元素距离上边高度加上父元素距离上边高度加上父元素上边框的宽度
+					i=i+getTop(e.offsetParent)+e.offsetParent.clientTop;
+				};*/
+				return i; 
+//				return {"left":left, "right":right};
+			} 
+			
+			//获取元素的横坐标 
+			function getLeft(e){ 
+				var i=e.offsetLeft; 
+				if(e.offsetParent!=null) 					i+=getLeft(e.offsetParent)+e.offsetParent.clientLeft; 
+				return i; 
+			} 
+			console.log(getTop(box));
+			
+		</script>
+	</body>
+</html>

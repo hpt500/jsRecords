@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		#wrap{
+			width: 100%;
+			border-top: 5px solid black;
+		}
+		.msg{
+			width: 300px;
+			margin-top: 15px;
+			border: 1px solid black;
+			background-color: skyblue;
+			overflow: hidden;
+			position: relative;
+		}
+		.title{
+			border-bottom: 2px solid black;
+		}
+		.content{
+			min-height: 50px;
+		}
+		.del{
+			position: absolute;
+			right: 0;
+			bottom: 0;
+		}
+	</style>
+</head>
+<body>
+标题：<input type="text" id="title" />
+<br />
+内容： <textarea id="content" rows="10" cols="100"></textarea>
+<button id="btn">提交</button>
+<div id="wrap">
+	<!--<div class="msg">
+		<div class="title">标题</div>
+		<div class="content">内容</div>
+		<a class="del" href="javascript:void(0)">删除</a>
+	</div>-->
+</div>
+<script src="js/tween.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/tweenMove.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+var btn = document.getElementById("btn");
+var oTitle = document.getElementById("title");
+var oContent = document.getElementById("content");
+var wrap = document.getElementById("wrap");
+btn.onclick = function(){
+	var title = oTitle.value;
+	var content = oContent.value;
+	wrap.innerHTML = '<div class="msg"><div class="title">' +title +'</div><div class="content">'+ content +'</div><a class="del" href="javascript:void(0)">删除</a></div>'+wrap.innerHTML;
+	var lastMsg = wrap.children[0];
+//	console.log(lastMsg);
+	tweenMove(lastMsg,"height",0,lastMsg.offsetHeight,30,"Bounce","easeOut");
+	//删除a标签必须在元素被创建出来之后再进行获取，和绑定事件，否则无效
+	var delArr = wrap.getElementsByTagName("a");
+	for(var i=0;i<delArr.length;i++){
+		delArr[i].onclick = function(){
+			wrap.removeChild(this.parentNode);
+		}
+	}
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

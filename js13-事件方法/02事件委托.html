@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="list">
+			<li>li1
+				<ul>
+					<li>li2.1</li>
+					<li>li2.2</li>
+					<li>li2.3</li>
+					<li>li2.4</li>
+					<li>li2.5</li>
+				</ul>
+			</li>
+			<li>li2</li>
+			<li>li3</li>
+			<li>li4</li>
+			<li>li5</li>
+		</ul>
+		<script type="text/javascript">
+			var list = document.getElementById("list");
+			var li = list.children;
+			/*for (var i = 0; i < li.length; i++) {
+				li[i].onclick = function () {
+					alert(this.innerText);
+				}
+			}*/
+			
+			list.onclick = function (event) {
+				var e = window.event || event;
+				//事件委托
+				//利用冒泡原理，通过指定一个事件处理程序，来管理某一类型的同种事件
+				var target = e.target || e.srcElement;
+				console.log(target.innerText);
+//				alert(target.innerText);
+			}
+		</script>
+	</body>
+</html>

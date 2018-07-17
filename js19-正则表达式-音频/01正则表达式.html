@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//声明正则表达式对象
+			var reg = new RegExp("a");
+			//g：表示全局模式，即模式将被应用于所以字符串，而非在发现第一个匹配项是立即停止
+			//i：表示不区分大小写
+			//m：表示多行模式，即在到达一行文本末尾时还会继续查找下一行中是否存在与模式匹配的项
+			var reg1 = new RegExp("a","ig");
+			//通过字面量的方式声明正则表达式对象
+			var reg2 = /d/;
+			var reg2 = /d/ig;
+			console.log(reg.source+reg2.source);
+			var str = "abc";
+			var str2 = "ABC";
+			var str4 = '<p class="as-productdescription">王者荣耀：无处不团，两亿好友聚好玩\n【游戏介绍】\n《王者荣耀》是腾讯第一5V5英雄公平对战手游，腾讯最新MOBA手游大作！5V5王者峡谷、5V5深渊大乱斗、以及3V3、1V1等多样模式一键体验，热血竞技尽享快感！海量英雄随心选择，精妙配合默契作战！10秒实...</p>';
+			var str4 = str4.replace(/\n/g,"")
+			var reg4 = /^(<p class=\"as-productdescription\">)(.*)(<\/p>)$/
+			console.log(reg4.exec(str4));
+			//test() 方法检索字符串中的指定值。返回值是 true 或 false
+			console.log(reg.test(str));//true
+			console.log(reg2.test(str));//false
+			console.log(reg.test(str2));//false
+			console.log(reg1.test(str2));//true
+			//exec() 方法检索字符串中的指定值。返回值是被找到的值。如果没有发现匹配，则返回 null。
+			console.log(reg.exec(str));//a
+			console.log(reg.exec(str).index);//查找索引值 0
+			console.log(reg2.exec(str));//null
+			var reg4 = /e/gi;
+			do{
+				result = reg4.exec("abcde ABCDE abcde");
+				console.log(result);
+			}while(result!=null);
+			
+		</script>
+	</body>
+</html>

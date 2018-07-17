@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>循环语句for</title>
+</head>
+<body>
+	<script>
+	// 从1累加到10
+	// for(表达式1;判断表达式2;表达式3)
+	// 表达式1只在第一次运行时被执行
+	// 判断表达式2在每次循环前都会执行依次判断,判断结果为true就执行下一次循环,否则结束循环
+	// 表达式3在每次循环结束时执行
+	for (var i = 1,sum = 0; i <= 10; i++) {
+		sum += i;
+	}
+	console.log("sum="+sum);
+
+	// 无限循环
+	for (;;) {
+		alert("1111");
+	}
+	</script>
+</body>
+</html>

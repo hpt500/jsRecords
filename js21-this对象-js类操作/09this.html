@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//当this碰到return时,如果返回值是一个对象、函数或是数组，那么this指向的就是那个返回的对象，如果返回值不是一个对象，那么this还是指向函数的实例
+			function Fn () {
+				this.name = "jack";
+				//返回不了 this仍指向实例化的对象
+//				return "abc";
+//				return 123;
+//				return true;
+
+//				return function () {};//返回一个函数
+//				return {};//返回一个空对象
+//				return [];//返回一个空数组
+			}
+			var obj = new Fn();
+			console.log(obj.name);
+		</script>
+	</body>
+</html>

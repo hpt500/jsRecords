@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//冒泡排序
+//			var arr = [5,2,1,3,4,0];
+			/*var arr = [5,4,3,2,1,0];
+			for(var i = 0; i < arr.length; i++){
+				for(var j = 0; j < arr.length-i-1;j++){
+					if(arr[j] > arr[j+1]){
+						var x = arr[j];
+						arr[j] = arr[j+1];
+						arr[j+1] = x;
+						console.log(arr);
+					}
+				}
+			}*/
+			
+			//删除重复数组
+			var trr = [5,2,3,4,4,1,1,2,4,2];
+			for (var i = 0; i < trr.length; i++) {
+				for(var j = i+1; j < trr.length;j++){
+					//判断当前遍历元素与后面元素是否一样
+					if(trr[i]===trr[j]){
+						//删除后一个相同元素
+						trr.splice(j,1);
+						//删除一个元素后，后面的元素都往前移一位，所以此处j要自减一
+						j--;
+						console.log(trr);
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

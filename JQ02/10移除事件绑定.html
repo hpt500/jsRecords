@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.js">
+		</script>
+	</head>
+	<body>
+		<div id="div">div标签</div>
+		<script type="text/javascript">
+			$("#div")
+			.on("click",function () {
+				alert("onclick");
+			})
+			.click(function () {
+				alert("click");
+			})
+			.off("click");
+		</script>
+	</body>
+</html>

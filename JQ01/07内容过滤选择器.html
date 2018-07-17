@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.min.js">
+		</script>
+	</head>
+	<body>
+		<div>div标签</div>
+		<div>ddddd div标签 sdfsfsfs</div>
+		<div><p>p</p></div>
+		<div></div>
+		<div> </div>
+		<script type="text/javascript">
+			//:contains(text)选取含有文本内容为"text"的元素
+			$("div:contains(div标签)").css("color","red")
+			//:empty选取不包含子元素或者文本的空元素
+			$("div:empty").css({
+				width : 100,
+				height : 100,
+				background: "yellow"
+			})
+			//:has(p)选取含有选择器所匹配的元素的元素
+			$("div:has(p)").css("background","blue");
+			//:parent选取含有子元素或文本的元素
+			$("div:parent").css("background","skyblue");
+		</script>
+	</body>
+</html>

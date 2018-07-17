@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="wrap">
+			<p>p标签</p>
+		</div>
+		<script type="text/javascript">
+			var wrap = document.getElementById("wrap");
+			var p = wrap.children[0];
+			//创建一个新的div标签
+			var newDiv = document.createElement("div");
+			newDiv.innerText = "newDiv";
+			//将newDiv插入到wrap标签的末尾
+//			wrap.appendChild(newDiv);
+			//将newDiv插入到wrap标签里面指定子标签的前面
+			wrap.insertBefore(newDiv,p);
+			console.log(newDiv);
+		</script>
+	</body>
+</html>

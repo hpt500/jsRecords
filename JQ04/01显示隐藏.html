@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.js">
+		</script>
+		<style type="text/css">
+			#div{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div"></div>
+		<button id="hide">hide</button>
+		<button id="show">show</button>
+		<button id="toggle">toggle</button>
+		<script type="text/javascript">
+			//hide()隐藏被选的元素
+			//可选参数:
+			//1.speed : "fast"/"slow"/"normal"/毫秒数
+			//2.easing : "swing"/"linear" ,默认swing
+			//3.callback : 动画执行结束的回调函数
+			$("#hide").click(function () {
+				$("#div").hide(2000,"linear",function () {
+					alert("隐藏");
+				});
+			})
+			$("#show").click(function () {
+				//显示被选的元素
+				$("#div").show(2000);
+			})
+			$("#toggle").click(function () {
+				//对被选的元素进行隐藏和显示切换操作
+				$("#div").toggle();
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="btn">百度一下</button>
+		<script type="text/javascript">
+		 	var btn = document.getElementById("btn");
+			console.log(location);
+			//获取地址的完整链接
+			console.log(location.href);
+			btn.onclick = function () {
+				location.href = "http://www.baidu.com?abcd#123";
+			}
+			location.hash;//获取或设置页面锚点#XX
+			location.search;//获取或设置检索内容
+		</script>
+	</body>
+</html>

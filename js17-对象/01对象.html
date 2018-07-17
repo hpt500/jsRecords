@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//js对象：具有属性（变量）和方法（函数）的特殊数据类型
+			//new一个对象
+			var obj = new Object();
+			console.log(obj);
+			console.log(typeof obj);
+			//设置对象属性
+			obj.name = "jack";
+			obj["age"] = 20;
+			//访问对象属性
+			console.log(obj.age,obj["name"]);
+			//设置对象方法
+			obj.sayHello = function () {
+				console.log(this);
+				alert("Hello!"+this.name);
+			}
+			//调用对象方法
+			obj.sayHello();
+			
+			var a = "name";
+			console.log(obj.a);//
+			console.log(obj[a]);
+		</script>
+	</body>
+</html>

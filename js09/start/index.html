@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#main{
+				padding: 10px;
+			}
+			#main>div:nth-child(2){
+				margin: 10px 0 ;
+			}
+			#main>div:nth-child(2) span{
+				vertical-align: top;				
+			}
+			#main>div:nth-child(3){
+				padding-bottom: 10px ;
+				border-bottom: 1px grey solid;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<div>
+				<span>姓名：</span>
+				<input type="text" id="name" value=""/>
+			</div>
+			
+			<div>
+				<span>留言：</span>
+				<textarea name="" id="word" cols="30" rows="10"></textarea>	
+			</div>
+			
+			<div id="button">
+				<input type="button" name="btn" id="btn" value="提交" />
+			</div>
+		</div>
+		<script src="js/tween.js"></script>
+		<script src="js/tweenMove.js"></script>
+		<script type="text/javascript">
+			var main = document.getElementById("main");
+			var div = main.getElementsByTagName("div");
+			var oName = document.getElementById("name");
+			var oWord = document.getElementById("word");
+			var btn = document.getElementById("btn");
+			var a,b;
+			
+			console.log(oName);		
+			
+			btn.onclick = function () {
+				if(oName.value==""){
+					alert("请输入姓名");
+				}else if(oWord.value==""){
+					alert("请填写留言");
+				}else{																				
+					var cre = document.createElement("div");
+					cre.style.backgroundColor = "orange";
+					cre.style.margin = "0 10px";
+					cre.style.padding = "10px";
+					cre.style.width = "400px";
+					cre.style.borderRadius = "10px";
+					tweenMove(cre,"marginTop",cre.offsetLeft,20,10,"Bounce","easeOut");
+									
+					var s1 = document.createElement("div");
+					s1.innerHTML = oName.value;
+					s1.style.padding = "10px";
+					s1.style.borderBottom = "1px grey solid";
+					s1.style.overflow = "hidden";
+					
+					var s2 = document.createElement("div");
+					s2.style.padding = "10px";
+					
+					var s2span = document.createElement("span");
+					s2span.innerHTML = oWord.value;
+					s2span.style.display = "inline-block";
+					s2span.style.width = "70%";
+					s2span.style.overflow = "hidden";
+					s2span.style.textOverflow = "ellipsis";
+					
+					var del = document.createElement("a");
+					del.innerHTML = "删除";
+					del.style.color = "red";
+					del.style.float = "right";
+					
+					del.onclick = function () {
+						var beginT = 0;
+						t1 = setInterval(function  () {	
+							beginT++;
+							if (beginT==10) {
+								clearInterval(t1);	
+								main.removeChild(cre);
+							}
+							cre.style.marginTop = Tween.Bounce.easeOut(beginT,cre.offsetLeft,20-cre.offsetLeft,10)+"px";
+						},60);
+					}
+					s2.appendChild(s2span);	
+					s2.appendChild(del);	
+					
+					cre.appendChild(s1);
+					cre.appendChild(s2);
+					
+					main.appendChild(cre);
+				}
+				
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//定义构造函数本身的"特性"
+			function person (name) {
+				this.name = name;
+				this.sex = "female";
+			}
+			//定义多个原型属性或方法
+			//定义对象的"共性"
+			person.prototype = {
+				sayHello : function  () {
+					alert("Hello," + this.name + "!");
+				},
+				head : 1,
+				body : 1,
+				hand : 2,
+				foot : 2,
+			}
+			var p1 = new person("jack");
+			var p2 = new person("TOm");
+			console.log(p1);
+			console.log(p2);
+			console.log(p2.hand);
+			p2.hand = 1;//访问对象属性,优先访问其"特性"(特性是指本身所具有的)
+			console.log(p2);
+			console.log(p2.hand);
+			delete p2.hand;
+			console.log(p2);
+			console.log(p2.hand);
+			delete p2.hand;//原型中的属性和方法无法被删除
+			console.log(p2.hand);
+		</script>
+	</body>
+</html>

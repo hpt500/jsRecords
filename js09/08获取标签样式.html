@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div"></div>
+		<script type="text/javascript">
+			var div = document.getElementById("div");
+			//获取行间样式的方法
+			console.log(div.style.width);
+			//ie所支持的获取非行间样式的方法
+//			console.log(div.currentStyle);
+			//非ie所支持的获取非行间样式的方法
+			console.log(getComputedStyle(div,null).width);
+			//获取非行间样式的兼容性写法
+			function getStyle(obj,type){
+				var oStyle = obj.currentStyle || getComputedStyle(obj,null);
+				return oStyle[type];
+			}
+			console.log(getStyle (div,"backgroundColor"));
+		</script>
+	</body>
+</html>

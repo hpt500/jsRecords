@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//动画定时器兼容写法
+			var i = 0;
+			//定义动画定时器,只执行一次,执行时间由浏览器的帧数率决定
+			var t = requestAnimationFrame(function  () {
+				i++;
+				console.log(i);
+				//返回当前的函数体
+//				console.log(arguments.callee);
+				//通过内部重复执行与调用,实现循环定时的效果
+				requestAnimationFrame(arguments.callee);
+			})
+			//取消动画定时器
+			cancelAnimationFrame(t);
+		</script>
+	</body>
+</html>

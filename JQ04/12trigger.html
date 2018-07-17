@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.js">
+		</script>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<div id="div2"></div>
+		<script type="text/javascript">
+			$("#div1").click({color:"yellow"},function (e,color) {
+				var color = color || e.data.color;
+				$(this).css("background",color);
+			})
+			$("#div2").click(function () {
+				//trigger()JQ事件模拟
+				//点击#div2  div1呈现蓝色,此时div1上事件处理程序中的color参数获取是trigger()传入的blue
+				$("#div1").trigger("click","blue");
+			})
+		</script>
+	</body>
+</html>

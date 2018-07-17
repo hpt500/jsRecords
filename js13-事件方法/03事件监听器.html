@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="btn">btn</button>
+		<script type="text/javascript">
+			var btn = document.getElementById("btn");
+			//addEventListener()事件监听器
+			//参数一:事件类型,如click,mousedown
+			//参数二:事件触发时执行的事件处理程序(即函数)
+			//参数三:默认值为false,冒泡传递事件,当值为true时为捕获传递事件
+			btn.addEventListener("click",function () {
+				alert("alert1");
+			},false);
+			//DOM2级事件处理程序能给元素绑定多个同类型事件
+			btn.addEventListener("click",fn,false);
+			function fn() {
+				alert("alert12222222");
+			}
+			//移除事件监听器
+			btn.removeEventListener("click",fn);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.js">
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+			<p id="p">p标签</p>
+			<div id="div">div标签</div>
+		</div>
+		<script type="text/javascript">
+			//A.replaceWith.B 将A标签替换成B标签
+			$("#p").replaceWith("<h1>h1标签</h1>");
+			//A.replaceAll.B 将B标签替换成A标签
+			$("<h2>h2标签</h2>").replaceAll("#div");
+		</script>
+	</body>
+</html>

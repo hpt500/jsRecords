@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.js">
+		</script>
+		<style type="text/css">
+			#div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 0;
+				top: 0;
+				z-index: -1;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div"></div>
+		<button id="click">click</button>
+		<button id="stop">stop</button>
+		<button id="finish">finish</button>
+		<script type="text/javascript">
+		$("#click").click(function () {
+			$("#div").animate({
+				width : 200,
+				background : "yellow"
+			},1000)
+			//.delay()对被选元素的所有排队函数（仍未执行）设置延迟
+			.delay(1000)
+			.animate({
+				height : 200
+			},1000)
+			.delay(1000)
+			.animate({
+				left : 200
+			},1000)
+		})
+		$("#stop").click(function () {
+			//.stop()停止在被选元素上当前运行的动画,接着执行后面的动画
+			$("#div").stop();
+		});
+		$("#finish").click(function () {
+			//.finish()停止当前正在运行的动画,删除所有排队的动画,并完成匹配元素"所有"的动画,即瞬间完成所有的动画效果
+			$("#div").finish();
+		});
+		</script>
+	</body>
+</html>

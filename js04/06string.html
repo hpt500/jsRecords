@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var str = "abcdefg";
+			//.charAt(n)返回索引n的字符
+			console.log(str.charAt(5));//f
+			console.log(str[5]);//f
+			//.charCodeAt(n)返回索引n的字符的unicode码
+			console.log(str.charCodeAt(5));//102
+			
+			//.toUpperCase()将小写字母转化成大写字母
+			var str1 = str.toUpperCase();
+			console.log(str1);
+			//.toLowerCase()将大写字母转化成小写字母
+			console.log(str1.toLowerCase());
+			
+			//.concat()连接两个字符串
+			console.log(str.concat(str1));
+			console.log(str.concat("123456"));
+			console.log(str+str1);
+		</script>
+	</body>
+</html>

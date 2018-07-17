@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.js">
+		</script>
+		<style type="text/css">
+			#div{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div"></div>
+		<button id="fadeIn">fadeIn</button>
+		<button id="fadeOut">fadeOut</button>
+		<button id="fadeTo">fadeTo</button>
+		<button id="fadeToggle">toggleFade</button>
+		<script type="text/javascript">
+			$("#fadeIn").click(function () {
+				//fadeIn()通过修改元素的不透明度值来改变其显示效果
+				//可选参数:
+				//1.speed : "fast"/"slow"/"normal"/毫秒数
+				//2.easing : "swing"/"linear" ,默认swing
+				//3.callback : 动画执行结束的回调函数
+				$("#div").fadeIn(1000);
+			})	
+			$("#fadeOut").click(function () {
+				$("#div").fadeOut(1000,"linear");
+			})	
+			$("#fadeTo").click(function () {
+				//fadeTo把被选元素逐渐改变值给定的不透明度
+				//可选参数分别为:1.duration 2.opacity 3.easing 4.callback
+				$("#div").fadeTo(1000,0.5,"linear");
+			})	
+			$("#fadeToggle").click(function () {
+				$("#div").fadeToggle(1000,"linear");
+			})	
+		</script>
+	</body>
+	
+</html>

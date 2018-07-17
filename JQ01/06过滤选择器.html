@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.min.js">
+		</script>
+	</head>
+	<body>
+		<ul class="ul">
+			<li>li1
+				<!--<ul>
+					<li>li1.1</li>
+					<li>li1.2</li>
+					<li>li1.3</li>
+				</ul>-->
+			</li>
+			<li class="one">li2</li>
+			<li>li3</li>
+			<li>li4</li>
+		</ul>	
+		
+		<ul class="ul">
+			<li>li1
+				<!--<ul>
+					<li>li1.1</li>
+					<li>li1.2</li>
+					<li>li1.3</li>
+				</ul>-->
+			</li>
+			<li class="one">li2</li>
+			<li>li3</li>
+			<li>li4</li>
+		</ul>
+		<script type="text/javascript">
+			console.log($(".ul li"));
+			//选取第一个元素,匹配结果是集合元素
+			$(".ul :first-child").css("color","red");
+			//选取第一元素，匹配结果是单个元素
+			$(".ul :first").css("color","blue");
+			//选取最后一个元素,匹配结果是集合元素
+			$(".ul :last-child").css("color","gold");
+			//选取最后一元素，匹配结果是单个元素
+			$(".ul :last").css("color","pink");
+			//去除所有与给定选择器匹配的元素
+			$(".ul :not(.one)").css("color","orange");
+			//选取索引是偶数的所有元素,索引从0开始
+			$(".ul li:even").css("background","skyblue");
+			//选取索引是奇数的所有元素,索引从1开始
+			$(".ul li:odd").css("background","orangered");
+			//:eq(index) 选取索引等于index 的元素(index从0开始),匹配结果是单个元素
+			$(".ul li:eq(2)").css("background","yellow");
+			//:gt(index)选取索引大于index的元素(index 从0开始)
+			$(".ul li:gt(1)").css("background","green");
+			//:lt(index)选取索引小于index的元素(index 从0开始)
+			$(".ul li:lt(1)").css("background","blue");
+		</script>
+	</body>
+</html>

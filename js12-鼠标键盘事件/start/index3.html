@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.os{
+				margin: 0;
+				padding: 0;
+				position: absolute;
+				left: 0;
+				top: 0;
+				/*display: none;*/
+				counter-reset: section;
+			}
+			.os>div{
+				width: 120px;
+				height: 20px;
+				padding: 5px 0; 
+				border: 1px lightblue solid; 
+				background-color: skyblue;
+			}
+			.os>div::before {
+				counter-increment: section;
+				content: counters(section, ".")". ";
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main" class="os">
+			<div>select1</div>
+			<div>select2</div>
+			<div>select3</div>
+			<div>select4</div>
+		</div>
+		<script type="text/javascript">
+			var windowWidth = document.documentElement.clientWidth;	
+			var windowHeight = document.documentElement.clientHeight;	
+			var main = document.getElementById("main");
+			var maindiv = main.getElementsByTagName("div");
+			window.oncontextmenu = function () {
+				return false;
+			}
+			init();
+			function init(){
+				for (var i = 0; i < maindiv.length; i++) {
+					maindiv[i].index = i;
+					maindiv[i].onmouseenter = function  () {
+						this.style.backgroundColor = "deepskyblue";
+						var nextmain = document.createElement("div");
+						if(main.offsetTop>=windowHeight-220){
+							nextmain.style.top = -96+32*this.index+"px";
+						}else{
+							nextmain.style.top = 32*this.index+"px";
+						}
+						
+						creatediv(nextmain);
+						maindiv[this.index].appendChild(nextmain);
+						var nextdm = nextmain.children;
+						for (var j = 0; j < nextdm.length; j++) {
+							nextdm[j].index = j;
+							nextdm[j].onmouseenter = function  () {
+								this.style.backgroundColor = "deepskyblue";
+								
+								var nnmain = document.createElement("div");
+								if(main.offsetTop>=windowHeight-220){
+									nnmain.style.top = -32*this.index+"px";
+								}else{
+									nnmain.style.top = 32*this.index+"px";
+								}
+								creatediv(nnmain);
+								nextdm[this.index].appendChild(nnmain);
+								var nndm = nnmain.children;
+								for (var k = 0; k < 4; k++) {
+									nndm[k].index = k;
+									nndm[k].onmouseenter = function  () {
+										this.style.backgroundColor = "deepskyblue";
+									}
+									onml(nndm[k]);
+								}
+							}
+							onml(nextdm[j]);
+						}
+					}
+					onml(maindiv[i]);
+				}
+			}
+			
+			function creatediv(d){
+				d.setAttribute("class","os");
+				console.log(main.offsetLeft);
+				console.log(windowWidth);
+				if(main.offsetLeft>=windowWidth-220){
+					d.style.left = "-121px";
+				}else{
+					d.style.left = "121px";
+				}
+				for (var j = 0; j < 4; j++) {
+					var nextdiv = document.createElement("div");
+					nextdiv.innerHTML = "select"+(j+1);
+					d.appendChild(nextdiv);
+				}
+			}
+			
+			function onml(s){
+				s.onmouseleave = function(){
+					this.style.backgroundColor = "skyblue";
+					this.innerHTML = "select"+(this.index+1);
+				}
+			}
+			
+			
+			window.onmousedown = function (event){
+				var windowWidth = document.documentElement.clientWidth;	
+				var windowHeight = document.documentElement.clientHeight;	
+				var e = window.event || event;
+				var btn = event.button;
+				if (btn==2){
+					main.style.display = "block";
+					main.style.left = e.clientX+"px";
+					main.style.top = e.clientY+"px";
+					if(main.offsetLeft<=0){
+						main.style.left = "0";
+					}else if(main.offsetLeft>=windowWidth-main.offsetWidth){
+						main.style.left = windowWidth-main.offsetWidth+"px";
+					}
+					if(main.offsetTop<=0){
+						main.style.top = "0";
+					}else if(main.offsetTop>=windowHeight-main.offsetHeight){
+						main.style.top = windowHeight-main.offsetHeight + "px";
+					}
+					console.log(event.clientX);
+				}
+			}
+		</script>
+	</body>
+</html>

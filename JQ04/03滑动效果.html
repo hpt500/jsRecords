@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.js">
+		</script>
+		<style type="text/css">
+			#div{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div"></div>
+		<button id="slideDown">slideDown</button>
+		<button id="slideUp">slideUp</button>
+		<button id="slideToggle">slideToggle</button>
+		
+		<script type="text/javascript">
+			//slideDown()通过修改元素的高度来显示被选的元素
+			//可选参数:
+			//1.speed : "fast"/"slow"/"normal"/毫秒数
+			//2.easing : "swing"/"linear" ,默认swing
+			//3.callback : 动画执行结束的回调函数
+			$("#slideDown").click(function () {
+				$("#div").slideDown(2000,"linear",function () {
+					alert("隐藏");
+				});
+			})
+			$("#slideUp").click(function () {
+				//slideUp()通过修改元素的高度来隐藏被选的元素
+				$("#div").slideUp(2000);
+			})
+			$("#slideToggle").click(function () {
+				//slideToggle()通过修改元素的高度来对被选的元素进行隐藏和显示切换效果
+				$("#div").slideToggle();
+			})
+		</script>
+	</body>
+</html>

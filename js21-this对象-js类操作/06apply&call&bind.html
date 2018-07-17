@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var name = "window";
+			var age = 0;
+			function Person (a,b) {
+				/*this.name = name;
+				this.age = age;*/
+				console.log(this.name);
+				console.log(this.age);
+				console.log(a,b);
+			}
+			Person("a","b");
+			var obj = {
+				name : "jack",
+				age : 20
+			}
+			//apply(),call()的作用都是用于调用一个函数,并改变函数里面的this的指向,区别在于apply调用函数时,传参采用数组形式,call则采用直接传参方式
+			Person.apply(obj,["c","d"]);
+			Person.call(obj,"e","f");
+			//bind()的作用是用于改变一个函数里面的this指向并返回该函数
+			console.log(Person.bind(obj));
+//			Person();//bind()改变的是返回的函数的this指向 而不是改变Person()方法本身
+			Person.bind(obj)("g","h");
+		</script>
+	</body>
+</html>

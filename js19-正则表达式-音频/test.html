@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>测试</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		
+		function pick(str){
+		    /*var reg = /^[:]+?[.]+?$/g, ret = [];
+		    while(arr = reg.exec(str)) ret.push(arr[1]);
+		    return ret;*/
+//		   var reg = /a(\S)*g/g;
+		
+//		   return str.match(reg)
+//			return reg.exec(str).index
+			return str.match(/\:\)(.*?)\;/);
+		}
+		console.log(pick(":::)b12;"))
+		
+		//完美兼容--》多个相同字符间的截取 --》其输入数组中含有】字符
+		var d = ":sdasd.as:asdasd...dsad::bbbb...";
+		console.log(d.match(/[^\:\.]+?(?=\.+)/g));
+		
+		// var d = ":)1231;123132:)3231;12313"
+		// var darr = d.match(/[^(\:\))]+?(?=\;)/g)
+		// console.log(darr)
+		// for(var i = 0; i < darr.length; i++){
+		// 	if(darr[i]=="】"){
+		// 		darr.splice(i,1)
+		// 		i--;
+		// 	}
+		// }
+		// console.log(darr)
+		
+				
+//		/[^【]+?(?=】)/
+		
+		//通过.字符开头进行进行后尾截取
+		var dd = "1::ddd..sfdsaf:ccc..fdsaf::bbbb."; 
+		var patt = /\:+([^\.]+)\.+/g; 
+		var arr = [];
+		console.log(dd.match(patt))
+		dd.replace(patt,function($0,$1,$2,$3){
+			console.log($1)
+			arr.push($1)
+			return $2;		
+		});
+			
+		console.log(dd)
+		console.log(arr)
+		
+		var aa = "a@bdfs;fs@asd;fsdfa";
+		var areg = /\@+([^\;]+)\;+/g
+		
+		aa.replace(areg,function ($0,$1) {
+			console.log($0)
+		})
+		
+		
+		//总结
+		//1.可通过零宽正则-> /[^\:\.]+?(?=\.+)/g
+		//2.通过截取            -> /\:+([^\.]+)\.+/g  然后通过replace进行替换获取 其第二个参数传入
+		//replace("正则表达式","字符创或者函数")
+		//若是函数 -1:匹配模式的字符串 -2:与模式中的子表达式匹配的字符串 -3:整数(索引值) -4:stringObject本身(即字符串)
+		
+		
+	</script>
+</html>

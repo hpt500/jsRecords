@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var str = "abcdefg";
+			console.log(str.substring(2));//cdefg
+			//.substring 截取最小索引到最大索引前一位中的所有字符
+			console.log(str.substring(1,5));//bcde
+			console.log(str.substring(5,1));//bcde
+			//当参数有负值时,负值会被转化成0;
+			console.log(str.substring(-5,5));//abcde
+			
+			//.substr(a,n) 截取起始索引a后面的n位字符
+			console.log(str.substr(1,2));//bc
+			console.log(str.substr(1,6));//bcdefg
+			
+			//.slice 与 .substring 原理类似,但当参数有负值时,不会被转化成0,而是从后面算起
+			console.log(str.slice(2,5));//cde
+			console.log(str.slice(0,-1));//abcdef
+		</script>
+	</body>
+</html>

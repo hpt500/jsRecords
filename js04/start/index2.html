@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div{
+				margin: 10px 0;
+				width: 400px;
+				padding: 20px;
+				background-color: lightyellow;
+				border: 10px lightgrey solid;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="">
+			<input type="text" value="" id="frist"/>
+			<input type="text" value="" id="second"/>
+			<input type="button" value="替换" id="dreplace"/>
+			<input type="button" value="全部替换" id="replace"/>
+		</div>
+		<div id="div">我去阿卡或副卡均获看我去阿卡或副卡均获看我去阿卡或副卡均获看我去阿卡或副卡均获看我去阿卡或副卡均获看我去阿卡或副卡均获看我去阿卡或副卡均获看我去阿卡或副卡均获看
+		</div>
+		
+		<script type="text/javascript">
+			var Frist = document.getElementById("frist");
+			var Second = document.getElementById("second");
+			var Button = document.getElementById("replace");
+			var div = document.getElementById("div");			
+			var a;
+			var b;		
+			//方法一
+			/*Button.onclick = function(){
+				a=Frist.value;
+				b=Second.value;
+				var str=div.innerText;
+				//以a的值为切割点,将内容字符串转化成数组
+				//str = str.split(a);
+				//以b的值为连接字符,将内容数组转化成字符串
+				//str = str.join(b);
+				div.innerText = str.split(a).join(b);
+			}*/
+			//方法二
+			Button.onclick = function(){
+				a=Frist.value;
+				b=Second.value;
+				var str=div.innerText;
+//				div.innerText = str.replace(a,b);
+				for (var i = 0; i < str.length; i++) {
+					str = str.replace(a,b);
+					console.log(1);
+					//判断对应内容是否都被替换的了，是就跳出循环，不执行本次操作
+					if (str.indexOf(a,i)==-1) {
+						break;
+					}
+				}
+				div.innerText = str;
+			}
+			
+			
+			
+			/*Button.onclick = function(){
+				//获取两个文本框的值
+				var g = 0;
+				a=Frist.value;
+				b=Second.value;
+				//替换但不产生相邻重复的循环
+				for (var i = 0; i < str.length; i++) {
+					//第一种方法
+//					if(str.indexOf(a,i)!=-1&&str.indexOf(a,i)!=g){
+//						g=str.indexOf(a,i);
+//						console.log(g);
+//						str = str.replace(a,b);
+//						div.innerHTML = str;
+//					}
+					//第二种方法
+					if(str.substring(i,i+a.length)==a){
+						console.log(g);
+						str = str.replace(a,b);
+						div.innerHTML = str;
+					}
+				}
+			}*/
+			
+		</script>
+	</body>
+</html>

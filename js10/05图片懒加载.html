@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			img{
+				position: absolute;
+			}
+			img:nth-child(1){
+				top: 300px;
+			}
+			img:nth-child(2){
+				top: 800px;
+			}
+			img:nth-child(3){
+				top: 1300px;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="../js06/作业/images/123.JPG" data-src="../js06/img/1.png"/>
+		<img src="../js06/作业/images/123.JPG" data-src="../js06/img/2.png"/>
+		<img src="../js06/作业/images/123.JPG" data-src="../js06/img/3.png"/>
+		<script type="text/javascript">
+			//获取页面中所有img图片
+//			var imgs = document.getElementsByTagName(img);
+			var imgs = document.images;
+			var WindowHeight = document.documentElement.clientHeight;
+			window.onscroll = function  () {
+				//获取滚动条滚动的高度
+				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+				for (var i = 0; i < imgs.length; i++) {
+					//获取图片的top值
+					var imgTop = imgs[i].offsetTop;
+					//当滚动到对应图片即将出现时，将对应图片路径赋值过来，以加载对应图片
+					if(WindowHeight+scrollTop >= imgTop+100){
+						imgs[i].src = imgs[i].getAttribute("data-src");
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

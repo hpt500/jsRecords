@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.js">
+		</script>
+	</head>
+	<body>
+		<div id="div">div标签</div>
+		<ul id="ul">
+			<li>li1
+				<ul>
+					<li>li1.1</li>
+					<li>li1.2</li>
+					<li>li1.3</li>
+				</ul>
+			</li>
+			<li>li2</li>
+			<li>li3</li>
+		</ul>
+		<script type="text/javascript">
+			/*$("#div").on("click",function () {
+				alert("000");
+			});*/
+			/*$("#div").bind("click",{colorA:"yellow"},function (e) {
+				alert("111");
+				$(this).css("color",e.data.colorA);
+			});*/
+			//on()参数1:事件类型;参数2:选择器(可用于实现事件委托);参数3:传参值(传参值被保存在event.data中);参数4:事件处理程序(即执行函数)
+			//JQ事件委托
+			$("#ul").on("click"," li",{colorA:"yellow"},function (e) {
+				alert($(this).text());
+				//传参对象会被赋予事件对象event的data属性
+				$(this).css("color",e.data.colorA);
+			});
+			//清除事件
+//			$("#ul").off("click");
+		</script>
+	</body>
+</html>

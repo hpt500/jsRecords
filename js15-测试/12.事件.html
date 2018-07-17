@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	//事件分类：
+	//鼠标事件：click/dblclick/mousedown/mouseup/mousemove/mouseove/mouseout/mouseenter/mouseleave/contextmenu/mousewheel("DOMMouseScroll")
+	//键盘事件：keydown/keyup(键盘所有按键)/keypress(所有字符相关按键)
+	//页面事件：onload/DOMContentLoad/onreadystatechange
+	//窗口事件：resize
+	//触摸屏事件：touchstart/touchmove/touchend
+	//设备事件：deviceorientation,devicemotion
+	
+	//事件绑定方法：
+//	div.onclick = fn;
+//	<div onclick = "fn"></div>
+//	div.onclick = null;
+//	div.addEventListener("click",fn);
+//	div.removeEventListener("click",fn);
+	
+//	事件冒泡: 事件是由内向外进行传递的，由具体对象到不具体对象进行传递的
+//	事件捕获：事件是由外向内进行传递的，由不具体对象到具体对象进行传递的
+
+	//DOM2级事件事件流的三个阶段：
+	//捕获阶段-->处于目标阶段-->冒泡阶段
+	
+//	event对象？
+	window.onclick = function(event){
+		//兼容非FF||FF
+		var e = window.event||event;
+		//兼容非IE||IE
+		var target = e.target||e.srcElement;
+		//滚轮事件中获取滚动值，兼容非FF||FF
+		var d = e.wheelDelta||e.detail;
+		//键盘事件中获取按键键码值,兼容非FF||FF
+		var keyCode = e.keyCode||e.which;
+		
+		//取消默认事件
+		return false;
+		e.preventDefault();//标准
+		e.returnValue = false;//IE
+		//阻止冒泡
+		e.stopPropagation();//标准
+		e.cancelBubble = true;//IE
+		
+		e.clientX;
+		e.pageX;
+		e.offsetX;
+		e.screenX;
+	}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

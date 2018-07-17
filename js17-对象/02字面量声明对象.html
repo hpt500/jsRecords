@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//通过字面量的方式声明对象
+			var obj = {
+				name:"jack",
+				sayHello:function () {
+					alert("Hello,"+this.name+"!");
+				}
+			}
+			obj.sayHello();
+			var obj2 = {
+				"name":"John",
+				"sayHello":function () {
+					alert("Hello,"+this.name+"!");
+				}
+			}
+			obj2.sayHello();
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../JQ01/jQuery/jquery-1.12.2.js">
+		</script>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				background-color: yellow;
+			}		
+			.div{
+				background-color: orange;
+			}	
+		</style>
+	</head>
+	<body>
+		<div id="div"></div>
+		<button id="toggle">toggle</button>
+		<script type="text/javascript">
+			$("#toggle").click(function () {
+				//hasClass("div")判断标签是否具有指定的类，有则返回true，否则返回false
+//				console.log($("#div").hasClass("div"));
+				/*if ($("#div").hasClass("div")) {
+					//.removeClass("div")移除标签上指定的类
+					$("#div").removeClass("div");
+				}else{
+					//.addClass("div")在标签上添加指定的类
+					$("#div").addClass("div");
+				}*/
+				//toggleClass("div")标签上存在指定类就删除它，否则就添加它
+				$("#div").toggleClass("div");
+			})
+		</script>
+	</body>
+</html>

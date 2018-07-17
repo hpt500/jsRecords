@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			window.onload = function  () {
+//				alert("内容加载完毕");
+			}
+			
+			//当浏览器关闭或刷新时触发事件
+			window.onunload = function  () {
+//				confirm("您特么真要离开?")
+				window.open("07HTML页面事件.html");
+			}
+			window.onbeforeunload= function  () {
+//				confirm("beforeunload,您特么真要离开?")
+				window.open("http://www.baidu.com");
+			}
+		</script>
+	</body>
+</html>

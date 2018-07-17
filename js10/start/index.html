@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#main{
+				width: 70%;
+				background: lightgreen;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			#main>div{
+				float: left;
+				width: 23%;
+				margin: 0 1%;	
+			}
+			.ke{
+				width: 100%;
+				margin-bottom: 20px;
+				background: lightskyblue;				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<div id="div"></div>
+			<div id="div"></div>
+			<div id="div"></div>
+			<div id="div"></div>
+			<!--<div class="ke">1</div>-->			
+		</div>
+		<script type="text/javascript">
+			var main = document.getElementById("main");
+			var mDiv = document.querySelectorAll("#div");
+			var windowHeight = document.documentElement.clientHeight;
+			var a = 0;
+			var h;
+			var min;//mDiv高度最小那个
+			var child;
+			for (var k = 0; k < mDiv.length; k++) {
+				//获取小块元素高度随机值
+				h = random();
+				a++;
+				mDiv[k].innerHTML += '<div class="ke">'+a+'</div>';
+				child = mDiv[k].getElementsByTagName("div");
+				child[child.length-1].style.height = h + "px";
+			}		
+			function init () {
+				if(main.offsetHeight-150<windowHeight){
+					redi () ;
+				}
+			}
+			init();			
+			function redi () {
+				//获取小块元素高度随机值
+				h = random();
+				a++;
+				mDivmin();//导出mDIv数组中高度最小值min=mDiv[i]
+				//添加节点	
+				min.innerHTML += '<div class="ke">'+a+'</div>';
+				child = min.getElementsByTagName("div");
+				child[child.length-1].style.height = h + "px";
+				init();
+			}		
+			window.onscroll = function  (){
+				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+				console.log();
+				if(windowHeight+scrollTop >= main.offsetHeight-100){
+					redi () ;
+				}
+			}
+			//获取mDiv高度最小值
+			function mDivmin(){
+				min = mDiv[0];
+				for (var i = 0; i < mDiv.length; i++) {
+					if (mDiv[i].offsetHeight<= min.offsetHeight){
+						min = mDiv[i];
+					}
+				}
+				return min;
+			}
+			//获取数组中最小值的另一方法
+			/*var HeightArr = [20,10,30]
+			function minHeightList () {
+				var minHeight = Math.min.apply(null,HeightArr);
+				var listIndex = HeightArr.indexOf(minHeight);
+				var minList = list[listIndex];
+				return minList;
+			}*/
+			
+			//随机生成高度值
+			function random () {
+				return Math.floor(Math.random()*100+100);
+			}
+		</script>
+	</body>
+</html>

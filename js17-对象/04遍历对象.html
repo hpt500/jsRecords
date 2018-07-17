@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var obj = {
+				a:1,
+				b:2,
+				c:3,
+				d:4
+			}
+			Object.defineProperty(obj,"a",{
+				enumerable : false 
+			})
+			//通过for..in..来遍历对象
+			for(var _key in obj){
+				console.log(_key);
+				console.log(obj[_key]);
+			}
+		</script>
+	</body>
+</html>

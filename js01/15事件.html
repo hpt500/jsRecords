@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件</title>
+	<style>
+		.class1{
+			color: blue;
+			text-align: center;
+			background: yellow;
+		}
+	</style>
+</head>
+<body>
+	<p>标签1</p>
+	<p>标签2</p>
+	<p>标签3</p>
+	<script>
+		// window表示浏览器窗口
+		// onload事件,当页面中的文档结构以及图片等媒体内容被加载完成时触发事件
+		window.onload = function(){
+			var pArr = document.getElementsByTagName("p");
+			for (var i = 0; i < pArr.length; i++) {
+				pArr[i].className="class1";
+			}
+			// 给第一个p标签绑定点击事件
+			pArr[0].onclick = function(){
+				pArr[0].style.backgroundColor="red";
+			}
+		}
+	</script>
+</body>
+</html>

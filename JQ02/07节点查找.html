@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.js">
+		</script>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="outer">outer</div>
+			<p>p标签</p>
+			<h2>h2标签</h2>
+		</div>
+		<div class="wrap">
+			<div class="outer" id="outer">outer</div>
+			<p>p标签</p>
+			<h2>h2标签</h2>
+		</div>
+		<script type="text/javascript">
+			//prev()获得匹配元素集合中每个元素紧邻的前一个同辈元素,由选择器筛选(可选)
+			$("p").prev().css("color","red");
+			//next()获得匹配元素集合中每个元素紧邻的下一个同辈元素,由选择器筛选(可选)
+			$("p").next().css("color","blue");
+			//siblings()获得匹配元素集合中所有同辈元素,由选择器筛选(可选)
+			$("p").siblings().css("background","yellow");
+			$("p").siblings("#outer").css("background","green");
+		</script>
+	</body>
+</html>

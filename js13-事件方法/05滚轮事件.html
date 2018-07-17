@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*window.onmousewheel = function (event) {
+				var e = window.event || event;
+				var d = e.wheelDelta;
+				console.log(d);
+			}*/
+			function mouseWheel (obj,callback) {
+				//判断是否为火狐浏览器
+				if(window.navigator.userAgent.indexOf("Firefox")>-1){
+					obj.addEventListener("DOMMouseScroll",fn);
+				}else{
+					obj.onmousewheel = fn;
+				}
+				function fn (event) {
+					var e = window.event || event;
+					var d = e.wheelDelta/120 || -e.detail/3;
+					callback(d);
+				}
+				return false;
+			}
+			mouseWheel(window,function (d) {
+				console.log(d);
+			});
+		</script>
+	</body>
+</html>

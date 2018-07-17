@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.js"></script>
+	</head>
+	<body>
+		<div id="empty">empty</div>
+		<div id="remove">remove</div>
+		<div id="detach">detach</div>
+		<button id="r">remove remove</button>
+		<button id="ar">append remove</button><br />
+		<button id="d">remove detach</button>
+		<button id="dr">append detach</button>
+		<script type="text/javascript">
+			//empty()删除节点内容
+			$("#empty").empty();
+			var remove = $("#remove").click(function () {
+				alert("remove上的click事件")
+			});
+			$("#r").click(function () {
+				//remove()删除并返回对应节点,节点绑定的时间,附加的数据和事件等都会被移除
+				$("#remove").remove();
+			})
+			$("#ar").click(function () {
+				$(remove).appendTo("body");
+			})
+			var detach = $("#remove").click(function () {
+				alert("remove上的click事件")
+			});
+			$("#d").click(function () {
+				//detach()删除并返回对应节点,节点绑定的时间,附加的数据和事件等都会被保留
+				$("#remove").detach();
+			})
+			$("#dr").click(function () {
+				$(detach).appendTo("body");
+			})
+		</script>
+	</body>
+</html>

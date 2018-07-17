@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="back">back</button>
+		<button id="forward">forward</button>
+		<button id="go">go</button>
+		<a href="06history.html">link1</a>
+		<a href="06history2.html">link2</a>
+		<script type="text/javascript">
+			var back = document.getElementById("back");
+			var forward = document.getElementById("forward");
+			var go = document.getElementById("go");
+			back.onclick = function  () {
+				history.back();
+			}
+			forward.onclick = function  () {
+				history.forward();
+			}
+			go.onclick = function  () {
+				history.go(-2);
+			}
+		</script>
+	</body>
+</html>

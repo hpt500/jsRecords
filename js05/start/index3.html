@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style type="text/css">
+		#img{
+			width: 320px;
+			height: 180px;
+			margin: auto;
+			position: relative;
+			overflow: hidden;
+		}
+		#img>div{
+			width: 200%;
+			position: absolute;
+			transition: 1s;
+		}
+		img{
+			float: left;
+			width: 50%;
+		}
+		#btn{
+			margin: 10px;
+			text-align: center;
+		}
+		#btn button{
+			margin: 0 10px; 
+		}
+	</style>
+</head>
+<body>
+	<div id="img">
+		<div style="left: 0;">
+			<img src="images/123.JPG" alt="" />
+			<img src="images/123.JPG" alt="" />
+		</div>
+		<div style="left: 640px;">
+			<img src="images/123.JPG" alt="" />
+			<img src="images/123.JPG" alt="" />
+		</div>
+	</div>
+	<div id="btn">
+		<button>上一张</button>
+		<button>下一张</button>
+	</div>
+	<script type="text/javascript">
+		var Img = document.getElementById("img").getElementsByTagName("div");
+		var btn = document.getElementById("btn").getElementsByTagName("button");
+		var c,d;
+		function  ds() {
+			c = parseInt(Img[0].style.left);
+			d = parseInt(Img[1].style.left);
+			Img[0].style.zIndex = 50;
+			Img[1].style.zIndex = 50;
+			Img[0].style.left = (c - 320)+"px";
+			Img[1].style.left = (d - 320)+"px";
+			if (c==(-640)) {
+				Img[0].style.zIndex = 0;
+				Img[1].style.zIndex = 50;
+				Img[0].style.left = "320px";
+			}
+			if (d==(-640)) {
+				Img[1].style.zIndex = 0;
+				Img[0].style.zIndex = 50;
+				Img[1].style.left = "320px";
+			}
+		}
+		
+		var time = setInterval(ds,2000);
+		
+		
+		btn[0].onclick = function  () {
+			clearInterval(time);
+			
+			c = parseInt(Img[0].style.left);
+			d = parseInt(Img[1].style.left);
+			Img[0].style.zIndex = 50;
+			Img[1].style.zIndex = 50;
+			console.log(c);
+			console.log(d);
+			if (c==0) {
+				Img[1].style.zIndex = 0;	
+				Img[0].style.left = "0px";
+			}else{
+				Img[0].style.left = (c + 320)+"px";
+				Img[1].style.left = (d + 320)+"px";
+			}
+			if (c==320) {
+				Img[0].style.zIndex = 0;
+				Img[0].style.left = (c-960)+"px";
+			}
+			time = setInterval(ds,2000);
+		}
+		btn[1].onclick = function  () {
+			clearInterval(time);
+			c = parseInt(Img[0].style.left);
+			d = parseInt(Img[1].style.left);
+			console.log(c);
+			console.log(d);
+			if (d==(-320)) {
+				Img[0].style.zIndex = 0;
+				Img[1].style.zIndex = 50;
+				Img[1].style.left = "-320px";
+			}else{
+				Img[0].style.left = (c - 320)+"px";
+				Img[1].style.left = (d - 320)+"px";
+			}
+			if (c==(-640)) {
+				Img[0].style.zIndex = 0;
+				Img[1].style.zIndex = 50;
+				Img[0].style.left = "320px";
+			}
+			
+			if (d==(-640)) {
+				Img[0].style.zIndex = 50;
+				Img[1].style.zIndex = 0;
+				Img[1].style.left = "320px";
+			}
+			time = setInterval(ds,2000);
+		}
+	</script>
+</body>
+</html>

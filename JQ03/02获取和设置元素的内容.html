@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../JQ01/jQuery/jquery-1.12.2.js">
+		</script>
+	</head>
+	<body>
+		<div id="wrap"></div>
+		<div id="wrap1"></div>
+		<input type="text" name="" id="input" value="" />
+		<script type="text/javascript">
+			//设置标签内容
+			$("#wrap").text("<h2>h2标签</h2>");
+			$("#wrap1").html("<h2>h2标签</h2>");
+			//设置表单标签的value值
+			$("#input").val("123");
+			//获取标签内容
+			console.log($("#wrap").text());
+			console.log($("#wrap").html());
+			//获取表单标签的value值
+			console.log($("#input").val());
+		</script>
+	</body>
+</html>

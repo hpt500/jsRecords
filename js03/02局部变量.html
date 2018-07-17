@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//在函数内部通过var进行定义变量,称之为局部变量
+			//局部变量只在函数内部才能进行使用和访问,在函数外面没法访问
+			function aFn () {
+				var a = 100 ;
+			}
+			aFn();
+//			console.log(a);
+
+			var b = null; //赋值为null可以使变量不占空间
+			function bFn () {
+				//在函数内部不通过var进行声明的变量,被定义为全局变量
+				//注:一般不提倡不提前声明就直接在函数内部直接定义全局变量,这不符合规范
+				b = 200;
+			}
+			bFn();
+			console.log(b);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div{
+				width: 300px;
+				height: 300px;
+				border: 1px black solid;
+				position: relative;
+			}
+			#qiu{
+				width: 10px;
+				height: 10px;
+				background-color: red;
+				border-radius: 5px;
+				position: absolute;
+				left: 0;
+				top:0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div">
+			<div id="qiu"></div>
+		</div>
+		<script src="js/tween.js"></script>
+		<script src="js/index.js"></script>
+		<script type="text/javascript">
+			var div = document.getElementById("div")
+			var qiu = document.getElementById("qiu");
+			var beginT = 1;
+			var beginH = 1;
+			
+			var begin1 = div.offsetLeft;
+			var begin2 = div.offsetTop;
+			
+			var end = 290;
+			var endT = 100;
+			
+			var ts = true;
+			var th = true;
+			
+			var time = setInterval(function () {
+				beginT++;
+				if(ts==true){
+					qiu.style.left = Tween.Linear(beginT,begin1,end-begin1,endT)+"px";
+					if(parseInt(qiu.style.left)>290){
+						beginT = 0;
+						ts = false;
+					}
+				}else{
+					qiu.style.left = Tween.Linear(beginT,end,begin1-end,endT)+"px";
+					if(parseInt(qiu.style.left)<1){
+						beginT = 0;
+						ts = true;
+					}
+				}
+			},5);
+			
+			var time2 = setInterval(function  () {
+				beginH++;
+				if(th==true){
+					qiu.style.top = Tween.Linear(beginH,begin2,end-begin2,endT)+"px";
+					if(parseInt(qiu.style.top)>290){
+						beginH = 0;
+						th = false;
+					}
+				}else{
+					qiu.style.top = Tween.Linear(beginH,end,begin2-end,endT)+"px";
+					if(parseInt(qiu.style.top)<1){
+						beginH = 0;
+						th = true;
+					}
+				}
+			},6);
+			
+		</script>
+	</body>
+</html>

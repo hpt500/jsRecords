@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var str = "123abc+-*/\n!@#$";
+			// . : 匹配单个字符,除了换行和行结束符
+			console.log(str.replace(/./g,"0"));
+			// \w : 查找单词字符   \W : 查找非单词字符
+			console.log(str.replace(/\w/g,"0"));
+			console.log(str.replace(/\W/g,"0"));
+			// \d : 查找数字   \D : 查找非数字
+			console.log(str.replace(/\d/g,"0"));
+			console.log(str.replace(/\D/g,"0"));
+			// \s : 查找空白字符   \S : 查找非空白字符
+			var str2 = "abc 123 ABC"
+			console.log(str2.replace(/\s/g,"@"));
+			console.log(str2.replace(/\S/g,"@"));
+			// \b : 匹配单词边界   \B : 匹配非单词边界
+			console.log(str2.replace(/\b/g,"@"));
+			console.log(str2.replace(/\B/g,"@"));
+			var str3 = "abc\n123\nABC"
+			// \n : 匹配换行符
+			console.log(str3.replace(/\n/g,"@"));
+			// \u : 匹配汉字
+			///[\u4e00-\u9fa5] /g汉字字符编码区间
+			var str4 = "abc你123我abc他";
+			console.log(str4.replace(/[\u4e00-\u9fa5]/g,"$"));
+			var str5 = "abcdefg";
+			var str6 = "gfedcba";
+			// n$ : 匹配任何结尾为n的字符串.
+			console.log(str5.replace(/g$/g,"$"));
+			console.log(str6.replace(/g$/g,"$"));
+			// ^n : 匹配任何开头为n的字符串.
+			console.log(str5.replace(/^g/g,"$"));
+			console.log(str6.replace(/^g/g,"$"));
+			var str7 = "abcdefg";
+			var str8 = "afedcdfsfsdbg";
+			//匹配以a字符开头,g字符结尾的字符数为7的"单词"
+			console.log(str5.replace(/^a\w{5}g$/g,"$"));
+			console.log(str7.replace(/^a\w{5}g$/g,"$"));
+			console.log(str8.replace(/^a\w{5}g$/g,"$"));//字符数超过7
+			// | : a|b|c匹配a 或b 或c 中任意一个
+			var str9 = "abgfsdfscsggha";
+			console.log(str9.replace(/a|b|c/g,"&"));
+			console.log(str9.replace(/g|s/g,"&"));
+			console.log(str9.replace(/[abc]/g,"&"));
+		</script>
+	</body>
+</html>

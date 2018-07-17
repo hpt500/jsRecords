@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		//一次性定时器，参数一为一个函数，参数二为一个毫秒数
+			var t1 = setTimeout(function(){
+				alert("一秒到了")
+			},1000);
+			var t2 = setTimeout(function(){
+				alert("第二个定时器")
+			},2000);
+			console.log(t1);
+			console.log(t2);
+			clearTimeout(2);
+		</script>
+	</body>
+</html>

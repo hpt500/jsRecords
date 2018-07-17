@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../JQ01/jQuery/jquery-1.12.2.js">
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+			<div>div</div>
+			<p>p</p>
+		</div>
+		<script type="text/javascript">
+			var wrap = document.getElementById("wrap");
+			//is()根据选择器、DOM元素或JQ对象来检测匹配元素集合，如果其中至少有一个元素符合这个给定的表达式就返回true
+			console.log($("#wrap").is(wrap));//true
+			console.log($("#wrap").is("div"));//true
+			console.log($("#wrap").is($("#wrap div").parent()));//true
+			console.log($("#wrap").children("p").is("div"));//false
+		</script>
+	</body>
+</html>

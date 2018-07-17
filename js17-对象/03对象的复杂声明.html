@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			function person(name) {
+				this.name = name;
+				this.sayHello = function () {
+					alert("Hello,"+this.name+"!");
+				}
+			}
+			var obj1 = new person("jack");
+			obj1.sayHello();
+			var obj2 = new person("john");
+			obj2.sayHello();
+			console.log(obj1,obj2.constructor);
+		</script>
+	</body>
+</html>

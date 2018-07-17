@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var reg = /abc/;
+			var reg1 = /abc/g;
+			var reg2 = /abc/gi;
+			var str = "abc123AbcdefABC123abc";
+			//replace:替换与正则表达式匹配的子串
+			console.log(str.replace(reg,"###"));
+			console.log(str.replace(reg1,"###"));
+			console.log(str.replace(reg2,"###"));
+		</script>
+	</body>
+</html>

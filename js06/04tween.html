@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				position: relative;
+			}
+			#div{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div"></div>
+		<script src="js/tween.js" type="text/javascript">
+		</script>
+		<script type="text/javascript">
+			var div = document.getElementById("div");
+//			t current time 当前时间,记录帧
+//			b beginning value 初始值
+//			c change in value 改变量
+//			d duration 持续时间,结束帧
+			var beginT = 0;
+			var begin = 0;
+			var end = 500;
+			var endT = 30;
+			var t = setInterval(function  () {
+				beginT++;
+				if (beginT==endT) {
+					clearInterval(t);		
+				}
+				div.style.left = Tween.Linear(beginT,begin,end-begin,endT)+"px";
+			},60);
+		</script>
+	</body>
+</html>

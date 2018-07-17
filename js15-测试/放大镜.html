@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		#small{
+			width: 350px;
+			height: 350px;
+			border: 5px solid black;
+			position: relative;
+			float: left;
+		}
+		#small img{
+			width: 100%;
+		}
+		#dragbox{
+			width: 100px;
+			height: 100px;
+			background-color: rgba(100,100,100,0.5);
+			position: absolute;
+			left: 0;
+			top: 0;
+			display: none;
+		}
+		#big{
+			width: 350px;
+			height: 350px;
+			border: 5px solid black;
+			position: relative;
+			float: left;
+			overflow: hidden;
+			display: none;
+		}
+		#big img{
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+<div id="small">
+	<img src="img/min.jpg" id="smallimg"/>
+	<div id="dragbox"></div>
+</div>
+<div id="big">
+	<img src="img/max.jpg" alt="" id="bigimg" />
+</div>
+<script type="text/javascript">
+	var small = document.getElementById("small");
+	var big = document.getElementById("big");
+	var simg = document.getElementById("smallimg");
+	var bimg = document.getElementById("bigimg");
+	var dragBox = document.getElementById("dragbox");
+	small.onmouseover = function(event){
+		var e = window.event||event;
+		big.style.display = "block";
+		dragBox.style.display = "block";
+		//获取色块宽高
+		var dW = dragBox.clientWidth;
+		var dH = dragBox.clientHeight;
+		//获取小图片的宽高
+		var sW = small.clientWidth;
+		var sH = small.clientHeight;
+		init();//在元素显示之后再调用重置比例函数
+		small.onmousemove = function(event){
+			var e = window.event||event;
+			//计算获取色块的位置值
+			var ml = e.clientX-dW/2-this.clientLeft-this.offsetLeft;
+			var mt = e.clientY-dH/2-this.clientTop-this.offsetTop;
+			//色块碰壁检测
+			if(ml<0){
+				ml=0;
+			}else if(ml>sW-dW){
+				ml=sW-dW;
+			}
+			if(mt<0){
+				mt=0;
+			}else if(mt>sH-dH){
+				mt=sH-dH;
+			}
+			//设置色块的位置
+			dragBox.style.left = ml + "px";
+			dragBox.style.top = mt + "px";
+			
+			//计算并设置大图的位置
+			//dragboxT:smallH = bigimgT:bigimgH
+			bimg.style.top = -mt*bimg.offsetHeight/sH+"px";
+			bimg.style.left = -ml*bimg.offsetWidth/sW+"px";
+		}
+	}
+	small.onmouseout = function(){
+		big.style.display = "none";
+		dragBox.style.display = "none";
+	}
+	//初始化比例
+	function init(){
+//		dragboxW:simgW=bigW:bimgW
+		//改变色块宽高
+//		dragBox.style.width = big.clientWidth*simg.offsetWidth/bimg.offsetWidth+"px";
+//		dragBox.style.height = big.clientHeight*simg.offsetHeight/bimg.offsetHeight+"px";
+//console.log(dragBox.offsetWidth,bimg.offsetWidth,simg.offsetWidth);
+		//改变大图显示区域的宽高
+		big.style.width = dragBox.offsetWidth*bimg.offsetWidth/simg.offsetWidth + "px";
+		big.style.height = dragBox.offsetHeight*bimg.offsetHeight/simg.offsetHeight + "px";
+	}
+	
+</script>
+</body>
+</html>
+
+
+
+
+
+
+

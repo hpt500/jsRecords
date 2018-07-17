@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#wrap{
+			width: 920px;
+			margin: 0 auto;
+			background-color: #eee;
+			/*height: 100px;*/
+			/*overflow: hidden;*/
+		}
+		.list{
+			width: 300px;
+			/*height: 100px;*/
+			float: left;
+		}
+		.list:nth-child(2){
+			margin: 0 10px;
+		}
+		.list div{
+			margin-bottom: 10px;
+			background-color: cornflowerblue;
+		}
+	</style>
+</head>
+<body>
+<div id="wrap">
+	<div class="list"></div>
+	<div class="list"></div>
+	<div class="list"></div>
+</div>
+<script type="text/javascript">
+var wrap = document.getElementById("wrap");
+//var list = wrap.getElementsByTagName("div");
+var list = wrap.children;
+var divCount = 0;
+var HeightArr = [0,0,0];//记录三个列的高度值
+window.onscroll = function(){
+	//获取滚动条滚动高度
+	var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+	//获取窗口显示区域的高度
+	var windowHeight = document.documentElement.clientHeight;
+	//获取最小高度列的高度
+	var minListHeight = Math.min.apply(null,HeightArr);
+	if(scrollTop+windowHeight>=minListHeight){
+		createDiv(10);
+	}
+}
+//定义创建Div的函数，count参数定义创建div的个数
+function createDiv(count){
+	for(var i=0;i<count;i++){
+		var div = document.createElement("div");
+		div.innerText = divCount + i;
+		div.style.height = rdnFn(150,300) + "px";
+		layoutFn(div);
+	}
+	divCount+=count;
+}
+createDiv(10);
+function layoutFn(obj){
+	// 获取高度记录数组中的最小高度值
+	var minHeight = Math.min.apply(null,HeightArr);
+	// 通过最小高度值获在高度记录数组中的索引值
+	var listIndex = HeightArr.indexOf(minHeight);
+	// 通过索引值获取最小list
+	var minList = list[listIndex];
+	minList.appendChild(obj);
+	var marginBottom = 10;
+	// 将当前最小高度值加上插入的div高度值和marginBottom值
+	HeightArr[listIndex] += obj.offsetHeight + marginBottom;
+}
+function rdnFn(min,max){
+	return Math.floor(Math.random()*(max-min+1)+min);
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

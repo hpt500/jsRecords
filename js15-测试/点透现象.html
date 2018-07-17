@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title></title>
+	<style type="text/css">
+		#div{
+			width: 100px;
+			height: 100px;
+			background-color: rgba(0,0,0,0.5);
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		#div1{
+			width: 50px;
+			height: 50px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+<a href="http://www.baidu.com">百度一下</a>
+<div id="div1"></div>
+<div id="div"></div>
+<script src="js/fastclick.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	//调用fastclick.js插件来解决点透现象
+	if ('addEventListener' in document) {
+		document.addEventListener('DOMContentLoaded', function() {
+			FastClick.attach(document.body);
+		}, false);
+	}
+	var div = document.getElementById("div");
+	var div1 = document.getElementById("div1");
+//	div.onclick = function(){
+//		this.style.display = "none";
+//	}
+	div.addEventListener("touchstart",function(){
+		this.style.display = "none";
+//		return false;
+		//event.preventDefault();//通过标准写法的取消默认事件来解决移动端点透现象
+	});
+	div1.onclick = function(){
+		alert("aaa");
+	};
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

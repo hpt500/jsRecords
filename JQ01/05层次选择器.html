@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.min.js">
+		</script>
+	</head>
+	<body>
+		<ul class="ul">
+			<li>li1
+				<ul>
+					<li>li1.1</li>
+					<li>li1.2</li>
+					<li>li1.3</li>
+				</ul>
+			</li>
+			<li class="one">li2</li>
+			<li>li3</li>
+			<li>li4</li>
+		</ul>	
+		
+		<ul class="ul">
+			<li>li1
+				<ul>
+					<li>li1.1</li>
+					<li>li1.2</li>
+					<li>li1.3</li>
+				</ul>
+			</li>
+			<li class="one">li2</li>
+			<li>li3</li>
+			<li>li4</li>
+		</ul>	
+		
+		<script type="text/javascript">
+			//E F选取E元素里的所有F后代元素
+			$(".ul li").css("color","red");
+			//F>F 选取E元素下的F子元素
+			$(".ul>li").css("color","blue");
+			//E+F 选取紧接着E元素后的F元素，除了本身
+			$(".one+li").css("background","yellow");
+			//E~F 选取E元素后的所有F元素，除了本身
+			$(".one~li").css("background","pink");
+		</script>
+	</body>
+</html>

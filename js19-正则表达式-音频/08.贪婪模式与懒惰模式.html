@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	var str = "abcdssdababbfbcbaaab";
+	console.log(str);
+	//正则表达式默认匹配时会采用贪婪模式，贪婪模式:尽量匹配满足条件的最长字符串
+	console.log(str.match(/a.*b/g));
+	//懒惰模式，尽量匹配最短的字符串
+	//*? 重复任意次，但尽可能少重复
+	console.log(str.match(/a.*?b/g));
+	
+	//+? 重复1次或更多次，但尽可能少重复 
+	console.log(str.match(/a.+b/g));
+	console.log(str.match(/a.+?b/g));
+	
+	//{n,m}? 重复n到m次，但尽可能少重复 
+	//{n,}? 重复n次以上，但尽可能少重复
+	console.log(str.match(/a.{2,}b/g));
+	console.log(str.match(/a.{2,}?b/g));
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="javascript:void(0)" id="form1">
+			<input type="text" name="text1" id="text1" value="" />
+			<input type="text" name="text2" id="text2" value="" />
+			<input type="submit" value="submit"/>
+			<input type="reset" value="rest"/>
+		</form>
+		<div id="div">sdfsfwhek</div>
+		<script type="text/javascript">
+			var text1 = document.getElementById("text1");
+			var text2 = document.getElementById("text2");
+			var form1 = document.getElementById("form1");
+			//当表单元素获取焦点时触发
+			text1.onfocus = function () {
+				console.log("text1 获取焦点");
+			}
+			//当表单元素失去焦点时触发
+			text1.onblur = function () {
+				console.log("text1 失去焦点");
+			}
+			//当表单元素内容发生改变时触发
+			text2.onchange = function  () {
+				alert("text2 内容发生改变");
+			}
+			
+			//当点击提交按钮时触发
+			form1.onsubmit = function () {
+				alert("提交内容")
+			}
+			//当点击重置按钮时触发
+			form1.onreset = function () {
+				//重置按钮事件默认返回true,重置表单内容,如果返回false则不重置表单内容
+				return confirm("您确定重置表单内容");
+			}
+			//当表单(input,textarea)内容被选取时触发事件
+			text1.onselect = function () {
+				alert("text1内容被选取");
+			}
+			//给"表单标签"之外的标签绑定select事件无效
+			document.getElementById("div").onselect = function  () {
+				alert("div内容被选取")
+			}
+		</script>
+	</body>
+</html>

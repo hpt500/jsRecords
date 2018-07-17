@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="btn">创建会话存储数据</button>
+		<script type="text/javascript">
+			var btn = document.getElementById("btn");
+			var s = "name";
+			btn.onclick = function () {
+				//设置会话存储数据
+				sessionStorage.setItem("name","john");
+				sessionStorage.setItem("name1","john");
+				//获取会话存储数据的值value
+				console.log(sessionStorage.getItem("name"));
+				//获取会话存储数据中对应数据条目的键名
+				console.log(sessionStorage.key(s));
+				//获取会话存储数据中对应数据条目的长度
+				console.log(sessionStorage.length);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.js">
+		</script>
+	</head>
+	<body>
+		<ul class="ul1">
+			<li>li1</li>
+			<li>li2</li>
+			<li>li3</li>
+			<li>li4</li>
+		</ul>
+		<ul class="ul2">
+			<li>li1</li>
+			<li>li2</li>
+			<li>li3</li>
+			<li>li4</li>
+		</ul>
+		<script type="text/javascript">
+			//获取页面中所有li标签
+			console.log($("li"))
+			//从指定的选择器、JQ对象集合、或者是JS原生对象中获取指定的标签
+			console.log($("li",".ul1"));
+			console.log($("li",$(".ul1")));
+			var ul1 =	document.getElementsByClassName("ul1")[0];
+			console.log($("li",ul1));
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div{
+				width: 100px;
+				position: absolute;
+				right: 0;
+			}
+			#div>div{
+				width: 100px;
+				height: 150px;
+				background-color: skyblue;
+			}
+			#div button{
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div">
+			<div></div>
+			<button>关闭</button></div>
+		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+		<script type="text/javascript">
+			var div = document.getElementById("div");
+			//设置侧边栏广告的初始位置
+			function init () {
+				var windowHeight = document.documentElement.clientHeight;
+				var divHeight = div.offsetHeight;
+				div.style.top = windowHeight/2 - divHeight/2 + "px";
+			}
+			init();
+			var t = div.offsetTop;
+			//给窗口绑定滚动条滚动事件
+			window.onscroll = function  () {
+				var sT = getScrollTop();
+				console.log(sT);
+				div.style.top = t + sT + "px";
+			}
+			
+			function getScrollTop () {
+				return document.documentElement.scrollTop || document.body.scrollTop; //IE&FF || chrome
+			}
+ 		</script>
+	</body>
+</html>

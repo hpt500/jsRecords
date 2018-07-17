@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+		<script type="text/javascript">
+			//获取页面滚动条滚动高度的兼容写法
+			function getScrollTop () {
+				return document.documentElement.scrollTop || document.body.scrollTop; //IE&FF || chrome
+			}
+			//设置页面滚动条滚动高度的兼容写法
+			function setScrollTop (top) {
+				document.documentElement.scrollTop = top;
+				document.body.scrollTop = top; 
+			}
+			setScrollTop(200);
+			console.log(getScrollTop ());
+		</script>
+	</body>
+</html>

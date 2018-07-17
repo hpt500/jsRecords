@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div{
+				width: 100px;
+				height: 100px;
+				background-color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div"></div>
+		<script src="js/tween.js"></script>
+		<script src="js/tweenMove.js"></script>
+		<script type="text/javascript">
+			var div = document.getElementById("div");
+			tweenMove(div,"marginTop",0,400,30,"Back","easeIn");
+		</script>
+	</body>
+</html>

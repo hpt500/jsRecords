@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style type="text/css">
+	#wrap{
+		margin: 20px 10px;
+		background-color: red;
+		border: 5px solid black;
+		width: 400px;
+		height: 400px;
+		padding: 30px;
+		position: absolute;
+		left: 100px;
+		top: 50px;
+	}
+	#box{
+		width: 100px;
+		height: 100px;
+		background-color: skyblue;
+		position: absolute;
+		left: 100px;
+		top: 100px;
+	}
+</style>
+</head>
+<body>
+<div id="wrap">
+	<div id="box"></div>
+</div>
+<script type="text/javascript">
+	var box = document.getElementById("box");
+//	console.log(box.offsetTop);
+	function getPosition(obj){
+		//获取当前元素的left值
+		var left = obj.offsetLeft;
+		//获取当前元素的top值
+		var top = obj.offsetTop;
+		//获取当前元素的定位父级
+		var oParent = obj.offsetParent;
+		//判断定位父级是否存在，存在将left和top加上定位父级的left和top值，以及定位父级的左边框和上边框值
+		while(oParent){
+			left += oParent.offsetLeft + oParent.clientLeft;
+			top += oParent.offsetTop + oParent.clientTop;
+			oParent = oParent.offsetParent;
+		}
+//		return [top,left];
+		return {"left": left,"top": top};
+	}
+	console.log(getPosition(box));
+	console.log(getPosition(box).left);
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

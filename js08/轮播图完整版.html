@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		.wrap{
+			width: 400px;
+			border: 5px solid black;
+			position: relative;
+			/*overflow: hidden;*/
+		}
+		#con{
+			width: 2800px;
+			position: relative;
+			overflow: hidden;
+			left: 0;
+			/*transition: 1s;*/
+			z-index: -1;
+		}
+		img{
+			width: 400px;
+			float: left;
+		}
+		#btn{
+			width: 100px;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+			z-index: 100;
+		}
+		i{
+			float: left;
+			width: 10px;
+			height: 10px;
+			margin: 10px 5px;
+			background-color: azure;
+			border-radius: 50%;
+		}
+		i.active{
+			background-color: #000;
+		}
+		#prev,#next{
+			width: 40px;
+			height: 100px;
+			line-height: 100px;
+			font-size: 50px;
+			font-weight: bold;
+			color: white;
+			text-align: center;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			margin: auto 0;
+		}
+		#next{
+			right: 0;
+		}
+		#prev:hover,#next:hover{
+			background-color: rgba(0,0,0,0.3);
+		}
+	</style>
+</head>
+<body>
+<div class="wrap">
+	<div id="con">
+		<img src="img/test5.jpg"/>
+		<img src="img/test1.jpg"/>
+		<img src="img/test2.jpg"/>
+		<img src="img/test3.jpg"/>
+		<img src="img/test4.jpg"/>
+		<img src="img/test5.jpg"/>
+		<img src="img/test1.jpg"/>
+	</div>
+	<div id="btn">
+		<i class="active"></i>
+		<i></i>
+		<i></i>
+		<i></i>
+		<i></i>
+	</div>
+	<div id="prev"><</div>
+	<div id="next">></div>
+</div>
+<script type="text/javascript">
+	var con = document.getElementById("con");
+	var img = con.getElementsByTagName("img");
+	var btnDiv = document.getElementById("btn");
+	var btn = btnDiv.getElementsByTagName("i");
+	var prev = document.getElementById("prev");
+	var next = document.getElementById("next");
+	var index = 1;//当前显示图片的序号
+	var step = 10;//切换动画的总帧数
+	var t1,t2;//定时器
+	//设置显示图片为默认的第一张图片
+	con.style.left = - img[0].offsetWidth + "px";
+	function timerFn(){
+		t1 = setTimeout(function(){
+			index++;
+			moveFn();
+		},2000);
+	}
+	timerFn();
+	//定义图片切换动画函数
+	function moveFn(){
+		//获取当前left值
+		var start = con.offsetLeft;
+		//获取切换结束left值
+		var end = index * img[0].offsetWidth;
+		//获取每一帧的切换速度
+		var speed = (start+end)/step;
+		var nowStep = 0;
+		console.log(index);
+		t2 = setInterval(function(){
+			if(nowStep>=step){
+				//判断当前图片是否为最后一张图片，是的话切回默认的第一张图片
+				if(index==img.length-1){
+					index = 1;
+					con.style.left = - img[0].offsetWidth + "px";
+				}
+				//改变图片按钮的样式
+				for(var i=0;i<btn.length;i++){
+					btn[i].className = "";
+				}
+				btn[index-1].className = "active";
+				clearInterval(t2);
+				//调用定时切换函数
+				timerFn();
+			}else{
+				con.style.left = con.offsetLeft - speed + "px";
+				nowStep++;
+			}
+		},30)
+	}
+	for(var j=0;j<btn.length;j++){
+		btn[j].index = j;
+		btn[j].onclick = function(){
+			//改变当前图片序号
+			index = this.index+1;
+			runFn();
+		}
+	}
+	//下一张图片按钮点击事件
+	next.onclick = function(){
+		//判断当前显示图片是否最后一张图片
+		if(index>=img.length-1){
+			index = 1;
+			con.style.left = - img[0].offsetWidth + "px";
+		}else{
+			index++;
+		}
+//		//清除定时器
+//		clearTimeout(t1);
+//		clearInterval(t2);
+//		//调用执行图片切换函数
+//		moveFn();
+		runFn();
+	}
+	//上一张图片按钮点击事件
+	prev.onclick = function(){
+		//判断当前图片是否为默认的第一张图片
+		if(index<=1){
+			index=btn.length;
+			con.style.left = - img[0].offsetWidth * (btn.length+1) + "px";
+//			con.style.left = - img[0].offsetWidth * (img.length-1) + "px";
+		}else{
+			index--;
+		}
+		runFn();
+	}
+	function runFn(){
+		//清除定时器
+		clearTimeout(t1);
+		clearInterval(t2);
+		//调用执行图片切换函数
+		moveFn();
+	}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+

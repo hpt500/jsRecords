@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.js">
+		</script>
+		<style type="text/css">
+			#main{
+				padding: 10px;
+			}
+			#main>div:nth-child(2){
+				margin: 10px 0 ;
+			}
+			#main>div:nth-child(2) span{
+				vertical-align: top;				
+			}
+			#main>div:nth-child(3){
+				padding-bottom: 10px ;
+				border-bottom: 1px grey solid;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<div>
+				<span>姓名：</span>
+				<input type="text" id="name" value=""/>
+			</div>
+			
+			<div>
+				<span>留言：</span>
+				<textarea name="" id="word" cols="30" rows="10"></textarea>	
+			</div>
+			
+			<div id="button">
+				<input type="button" name="btn" id="btn" value="提交" />
+			</div>
+		</div>
+		<script type="text/javascript">
+			$("#btn").on("click",function () {
+				console.log($("#name").val());
+				console.log($("#word").val());
+				var div = $("<div>",{
+					css : {
+						width : 300,
+						display : "none",
+						padding : 10,
+						background : "orange",
+						borderRadius: 10,
+						margin : 20
+					}
+				}).append($("<div>",{
+					text : $("#name").val(),
+					css : {
+						padding : 10,
+						borderBottom : "1px grey solid",
+					}
+				})).append($("<div>",{
+					text : $("#word").val(),
+					css : {
+						padding : 10,
+					}
+				}).append($("<div>",{
+					text : "删除",
+					css : {
+						float : "right",
+						color : "red"
+					}
+				}).on("click",function () {
+					div.slideUp("slow",function () {
+						div.remove();
+					});
+				}))).appendTo("#main").slideDown("slow");
+			});
+		</script>
+	</body>
+</html>

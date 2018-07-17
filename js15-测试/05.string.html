@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	var str = "abcdefg";
+	console.log(str.substring(5,1));//bcde
+	console.log(str.substring(5,-1));//abcde
+	console.log(str.substr(1,3));//bcd
+	console.log(str.slice(-3,-2));//e
+	
+	console.log(str.indexOf("de"));//3
+	console.log(str.indexOf("ccc"));//-1
+	
+	console.log(str.split());
+	
+	console.log(str.concat("123",str));//abcdefg123abcdefg
+	console.log(str.toUpperCase());//ABCDEFG
+	console.log(str.toLowerCase());//abcdefg
+	console.log(str.trim());
+	console.log(str.trimLeft());
+	console.log(str.trimRight());
+	console.log(str.charAt(1));//b
+	console.log(str.charCodeAt());//97
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

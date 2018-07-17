@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../JQ01/jQuery/jquery-1.12.2.js">
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li>li1</li>
+			<li>li2</li>
+			<li>li3</li>
+			<li>li4</li>
+			<li>li5</li>
+		</ul>
+		<script type="text/javascript">
+			//map()将一组元素转换成其他数组,并返回一个新的JQ对象
+			var a = $("li").map(function () {
+				return $(this).text();
+			});
+			console.log($("li"));
+			console.log($("li").get());
+			console.log(a);
+			//.get()将jQ对象转化成原生的JS对象
+			console.log(a.get());	
+		</script>
+	</body>
+</html>

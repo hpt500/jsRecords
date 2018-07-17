@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.js">
+		</script>
+	</head>
+	<body>
+		<ul class="ul1">
+			<li>li1</li>
+			<li>li2</li>
+			<li>li3</li>
+			<li>li4</li>
+		</ul>
+		<ul class="ul2">
+			<li>li1</li>
+			<li>li2</li>
+			<li>li3</li>
+			<li>li4</li>
+		</ul>
+		<script type="text/javascript">
+			//返回JQ对象中元素的个数,推荐使用length
+			console.log($("li").size());
+			console.log($("li").length);
+			//搜索匹配的元素,并返回相应元素的索引值,从0开始计数
+			console.log($("li:nth-child(3)").index());
+			console.log($(".ul2 li:nth-child(3)").index());//返回当前匹配元素相对于同辈元素的索引值
+			console.log($(".ul2 li:nth-child(3)").index("li"));//返回当前匹配元素相对于页面中所有li标签的索引值
+			console.log($(".ul2 li:nth-child(3)").index(".ul2 li"));//返回当前匹配元素在指定元素集合中的索引值
+		</script>
+	</body>
+</html>

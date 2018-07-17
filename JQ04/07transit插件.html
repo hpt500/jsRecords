@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.js">
+		</script>
+		<script type="text/javascript" src="easing&transit&sizzle/jquery.transit.min.js">
+		</script>
+		<style type="text/css">
+			#div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 0;
+				top: 0;
+				z-index: -1;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div"></div>
+		<button id="click">click</button>
+		<button id="stop">stop</button>
+		<button id="finish">finish</button>
+		<script type="text/javascript">
+		$("#click").click(function () {
+			/*$("#div").css({
+//				rotate : 30,
+//				translate : [100,200],
+//				x : 100,//translateX
+//				y : 200//translateY
+//				skewX : 10,
+//				skewY : 10
+				scale : 2
+			})*/
+			/*$("#div").animate({
+				transform : "rotate(30deg)",//仍无效果，transit插件并未拓展该属性
+//				rotate : 30,
+//				x : 100,//translateX
+//				y : 200//translateY
+//				skewX : 10,
+//				skewY : 10
+//				scale : 2
+			})*/
+			//trainsit插件新拓展出来的方法
+			$("#div").transition({
+				transform : "rotate(30deg)",//有效果
+//				translate : [100,200],
+//				rotate : 30,
+//				x : 100,//translateX
+//				y : 200//translateY
+//				skewX : 10,
+//				skewY : 10
+//				scale : 2
+			},5000)
+		})
+		</script>
+	</body>
+</html>

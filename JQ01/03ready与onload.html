@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.min.js">
+		</script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//JQ绑定ready事件
+			/*$(document).ready(function () {
+				alert(1);
+			});*/
+			//JQ绑定ready事件 写法二	
+			/*$().ready(function () {
+				alert(1);
+			});*/
+			//JQ绑定ready事件 写法三	
+			$(function () {
+				alert(1);
+			});
+			//JQ绑定onload事件
+			$(window).load(function  () {
+				alert(2);
+			});
+		</script>
+	</body>
+</html>

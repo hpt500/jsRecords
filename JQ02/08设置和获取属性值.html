@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.js">
+		</script>
+	</head>
+	<body>
+		<div>div标签</div>
+		<script type="text/javascript">
+			//设置元素单个属性
+			$("div").attr("class","div");
+			//获取元素属性值
+			console.log($("div").attr("class"));
+			//设置元素多个属性
+			$("div").attr({
+				id : "div",
+				title : "div标签",
+				style : "color:red"
+			})
+		</script>
+	</body>
+</html>

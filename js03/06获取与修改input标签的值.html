@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="content" value=""/>
+		<br />
+		<div id="numBtn">
+			<button value="1">1</button>
+			<button value="2">2</button>
+			<button value="+">+</button>
+		</div>
+		<div id="cBtn">
+			<button id="clear">c</button>
+			<button id="equal">=</button>
+		</div>
+		<script>
+			var content = document.getElementById("content");
+			var equal = document.getElementById("equal");
+			var clear = document.getElementById("clear");
+			var numBtn = document.getElementById("numBtn").getElementsByTagName("button");
+			var cBtn = document.getElementById("cBtn").getElementsByTagName("button")[0];
+			//绑定数字与运算符按钮事件
+			for (var i = 0; i < numBtn.length; i++) {
+				numBtn[i].onclick = function  () {
+					//通过元素名.属性名的方式获取对应标签属性的值
+//					console.log(this.value);				
+					//通过元素名[属性名字符串]的方式获取对应标签属性的值
+					console.log(this.value);
+					content.value += this.value;
+				}
+			}
+			equal.onclick = function () {
+				var val = eval(content.value);
+				content.value = val;
+			}
+			clear.onclick = function  () {
+				content.value = "";
+			}
+			
+		</script>
+	</body>
+</html>

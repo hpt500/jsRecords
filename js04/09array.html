@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//通过字面量的方式定义数组
+			var arr = ["a","b","c"];
+			console.log(arr);
+			//通过new(实例化对象)的方式定义数组
+			var arr1 = new Array("a",1,2);
+			console.log(arr1);
+			
+			//获取数组长度
+			console.log(arr.length);//3
+			//获取对应索引值的元素
+			console.log(arr[2]);//c
+			
+			//数组赋值
+			arr[2]=0;
+			console.log(arr);
+			arr[4]=4;
+			console.log(arr);
+			console.log(arr[3]);//undefined
+			//数组长度取决于最大索引的那个值
+			console.log(arr.length);//5
+			console.dir(arr);
+			
+		</script>
+	</body>
+</html>

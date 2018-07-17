@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		//回调函数,在一个函数(如fn1)里面以传参的方式传入另外一个函数,并在必要时候,执行这个传入的函数
+			function fn1 (callback) {
+				callback && callback();
+			}
+			fn1(function () {
+				alert("aaa");
+			});
+		</script>
+	</body>
+</html>

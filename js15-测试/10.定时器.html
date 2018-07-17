@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	//循环定时器
+	var t1 = setInterval(function(){
+		
+	},60);
+	function clearInterval(a){
+		clearInterval(a);
+		a=null;//释放定时器序号的内存空间
+	}
+	clearInterval(t1);
+	var t2 = setTimeout(function(){
+		
+	},1000);
+	clearTimeout(t2);
+	var t3 = requestAnimationFrame(function(){
+		
+	});
+	cancelAnimationFrame(t3);
+	function timerFn(){
+		t3 = setTimeout(function(){
+			timerFn();
+		},60);
+	}
+	timerFn();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

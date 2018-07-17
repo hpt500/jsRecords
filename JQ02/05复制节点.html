@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jQuery/jquery-1.12.2.js">
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+			<p class="p">p标签</p>
+		</div>
+		<script type="text/javascript">
+			/*var nP = $("#p").clone();
+			$("#wrap").append(nP);*/
+			$(".p").clone().appendTo("#wrap").css("background","red");
+		</script>
+	</body>
+</html>

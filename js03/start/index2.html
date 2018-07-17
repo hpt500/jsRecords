@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#main{
+				margin: 10px;
+				width: 100px;
+				height: 100px;
+				background-color: grey;
+				transition: 1s;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="select">
+			<select name="width-height" id="select1">
+				<option value="width">宽度</option>
+				<option value="height">高度</option>
+				<option value="bgColor" selected="selected">颜色</option>
+			</select>
+			
+			<select name="" id="color">
+				<option value="lightblue">浅蓝</option>
+				<option value="lightpink">浅粉</option>
+				<option value="lightgreen">浅绿</option>
+			</select>
+			
+			<!--注意：html5新属性，不兼容低版本IE浏览器-->
+			<input type="color" name="color" id="color" value="" />
+			<input type="range" name="" id="range" value="" min="0" max="500"/>
+			
+			<!--<select name="pvalue" id="select2">
+				<option value="100px" selected="selected">100px</option>
+				<option value="200px">200px</option>
+				<option value="300px">300px</option>
+				<option value="400px">400px</option>
+				<option value="500px">500px</option>
+			</select>-->
+		</div>
+		<div id="main">
+		</div>
+		<script type="text/javascript">
+			var mAin = document.getElementById("main");
+			var sElect1 = document.getElementById("select1");
+			var sElect2 = document.getElementById("select2");
+			
+			var oColor = document.getElementById("color");
+			var oRange = document.getElementById("range");
+			
+			/*oColor.onchange = function  () {
+				var type = 
+			}*/
+			
+			//方法一缺陷:一开始默认宽度,调节像素值不改变,需选择select1选项后才能触发change
+//			sElect1.onchange = function  () {		
+//				console.log(this.value);
+//				if(this.value=="宽度"){
+//					sElect2.onchange = function  () {
+//						mAin.style.width=this.value;
+//					}
+//				}else{
+//					sElect2.onchange = function  () {
+//						mAin.style.height=this.value;
+//					}
+//				}		
+//			}
+			//方法二 
+			function random(){
+				var a;
+				a=Math.floor(Math.random()*7+1);
+				switch(a){
+					case 1:b="skyblue";break;
+					case 2:b="pink";break;
+					case 3:b="lightblue";break;
+					case 4:b="lightgreen";break;
+					case 5:b="purple";break;
+					case 6:b="lightyellow";break;
+					case 7:b="lightgrey";break;
+				}
+				return b;
+			}
+			
+			sElect2.onchange = function  () {
+				if(sElect1.value=="width"){
+					if(this.value>mAin.style.width){
+						mAin.innerHTML="哇哇哇！！！";
+					}else{
+						mAin.innerHTML="哎！！！"
+					}
+					mAin.style.width=this.value;
+					random();
+					mAin.style.backgroundColor=b;
+					
+				}else{
+					if(this.value>mAin.style.height){
+						mAin.innerHTML="我曹！！！";
+					}else{
+						mAin.innerHTML="呃！！！"
+					}
+					mAin.style.height=this.value;
+					random();
+					mAin.style.backgroundColor=b;			
+				}
+			}
+		</script>
+	</body>
+</html>

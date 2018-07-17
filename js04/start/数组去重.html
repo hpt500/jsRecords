@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	//数组去重
+	var arr = [5,2,3,4,4,4,1,1,2,4,2];
+	for(var i=0;i<arr.length;i++){
+		for(var j=i+1;j<arr.length;j++){
+			//判断当前遍历的元素与后面元素是否一样
+			if(arr[i]===arr[j]){
+				//删除后一个相同元素
+				arr.splice(j,1);
+				//删除一个元素后，后面的元素都往前移一位，所以此处j要自减1
+				j--;
+				console.log(arr);
+			}
+		}
+	}
+	console.log(arr);
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			img{
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="img/1.png" id="img"/>
+		<script type="text/javascript">
+			var img = document.getElementById("img");
+			var i = 1;
+			requestAnimationFrame(function () {
+				img.src = "img/"+i+".png";
+				i++;
+				if(i>10){
+					i=1;
+				}
+				requestAnimationFrame(arguments.callee);
+			});
+/*			setInterval(function  () {
+				img.src = "img/"+i+".png";
+				i++;
+				if(i>10){
+					i=1;
+				}
+			},60);*/
+			/*setTimeout(function  () {
+				img.src = "img/"+i+".png";
+				i++;
+				if(i>10){
+					i=1;
+				}
+				setTimeout(arguments.callee);
+			},60);*/
+		</script>
+	</body>
+</html>

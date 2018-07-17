@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../jQuery/jquery-1.12.2.js">
+		</script>
+		<style type="text/css">
+			#main{
+				width: 400px;
+				height: 300px;
+				border: 1px black solid;
+				position: relative;
+				overflow: hidden;
+			}
+			ul{
+				position: absolute;
+				overflow: hidden;
+				left: 125px;
+				bottom: 0;
+				list-style: none;
+			}
+			li{
+				width: 15px;
+				height: 15px;
+				background: white;
+				float: left;
+				border: 1px skyblue solid;
+				border-radius: 10px;
+			}
+			li:nth-child(2){
+				margin: 0 20px;
+			}
+			li:nth-child(1){
+				background: skyblue;
+			}
+			#con{
+				width: 2000px;
+				height: 300px;
+				position: absolute;
+				left: 0;
+			}
+			img{
+				width: 400px;
+				height: 100%;
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<div id="con">
+				<img src="img/1.jpg" alt="" />
+				<img src="img/1.jpg" alt="" />
+				<img src="img/1.jpg" alt="" />
+				<img src="img/1.jpg" alt="" />
+				<img src="img/1.jpg" alt="" />
+			</div>
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+		$("#con").css("left",-400);
+		var index = 0;
+		move();
+		function move () {
+			$("li").each(function (e) {
+				$(this).click(function () {
+					index = $(this).index();
+					//两个stop分别停止$("#con")的2秒延迟以及延迟后的执行动画
+					$("#con").stop().stop().animate({
+						left : -400*($(this).index()+1)
+					},500,"linear",function () {
+						move();
+					});	
+				})
+			}).eq(index).css("background","skyblue")
+			.siblings("li").css("background","white");
+			
+			$("#con").delay(1000).animate({
+				left : "-=400"
+			},1000,"linear",function () {
+				index++;
+				if(index==3){
+					$("#con").css("left",-400);
+					index = 0
+				}
+				move ();	
+			})
+		}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		请输入邮箱:<br />
+		<input type="text" id="tell"/>
+		<span id="tip"></span>
+		<script type="text/javascript">
+			var tip = document.getElementById("tip");
+			var oInput = document.getElementById("tell");
+			oInput.onchange = function  () {
+				var ts = oInput.value;
+				//xxxx@xxx.com
+				var reg = /^\w{6,16}\@\w{2,6}\.\w{2-6}$/;
+				var bool = reg.test(ts);
+				if(bool){
+					tip.innerText = "邮箱书写正确";
+				}else{
+					tip.innerText = "邮箱书写错误";
+				}
+			}
+		</script>
+	</body>
+</html>
+

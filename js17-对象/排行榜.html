@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<div id="rank"></div>
+<script type="text/javascript">
+	var rank = document.getElementById("rank");
+	function setRank(nowValue){
+		var maxValue = localStorage.getItem("rank");
+//		console.log(maxValue);
+		if(maxValue===null){
+			maxValue = 0;
+		}
+		if(nowValue>maxValue){
+			localStorage.setItem("rank",nowValue);
+//			alert("恭喜你破了记录！");
+//			rank.innerText = "当前最高分："+nowValue;
+		}
+	}
+	function getRank(){
+		return localStorage.getItem("rank");
+	}
+	
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

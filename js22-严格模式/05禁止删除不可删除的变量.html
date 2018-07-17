@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			"use strict"
+			/*var x = 100;
+			//严格模式下无法删除变量。只有configurable设置为true的对象属性才能被删除
+			delete x;
+			console.log(x);*/
+			var o = Object.create(null,{'x':{
+				value : 1,
+				configurable : true
+			}});
+			console.log(o);
+			delete o.x;//删除成功
+			console.log(o);
+		</script>
+	</body>
+</html>

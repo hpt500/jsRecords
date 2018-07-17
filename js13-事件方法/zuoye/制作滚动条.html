@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#main{
+				width: 300px;
+				height: 400px;
+				border: 5px black solid;
+				font-size: 30px;
+				overflow: hidden;
+				/*overflow: auto;*/
+				position: relative;
+				-webkit-user-select: none;
+				margin-top: 100px;
+			}
+			#content{
+				width: 93%;
+				/*height: 1600px;*/
+				background: lightgreen;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			#scroll{
+				background: skyblue;
+				width: 8%;
+				height: 100%;
+				float: right;
+				position: absolute;
+				right: 0;
+				transition: 1s;
+			}
+			#scroll>div{
+				background: lightcyan;
+				width: 100%;
+				/*height: 100px;*/
+				position: absolute;
+				left: 0;
+				top: 0;
+				box-shadow: 1px 1px 2px 1px grey;
+				transition: 0.2s;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<div id="scroll"><div id=""></div></div>
+				
+			<div id="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique facere necessitatibus dicta ad quo distinctio id esse culpa harum doloremque minima sed voluptatum enim corporis amet autem recusandae quas ab natus molestias eligendi ex sunt cupiditate porro inventore. Dignissimos est esse provident veritatis atque nulla quas odio maxime inventore molestias? Nemo vel ab harum. Impedit vero recusandae sed eveniet dolor delectus repellendus aliquid dignissimos cupiditate quis animi aspernatur expedita similique! Veritatis reiciendis repudiandae nisi dolor est et totam obcaecati ea necessitatibus amet esse aperiam exercitationem repellat officia neque eum nihil! Enim cum a laudantium obcaecati unde. Iure aliquid harum quam!
+			</div>
+			
+		</div>
+		<script type="text/javascript">
+			var main = document.getElementById("main");
+			var content = document.getElementById("content");
+			var scroll = document.getElementById("scroll");
+			var bool = scroll.getElementsByTagName("div")[0];
+			var mh = main.clientHeight;
+			var ch = content.clientHeight;
+			var bh ;
+			var sh = scroll.clientHeight;
+			function init(){
+				if(ch>mh){
+					bool.style.height = mh/ch*sh+"px";
+					bh = bool. clientHeight;
+				}else{
+					scroll.style.display = "none";
+				}		
+			}
+			init();
+			content.onmousedown = function (event) {
+				var e = window.event||event;
+				var bt = e.clientY + bool.offsetTop;
+				console.log(bt);
+				document.onmousemove = function(event){
+					var e = window.event || event;
+					var y = bt-e.clientY;
+//					console.log(e.clientY,bt);
+//					console.log(y);
+//					if(y<0){
+//						y=0;
+//					}else if(y+bh>sh){
+//						y = sh - bh;
+//					}
+					bool.style.top = y + "px";
+					content.style.top = -ch/sh*y + "px";
+				}
+			}
+			document.onmouseup = function(){
+				document.onmousemove = null;
+			}
+			
+			function mouseWheel (obj,callback) {
+				if(window.navigator.userAgent.indexOf("Firefox")>-1){
+					obj.addEventListener("DOMMouseScroll",fn);
+				}else{
+					obj.onmousewheel = fn;
+				}
+				function fn (event) {
+					var e = window.event || event;
+					var d = e.wheelDelta/6 || -e.detail/3;
+					callback(d);
+				}
+				return false;
+			}
+			mouseWheel(main,function (d) {
+				var bt = bool.offsetTop;
+				console.log(bt)
+				var y = bt+(-d);
+				if(y<0){
+					y=0;
+				}else if(y+bh>sh){
+					y = sh - bh;
+				}
+				bool.style.top = y + "px";
+				content.style.top = -ch/sh*y + "px";
+			});
+		</script>
+	</body>
+</html>

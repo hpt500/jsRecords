@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		Json:是一种"数据格式",本质有固定格式的字符串,类似于数组或对象
+		Json数据不支持undefined
+		<script type="text/javascript">
+			var obj = {
+				name : "jack",
+				age : 20,
+				sex : "female"
+			};
+			//JSON.stringify()将对象转化成JSON字符串
+			var objJson = JSON.stringify(obj,["name","age"],4);
+			console.log(objJson);
+			
+			//Json写法'{}'
+			//对象
+			var _json = '{"name" : "jack" , "age" : 20 , "sex" : "female"}';
+			//数组
+			var _json2 = '["jack",20,"male"]';
+			//JSON.parse()将Json字符串转化成JS对象或数组
+			var obj2 = JSON.parse(_json);
+			console.log(_json);
+			console.log(obj2);
+			var arr = JSON.parse(_json2);
+			//eval不安全,执行时内容可能被当做代码执行
+//			var arr = eval(_json2);
+			console.log(_json2);
+			console.log(arr);
+			
+			
+		</script>
+	</body>
+</html>

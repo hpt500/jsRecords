@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="btn">停止定时器</button>
+		<script type="text/javascript">
+			var i = 0;
+			var t1 = setInterval(function () {
+				 console.log(++i);
+			},1000);
+			console.log(i);
+			
+			var btn = document.getElementById("btn");
+			btn.onclick = function  () {
+				//清除循环定时器
+				clearInterval(t1);
+			}
+		</script>
+	</body>
+</html>

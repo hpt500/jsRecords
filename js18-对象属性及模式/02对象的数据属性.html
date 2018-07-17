@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var obj = {
+				name : "jack",
+				age : 20,
+				sex : "male"
+			};
+			console.log(obj);
+			obj.name = "Danny";
+			delete obj.age;
+			console.log(obj);
+			Object.defineProperty(obj,"sex",{
+				//configurable设置属性是否可以被删除,默认值为true可删除
+				configurable : false,
+				//writable设置属性是否可以被修改，默认值为true可修改
+				writable : false,
+				//enumerable设置属性是否可以被遍历，默认值为true可遍历
+				enumerable : false,
+				//value当前属性的值，默认值是undefined
+				value : "famale" ,
+			});
+			delete obj.sex;
+			obj.sex = "female";
+			console.log(obj);
+			for(var i in obj){
+				console.log(i + ":" + obj[i]);
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		请输入座机电话号码:<br />
+		<input type="text" id="tell"/>
+		<span id="tip"></span>
+		<script type="text/javascript">
+			var tip = document.getElementById("tip");
+			var oInput = document.getElementById("tell");
+			oInput.onchange = function  () {
+				var ts = oInput.value;
+				//正确格式为：“XXXX-XXXXXXX”，“XXXX-XXXXXXXX”，“XXX-XXXXXXX”，“XXX-XXXXXXXX”，“XXXXXXX”，“XXXXXXXX”
+//				var reg = /^(\d{3,4}\-\d{7,8}|\d\d{6,7})$/;
+				var reg = /^(\d{3,4}\-)?\d{7,8}$/;
+				var bool = reg.test(ts);
+				if(bool){
+					tip.innerText = "座机电话书写正确";
+				}else{
+					tip.innerText = "座机电话书写错误";
+				}
+			}
+		</script>
+	</body>
+</html>

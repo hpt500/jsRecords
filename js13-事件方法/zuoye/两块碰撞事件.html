@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#main>div{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		#main #div2{
+			left: 200px;
+			top: 100px;
+			background-color: skyblue;
+		}
+	</style>
+</head>
+<body>
+<div id="main">
+	<div id="div"></div>
+	<div id="div2"></div>
+</div>
+
+<script type="text/javascript">
+	var main = document.getElementById("main");
+	var div = main.children;
+//	var div = document.getElementById("div");
+	//获取屏幕宽高
+	var winW = document.documentElement.clientWidth;
+	var winH = document.documentElement.clientHeight;
+	var colorArr = ["red","orange","skyblue","pink","lightgreen"];
+	for (var i = 0; i < div.length; i++) {
+		//获取色块宽高
+		var width = div[i].offsetWidth;
+		var height = div[i].offsetHeight;
+		div[i].index = i;
+		div[i].onmousedown = function(event){
+			var e = window.event||event;
+			//获取鼠标在色块上点击位置
+			var ml = e.clientX - div[this.index].offsetLeft;
+			var mt = e.clientY - div[this.index].offsetTop;
+			var o = this.index;
+			document.onmousemove = function(event){
+				var e = window.event || event;
+				//计算鼠标移动时，当前色块的位置
+				var x = e.clientX-ml;
+				var y = e.clientY-mt;
+				if(x<0){
+					x=0;
+				}else if(x+width>winW){
+					x = winW - width;
+				}
+				if(y<0){
+					y=0;
+				}else if(y+height>winH){
+					y = winH - height;
+				}
+				div[o].style.left = x + "px";
+				div[o].style.top = y + "px";
+				boom ();
+				return false;//取消默认事件，鼠标按下移动时不会选中文字
+			}
+		}
+	}
+	
+	function boom () {
+		var d1l = div[0].offsetLeft;
+		var d1t = div[0].offsetTop;
+		var d2l = div[1].offsetLeft;
+		var d2t = div[1].offsetTop;
+		if(d1l>d2l-100&&d1l<d2l+100&&d1t<d2t+100&&d1t>d2t-100){
+			div[1].style.backgroundColor = colorArr[random()];
+			div[0].style.backgroundColor = colorArr[random()];
+		}
+		
+	}
+	
+	function random () {
+		return Math.floor(Math.random()*colorArr.length);
+	}
+	
+	//取消色块跟随事件要给document或window绑定
+	document.onmouseup = function(){
+		//当鼠标抬起时，移除鼠标移动事件
+		document.onmousemove = null;
+	}
+</script>
+</body>
+</html>

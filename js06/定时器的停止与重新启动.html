@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="btn">停止</button>
+		<script type="text/javascript">
+			var btn = document.getElementById("btn");
+			var bool = true;
+			var t;
+			var i=0;
+			function timerFn () {
+				t = setInterval(function  () {
+					i++;
+					console.log(i);
+				},1000);
+			}
+			timerFn ();
+			btn.onclick = function  () {
+				if(bool){
+					clearInterval(t);
+					btn.innerText = "启动";
+					bool = false;
+				}else{
+					timerFn();
+					btn.innerText = "停止";
+					bool = true;
+				}
+			}
+		</script>
+	</body>
+</html>

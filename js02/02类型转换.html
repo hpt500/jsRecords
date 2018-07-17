@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//Number()将数据转化成数组类型
+			console.log(Number(true));//1
+			console.log(Number(false));//0
+			console.log(Number("123"));//123
+			console.log(Number("123aaa"));//NaN
+			console.log(Number("abc"));//NaN
+			console.log(Number(null));//0;
+			console.log(Number(undefined));//NaN
+			console.log(NaN===NaN);//false
+			
+			//强制转换数据类型为整型数据
+			console.log(parseInt("123abc"));//123
+			//parseInt()只能提取字符前面的数字
+			console.log(parseInt("abc123"));//NaN
+			console.log(parseInt("123.456"));//123
+			
+			//parsetFloat()强制转换数据类型为浮点型数据
+			console.log(parseFloat("123.4abc"));//123.4
+			
+			//String()将对应数据转化 成字符串
+			console.log(String(123456));//123456
+			console.log(String(true));//true
+			
+			//Boolean()将对应数据转化成布尔值
+			console.log(Boolean(123));//true
+			console.log(Boolean(0));//false
+			console.log(Boolean("0"));//true
+			console.log(Boolean("asd123"));//true
+		</script>
+	</body>
+</html>

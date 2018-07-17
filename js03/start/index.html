@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#main{
+				width: 200px;
+				border: 1px black solid;
+				padding: 10px;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			button{
+				margin-top: 10px;
+			}
+			
+			#text input{
+				width: 100%;
+				font-size: 20px;
+				box-sizing: border-box;
+			}	
+			#cBtn button{		
+				width: 22%;
+			}
+			#numBtn{
+				width: 76%;
+				float: left;
+			}
+			#numBtn button{
+				width: 29%;
+			}
+			#numBtn button:nth-child(10){
+				width: 46.3%;
+			}
+			#numBtn button:last-child{
+				width: 46.3%;
+			}
+			#result{
+				width: 22%;
+				float: right;
+			}
+			#result button{
+				height: 52px;
+				width: 100%;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<div id="text">
+				<input type="text" id="content" value=""/>
+			</div>
+			<div id="cBtn">
+				<button value="+">+</button>
+				<button value="-">-</button>
+				<button value="*">*</button>
+				<button value="/">/</button>
+			</div>
+			<div id="numBtn">
+				<button value="1">1</button>
+				<button value="2">2</button>
+				<button value="3">3</button>
+				<button value="4">4</button>
+				<button value="5">5</button>
+				<button value="6">6</button>
+				<button value="7">7</button>
+				<button value="8">8</button>
+				<button value="9">9</button>
+				<button value="0">0</button>
+				<button value=".">.</button>
+			</div>
+			<div id="result">
+				<button id="clear">c</button>
+				<button id="equal" value="">=</button>
+			</div>
+		</div>
+		<script>
+			var content = document.getElementById("content");
+			
+			var equal = document.getElementById("equal");
+			var clear = document.getElementById("clear");
+			
+			var numBtn = document.getElementById("numBtn").getElementsByTagName("button");
+			
+			var cBtn = document.getElementById("cBtn").getElementsByTagName("button");
+			
+			//var = reg = /^.*[\+\-\*\/]$/; 正则表达式,用于匹配最后一个字符是否为运算符
+			
+			for (var i = 0; i < numBtn.length; i++) {
+				numBtn.index=i;
+				var a;
+				numBtn[i].onclick = function  () {
+					if(content.value==""){
+						if(this.value!="."){
+							content.value += this.value;
+						}
+					}else if(content.value=="0"){
+						if(this.value=="."){
+							content.value += this.value;
+						}
+					}else if(content.value=="0."){
+						if(this.value!="."){
+							content.value += this.value;
+						}
+					}else{
+						content.value += this.value;
+					}
+				}
+			}
+			for (var i = 0; i < cBtn.length; i++) {
+				cBtn[i].index=i;
+				cBtn[i].onclick = function  () {
+					equal.value += content.value;
+					if(content.value!=""){
+						content.value = "";	
+//						console.log(this.value);
+						equal.value += this.value;
+//						content.value += this.value;				
+					}
+				}
+			}
+			equal.onclick = function () {
+				if (content.value!="") {
+					equal.value += content.value;
+					console.log(equal.value);
+					var val = eval(equal.value);
+					content.value = val;
+					equal.value = "";
+				}
+			}
+			clear.onclick = function  () {
+				content.value = "";
+				equal.value = "";
+			}
+			
+		</script>
+	</body>
+</html>

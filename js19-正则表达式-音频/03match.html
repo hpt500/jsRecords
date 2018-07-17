@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var reg = /a/;
+			var reg1 = /a/g;
+			var str = "abcdabcda";
+			var str2 = "bcdbcd";
+			//match:找到一个或多个正则表达式的匹配,并返回一个数组,基本需要配合g
+			console.log(str.match(reg));
+			console.log(str.match(reg1));
+			console.log(str2.match(reg1));
+		</script>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="wrap">
+			<p>p标签</p>
+		</div>
+		<script type="text/javascript">
+			var wrap = document.getElementById("wrap");
+			var p = wrap.children[0];
+			var newH1 = document.createElement("h1");
+			newH1.innerText = "H1标签";
+			//替换wrap标签里面的p子标签为newH1标签
+			wrap.replaceChild(newH1,p);
+			//删除wrap标签里面的newH1标签
+			wrap.removeChild(newH1);
+			
+		</script>
+	</body>
+</html>
